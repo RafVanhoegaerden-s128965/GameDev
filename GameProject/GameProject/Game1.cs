@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using GameProject.GameObjects;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -10,11 +11,12 @@ namespace GameProject
         private SpriteBatch _spriteBatch;
 
         //Main Character
-        private Texture2D _textureMC;
-        private Rectangle _hitboxMC;
+        private Texture2D _mcTexture;
+        private MainCharacter _mainCharacter;
+
         //Test Hitbox
-        private Texture2D _textureTest;
-        private Rectangle _hitboxTest;
+        private Texture2D _testTexture;
+        private Rectangle _testHitbox;
 
         public Game1()
         {
@@ -25,11 +27,9 @@ namespace GameProject
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here8
+            // TODO: Add your initialization logic here
 
-            _hitboxMC = new Rectangle(100, 100, 100, 100); // X, Y, width, height
-
-            _hitboxTest = new Rectangle(400, 100, 100, 100); // X, Y, width, height
+            _testHitbox = new Rectangle(400, 100, 100, 100); // X, Y, width, height
 
             base.Initialize();
         }
@@ -40,11 +40,13 @@ namespace GameProject
 
             // TODO: use this.Content to load your game content here
 
-            _textureMC = new Texture2D(GraphicsDevice,1,1); // GraphicsDevice, width, height
-            _textureMC.SetData(new[] { Color.White });
+            _mcTexture = new Texture2D(GraphicsDevice,1,1); // GraphicsDevice, width, height
+            _mcTexture.SetData(new[] { Color.White });
 
-            _textureTest = new Texture2D(GraphicsDevice, 1, 1); // GraphicsDevice, width, height
-            _textureTest.SetData(new[] { Color.White });
+            _mainCharacter = new MainCharacter(_mcTexture); // Move to initialize if a sprite is imported
+
+            _testTexture = new Texture2D(GraphicsDevice, 1, 1); // GraphicsDevice, width, height
+            _testTexture.SetData(new[] { Color.White });
 
         }
 
@@ -64,8 +66,10 @@ namespace GameProject
             _spriteBatch.Begin();
 
             // TODO: Add your drawing code here
-            _spriteBatch.Draw(_textureMC, _hitboxMC, Color.Red); // Texture, Hitbox, Color
-            _spriteBatch.Draw(_textureTest, _hitboxTest, Color.Blue); // Texture, Hitbox, Color
+
+            _mainCharacter.Draw(_spriteBatch);
+
+            _spriteBatch.Draw(_testTexture, _testHitbox, Color.Blue); // Texture, Hitbox, Color
 
             _spriteBatch.End();
             base.Draw(gameTime);
