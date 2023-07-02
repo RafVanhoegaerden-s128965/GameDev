@@ -1,4 +1,5 @@
 ﻿using GameProject.GameObjects;
+using GameProject.InputReader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -43,7 +44,7 @@ namespace GameProject
             _mcTexture = new Texture2D(GraphicsDevice,1,1); // GraphicsDevice, width, height
             _mcTexture.SetData(new[] { Color.White });
 
-            _mainCharacter = new MainCharacter(_mcTexture); // Move to initialize if a sprite is imported
+            _mainCharacter = new MainCharacter(_mcTexture, new KeyBoardReader()); // Move to initialize if a sprite is imported
 
             _testTexture = new Texture2D(GraphicsDevice, 1, 1); // GraphicsDevice, width, height
             _testTexture.SetData(new[] { Color.White });
@@ -56,6 +57,8 @@ namespace GameProject
                 Exit();
 
             // TODO: Add your update logic here
+
+            _mainCharacter.Update(gameTime);
 
             base.Update(gameTime);
         }
