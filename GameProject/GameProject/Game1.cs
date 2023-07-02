@@ -1,5 +1,6 @@
 ﻿using GameProject.GameObjects;
 using GameProject.InputReader;
+using GameProject.Settings;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -10,6 +11,10 @@ namespace GameProject
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+
+        private static Screen _screen;
+        private static int _screenWidth;
+        private static int _screenHeight;
 
         //Main Character
         private Texture2D _mcTexture;
@@ -22,12 +27,28 @@ namespace GameProject
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
+            _graphics.IsFullScreen = false;
+
+            // Screen WIDTH
+            _graphics.PreferredBackBufferWidth = 1920;
+            _screenWidth = _graphics.PreferredBackBufferWidth;
+
+            // Screen HEIGHT
+            _graphics.PreferredBackBufferHeight = 1080;
+            _screenHeight = _graphics.PreferredBackBufferHeight;
+
+            _graphics.ApplyChanges();
+
             Content.RootDirectory = "Content";
+
             IsMouseVisible = true;
+
         }
 
         protected override void Initialize()
         {
+            _screen = new Screen(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
+            
             // TODO: Add your initialization logic here
 
             _testHitbox = new Rectangle(400, 100, 100, 100); // X, Y, width, height
