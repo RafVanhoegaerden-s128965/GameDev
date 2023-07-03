@@ -58,6 +58,10 @@ namespace GameProject
 
         protected override void LoadContent()
         {
+
+            _testTexture = new Texture2D(GraphicsDevice, 1, 1); // GraphicsDevice, width, height
+            _testTexture.SetData(new[] { Color.White });
+
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
@@ -67,8 +71,6 @@ namespace GameProject
 
             _mainCharacter = new MainCharacter(_mcTexture, new KeyBoardReader()); // Move to initialize if a sprite is imported
 
-            _testTexture = new Texture2D(GraphicsDevice, 1, 1); // GraphicsDevice, width, height
-            _testTexture.SetData(new[] { Color.White });
 
         }
 
