@@ -12,10 +12,15 @@ namespace GameProject.Managers
 {
     internal class MovementManager
     {
+        public List<ICollidable> CollidableObjects { get; private set; }
+
+        public MovementManager()
+        {
+            CollidableObjects = new List<ICollidable>();
+        }
+
         public void Move(IMovable entity)
         {
-            entity.Direction = entity.InputReader.ReadInput();
-
             entity.Speed += entity.Acceleration;
             entity.Direction *= entity.Speed;
             entity.Position += entity.Direction;

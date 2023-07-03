@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GameProject.Interface
 {
-    internal interface IGameObject
+    internal interface IGameObject : ICollidable
     {
         public virtual void Update(GameTime gameTime) { }
         public virtual void Draw(SpriteBatch spriteBatch) { }

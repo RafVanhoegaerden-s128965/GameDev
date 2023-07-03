@@ -1,4 +1,5 @@
-﻿using GameProject.Interface;
+﻿using GameProject.GameObjects;
+using GameProject.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -11,7 +12,7 @@ namespace GameProject.InputReader
 {
     internal class KeyBoardReader : IInputReader
     {
-        public Vector2 ReadInput()
+        public Vector2 ReadInput(Entity entity)
         {
             KeyboardState state = Keyboard.GetState();
             Vector2 direction = Vector2.Zero;
@@ -29,7 +30,5 @@ namespace GameProject.InputReader
 
             return direction;
         }
-
-        public bool IsDestinationInput => false;
     }
 }

@@ -12,22 +12,16 @@ using System.Threading.Tasks;
 
 namespace GameProject.GameObjects
 {
-    internal class MainCharacter : IGameObject, IMovable
+    internal class MainCharacter : Entity, IControllable
     {
         public Texture2D MCTexture;
-        public Rectangle MCHitbox;
         public Animation MCAnimation;
 
         // Managers
         private MovementManager _movementManager;
 
-        // IMovable
+        // IControllable
         public IInputReader InputReader { get; set; }
-        public Vector2 Position { get; set; }
-        public Vector2 Speed { get; set; }
-        public Vector2 Direction { get; set; }
-        public Vector2 Acceleration { get; set; }
-
 
         public MainCharacter(Texture2D _texture, IInputReader _inputReader)
         {
@@ -37,25 +31,34 @@ namespace GameProject.GameObjects
             //MCAnimation = new Animation();
             //MCAnimation.GetFramesFromTextureProperties(MCTexture.Width, MCTexture.Height, 5, 2); // Widht, Height, NumberOfSpritesWidth, NumberOfSpritesHeight
 
-
             Position = new Vector2(100, 100);
             Speed = new Vector2(10, 10);
             Acceleration = new Vector2(0f, 0f);
 
-            this.MCHitbox = new Rectangle((int)Position.X, (int)Position.Y, 100, 100); // X, Y, width, height
+            Hitbox = new Rectangle((int)Position.X, (int)Position.Y, 100, 100); // X, Y, width, height
 
             _movementManager = new MovementManager();
         }
 
+        public void OnCollision(IGameObject other)
+        {
+            // Code voor de reactie van het hoofdpersonage op de botsing
+        }
+
         public void Update(GameTime gameTime)
         {
+            // Update Direction
+            Direction = InputReader.ReadInput(this);
+
+            // Update Hitbox position
+
             //MCAnimation.Update(gameTime);
-            _movementManager.Move(this);
+            _movementManager.Move(this);            
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(MCTexture, Position, MCHitbox /*MCAnimation.CurrentFrame.SourceRectangle*/, Color.Red); // Texture, Position, Hitbox, Color
+            spriteBatch.Draw(MCTexture, Position, Hitbox /*MCAnimation.CurrentFrame.SourceRectangle*/, Color.Red); // Texture, Position, Hitbox, Color
         }
     }
 }

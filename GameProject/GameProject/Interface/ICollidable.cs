@@ -1,5 +1,4 @@
-﻿using GameProject.GameObjects;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace GameProject.Interface
 {
-    internal interface IInputReader
+    internal interface ICollidable
     {
-         Vector2 ReadInput(Entity entity);
+        public Rectangle Hitbox { get; }
     }
 }
