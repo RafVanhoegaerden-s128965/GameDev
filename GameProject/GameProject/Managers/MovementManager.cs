@@ -1,6 +1,7 @@
 ﻿using GameProject.GameObjects;
 using GameProject.Interface;
 using GameProject.Settings;
+using GameProject.StrategyPattern;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -19,16 +20,16 @@ namespace GameProject.Managers
             CollidableObjects = new List<ICollidable>();
         }
 
-        public void Move(IMovable entity)
+        public void Move(Entity entity)
         {
             entity.Speed += entity.Acceleration;
             entity.Direction *= entity.Speed;
             entity.Position += entity.Direction;
 
             // Collision with screen boundaries
-            if (entity.Position.X > Screen.Width - 100)
+            if (entity.Position.X > Screen.Width - (entity.IdleAnimation.CurrentFrame.SourceRectangle.Width) * 1.5f)
             {
-                entity.Position = new Vector2(Screen.Width - 100, entity.Position.Y);
+                entity.Position = new Vector2(Screen.Width - (entity.IdleAnimation.CurrentFrame.SourceRectangle.Width) * 1.5f, entity.Position.Y);
             }
             else if (entity.Position.X <= 0)
             {

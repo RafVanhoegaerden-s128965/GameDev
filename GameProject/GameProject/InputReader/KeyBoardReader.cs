@@ -12,7 +12,7 @@ namespace GameProject.InputReader
 {
     internal class KeyBoardReader : IInputReader
     {
-        public Vector2 ReadInput(Entity entity)
+        public void ReadInput(Entity entity)
         {
             KeyboardState state = Keyboard.GetState();
             Vector2 direction = Vector2.Zero;
@@ -20,15 +20,23 @@ namespace GameProject.InputReader
             // Move LEFT
             if (state.IsKeyDown(Keys.A) && !(state.IsKeyDown(Keys.D)))
             {
-                direction.X -= 1;
+                entity.Direction = new Vector2(-1, entity.Direction.Y);
             }
             // Move RIGHT
             else if (state.IsKeyDown(Keys.D) && !(state.IsKeyDown(Keys.A)))
             {
-                direction.X += 1;
+                entity.Direction = new Vector2(1, entity.Direction.Y);
             }
-
-            return direction;
+            else if(state.IsKeyDown(Keys.Space))
+            {
+                entity.IsAttacking = true;
+                entity.Direction = new Vector2(0, 0);
+            }
+            else
+            {
+                entity.Direction = new Vector2(0, 0);
+                entity.IsAttacking = false;
+            }
         }
     }
 }

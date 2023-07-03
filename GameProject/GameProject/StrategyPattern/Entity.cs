@@ -25,6 +25,7 @@ namespace GameProject.StrategyPattern
         public SpriteEffects DirectionPosition { get; set; }
         public bool IsMoving { get; set; }
         public bool IsJumping { get; set; }
+        public bool IsAttacking { get; set; }
 
         // IAnimatable
         public Texture2D IdleTexture { get; set; }

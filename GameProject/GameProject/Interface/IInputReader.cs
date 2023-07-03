@@ -10,6 +10,6 @@ namespace GameProject.Interface
 {
     internal interface IInputReader
     {
-         Vector2 ReadInput(Entity entity);
+         void ReadInput(Entity entity);
     }
 }

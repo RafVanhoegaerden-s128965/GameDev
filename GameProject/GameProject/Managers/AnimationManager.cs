@@ -1,4 +1,5 @@
 ﻿using GameProject.Interface;
+using GameProject.StrategyPattern;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,10 @@ namespace GameProject.Managers
             }
 
             return entity.IsMoving;
+        }
+        public bool IsAttacking(Player entity)
+        {
+            return entity.IsAttacking;
         }
     }
 }
