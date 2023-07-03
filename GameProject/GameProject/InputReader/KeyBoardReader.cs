@@ -1,5 +1,5 @@
-﻿using GameProject.GameObjects;
-using GameProject.Interface;
+﻿using GameProject.Interface;
+using GameProject.StrategyPattern;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;

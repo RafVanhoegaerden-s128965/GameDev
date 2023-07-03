@@ -21,7 +21,8 @@ namespace GameProject
         private MovementManager _movementManager;
 
         //Main Character
-        private Texture2D _mcTexture;
+        private Texture2D _idleTexture;
+        private Texture2D _runningTexture;
         private MainCharacter _mainCharacter;
 
         public Game1()
@@ -65,14 +66,11 @@ namespace GameProject
 
             // TODO: use this.Content to load your game content here
 
-            _mcTexture = new Texture2D(GraphicsDevice,1,1); // GraphicsDevice, width, height
-            _mcTexture.SetData(new[] { Color.White });
+            _idleTexture = Content.Load<Texture2D>("Idle-Sheet");
+            _runningTexture = Content.Load<Texture2D>("Run-Sheet");
 
-            // Load any necessary content for your game objects here
-            // For example:
-            // _mainCharacter.MCTexture = Content.Load<Texture2D>("main_character_texture");
 
-            _mainCharacter = new MainCharacter(_mcTexture, new KeyBoardReader()); // Move to initialize if a sprite is imported
+            _mainCharacter = new MainCharacter(_idleTexture, _runningTexture, new KeyBoardReader());
         }
 
         protected override void Update(GameTime gameTime)
