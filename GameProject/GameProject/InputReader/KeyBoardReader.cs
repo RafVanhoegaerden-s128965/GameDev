@@ -29,5 +29,7 @@ namespace GameProject.InputReader
 
             return direction;
         }
+
+        public bool IsDestinationInput => false;
     }
 }
