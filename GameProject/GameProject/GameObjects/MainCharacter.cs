@@ -90,19 +90,16 @@ namespace GameProject.GameObjects
                 spriteBatch.Draw(IdleTexture, Position, IdleAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
             }
             // Running
-            else if (IsMoving == true && IsAttacking == false)
+            else if (IsMoving == true)
             {
                 spriteBatch.Draw(TestHitboxTexture, Position, Hitbox, Color.Yellow * 0.6f, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
                 spriteBatch.Draw(RunningTexture, Position, RunningAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
             }
             // Attacking
-            else if (IsAttacking == true && IsMoving == false)
+            else if (IsAttacking == true)
             {
                 spriteBatch.Draw(TestHitboxTexture, Position, Hitbox, Color.Blue * 0.6f, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
                 spriteBatch.Draw(AttackTexture, Position, AttackAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
-            }else{
-                spriteBatch.Draw(TestHitboxTexture, Position, Hitbox, Color.Yellow * 0.6f, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
-                spriteBatch.Draw(RunningTexture, Position, RunningAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
             }
         }
     }

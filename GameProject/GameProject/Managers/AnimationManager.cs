@@ -32,6 +32,7 @@ namespace GameProject.Managers
         }
         public bool IsAttacking(Player entity)
         {
+            
             return entity.IsAttacking;
         }
     }

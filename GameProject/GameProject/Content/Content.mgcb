@@ -13,7 +13,7 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin ../../../Images/Sprites/Character/Attack-01/Attack-01-Sheet.png
+#begin Attack-01-Sheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -23,7 +23,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../Images/Sprites/Character/Attack-01/Attack-01-Sheet.png;Attack-01-Sheet.png
+/build:Attack-01-Sheet.png
 
 #begin Idle-Sheet.png
 /importer:TextureImporter
