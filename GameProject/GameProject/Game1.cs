@@ -34,11 +34,11 @@ namespace GameProject
             _graphics.IsFullScreen = false;
 
             // Screen WIDTH
-            _graphics.PreferredBackBufferWidth = 1920;
+            _graphics.PreferredBackBufferWidth = 1280;
             _screenWidth = _graphics.PreferredBackBufferWidth;
 
             // Screen HEIGHT
-            _graphics.PreferredBackBufferHeight = 1080;
+            _graphics.PreferredBackBufferHeight = 720;
             _screenHeight = _graphics.PreferredBackBufferHeight;
 
             _graphics.ApplyChanges();

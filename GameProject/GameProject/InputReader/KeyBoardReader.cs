@@ -17,22 +17,22 @@ namespace GameProject.InputReader
             KeyboardState state = Keyboard.GetState();
             Vector2 direction = Vector2.Zero;
 
-            // Move LEFT
-            if (state.IsKeyDown(Keys.A) && !(state.IsKeyDown(Keys.D)))
+            // Controls
+
+            if (state.IsKeyDown(Keys.A) && !(state.IsKeyDown(Keys.D))) // Move LEFT
             {
                 entity.Direction = new Vector2(-1, entity.Direction.Y);
             }
-            // Move RIGHT
-            else if (state.IsKeyDown(Keys.D) && !(state.IsKeyDown(Keys.A)))
+            else if (state.IsKeyDown(Keys.D) && !(state.IsKeyDown(Keys.A))) // Move RIGHT
             {
                 entity.Direction = new Vector2(1, entity.Direction.Y);
             }
-            else if(state.IsKeyDown(Keys.Space))
+            else if(state.IsKeyDown(Keys.Space)) // Attack
             {
                 entity.IsAttacking = true;
                 entity.Direction = new Vector2(0, 0);
             }
-            else
+            else // Default state
             {
                 entity.Direction = new Vector2(0, 0);
                 entity.IsAttacking = false;

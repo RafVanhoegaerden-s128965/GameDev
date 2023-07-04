@@ -15,8 +15,6 @@ namespace GameProject.GameObjects
 {
     internal class MainCharacter : Player
     {
-        
-
         public MainCharacter(Texture2D _idleTexture, Texture2D _runningTexture, Texture2D _attackTexture, IInputReader _inputReader, Texture2D _testHitboxTexture)
         {
             this.IdleTexture = _idleTexture;
@@ -42,7 +40,7 @@ namespace GameProject.GameObjects
             Speed = new Vector2(10, 10);
             Acceleration = new Vector2(0f, 0f);
 
-            // Hitboxes
+            // Hitbox
 
             this.Hitbox = new Rectangle((int)Position.X, (int)Position.Y, IdleAnimation.CurrentFrame.SourceRectangle.Width, IdleAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
 
@@ -60,21 +58,26 @@ namespace GameProject.GameObjects
         public void Update(GameTime gameTime)
         {
             // Read Input
+
             InputReader.ReadInput(this);
 
             // Movement
+
             MovementManager.Move(this);
-            if (AnimationManager.IsWalking(this))
+
+            // Update Hitbox
+
+            if (AnimationManager.IsWalking(this)) // Running
             {
                 RunningAnimation.Update(gameTime);
                 this.Hitbox = new Rectangle((int)Position.X, (int)Position.Y, RunningAnimation.CurrentFrame.SourceRectangle.Width, RunningAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
             }
-            else if (AnimationManager.IsAttacking(this))
+            else if (AnimationManager.IsAttacking(this)) // Attacking
             {
                 AttackAnimation.Update(gameTime);
                 this.Hitbox = new Rectangle((int)Position.X, (int)Position.Y, AttackAnimation.CurrentFrame.SourceRectangle.Width, AttackAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
             }
-            else
+            else // Idle
             {
                 IdleAnimation.Update(gameTime);
                 this.Hitbox = new Rectangle((int)Position.X, (int)Position.Y, IdleAnimation.CurrentFrame.SourceRectangle.Width, IdleAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
