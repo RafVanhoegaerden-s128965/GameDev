@@ -1,4 +1,4 @@
-﻿using GameProject.GameObjects;
+﻿using GameProject.StrategyPattern;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -10,6 +10,6 @@ namespace GameProject.Interface
 {
     internal interface IInputReader
     {
-         Vector2 ReadInput(Entity entity);
+         void ReadInput(Entity entity);
     }
 }

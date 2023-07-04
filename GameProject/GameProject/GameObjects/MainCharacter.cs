@@ -2,6 +2,7 @@
 using GameProject.Interface;
 using GameProject.Managers;
 using GameProject.Settings;
+using GameProject.StrategyPattern;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -12,32 +13,41 @@ using System.Threading.Tasks;
 
 namespace GameProject.GameObjects
 {
-    internal class MainCharacter : Entity, IControllable
+    internal class MainCharacter : Player
     {
-        public Texture2D MCTexture;
-        public Animation MCAnimation;
-
-        // Managers
-        private MovementManager _movementManager;
-
-        // IControllable
-        public IInputReader InputReader { get; set; }
-
-        public MainCharacter(Texture2D _texture, IInputReader _inputReader)
+        public MainCharacter(Texture2D _idleTexture, Texture2D _runningTexture, Texture2D _attackTexture, IInputReader _inputReader, Texture2D _testHitboxTexture)
         {
-            this.MCTexture = _texture;
+            this.IdleTexture = _idleTexture;
+            this.RunningTexture = _runningTexture;
+            this.AttackTexture = _attackTexture;
             this.InputReader = _inputReader;
+            this.TestHitboxTexture = _testHitboxTexture;
 
-            //MCAnimation = new Animation();
-            //MCAnimation.GetFramesFromTextureProperties(MCTexture.Width, MCTexture.Height, 5, 2); // Widht, Height, NumberOfSpritesWidth, NumberOfSpritesHeight
+            // Animations
+
+            IdleAnimation = new Animation();
+            IdleAnimation.GetFramesFromTextureProperties(IdleTexture.Width, IdleTexture.Height, 4, 1); // Widht, Height, NumberOfSpritesWidth, NumberOfSpritesHeight
+
+            RunningAnimation = new Animation();
+            RunningAnimation.GetFramesFromTextureProperties(RunningTexture.Width, RunningTexture.Height, 8, 1); // Widht, Height, NumberOfSpritesWidth, NumberOfSpritesHeight
+
+            AttackAnimation = new Animation();
+            AttackAnimation.GetFramesFromTextureProperties(AttackTexture.Width, AttackTexture.Height, 8, 1); // Widht, Height, NumberOfSpritesWidth, NumberOfSpritesHeight
+
+            // Moving
 
             Position = new Vector2(100, 100);
             Speed = new Vector2(10, 10);
             Acceleration = new Vector2(0f, 0f);
 
-            Hitbox = new Rectangle((int)Position.X, (int)Position.Y, 100, 100); // X, Y, width, height
+            // Hitbox
 
-            _movementManager = new MovementManager();
+            this.Hitbox = new Rectangle((int)Position.X, (int)Position.Y, IdleAnimation.CurrentFrame.SourceRectangle.Width, IdleAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
+
+            // Managers
+
+            MovementManager = new MovementManager();
+            AnimationManager = new AnimationManager();
         }
 
         public void OnCollision(IGameObject other)
@@ -47,18 +57,53 @@ namespace GameProject.GameObjects
 
         public void Update(GameTime gameTime)
         {
-            // Update Direction
-            Direction = InputReader.ReadInput(this);
+            // Read Input
 
-            // Update Hitbox position
+            InputReader.ReadInput(this);
 
-            //MCAnimation.Update(gameTime);
-            _movementManager.Move(this);            
+            // Movement
+
+            MovementManager.Move(this);
+
+            // Update Hitbox
+
+            if (AnimationManager.IsWalking(this)) // Running
+            {
+                RunningAnimation.Update(gameTime);
+                this.Hitbox = new Rectangle((int)Position.X, (int)Position.Y, RunningAnimation.CurrentFrame.SourceRectangle.Width, RunningAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
+            }
+            else if (AnimationManager.IsAttacking(this)) // Attacking
+            {
+                AttackAnimation.Update(gameTime);
+                this.Hitbox = new Rectangle((int)Position.X, (int)Position.Y, AttackAnimation.CurrentFrame.SourceRectangle.Width, AttackAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
+            }
+            else // Idle
+            {
+                IdleAnimation.Update(gameTime);
+                this.Hitbox = new Rectangle((int)Position.X, (int)Position.Y, IdleAnimation.CurrentFrame.SourceRectangle.Width, IdleAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(MCTexture, Position, Hitbox /*MCAnimation.CurrentFrame.SourceRectangle*/, Color.Red); // Texture, Position, Hitbox, Color
+            // Idle
+            if (IsMoving == false && IsAttacking == false)
+            {
+                spriteBatch.Draw(TestHitboxTexture, Position, Hitbox, Color.Red * 0.6f, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+                spriteBatch.Draw(IdleTexture, Position, IdleAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+            }
+            // Running
+            else if (IsMoving == true)
+            {
+                spriteBatch.Draw(TestHitboxTexture, Position, Hitbox, Color.Yellow * 0.6f, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+                spriteBatch.Draw(RunningTexture, Position, RunningAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+            }
+            // Attacking
+            else if (IsAttacking == true)
+            {
+                spriteBatch.Draw(TestHitboxTexture, Position, Hitbox, Color.Blue * 0.6f, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+                spriteBatch.Draw(AttackTexture, Position, AttackAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+            }
         }
     }
 }

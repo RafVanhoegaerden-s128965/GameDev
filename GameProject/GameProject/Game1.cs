@@ -20,8 +20,12 @@ namespace GameProject
 
         private MovementManager _movementManager;
 
+        private Texture2D _blockTexture;
+
         //Main Character
-        private Texture2D _mcTexture;
+        private Texture2D _idleTexture;
+        private Texture2D _runningTexture;
+        private Texture2D _attackTexture;
         private MainCharacter _mainCharacter;
 
         public Game1()
@@ -30,11 +34,11 @@ namespace GameProject
             _graphics.IsFullScreen = false;
 
             // Screen WIDTH
-            _graphics.PreferredBackBufferWidth = 1920;
+            _graphics.PreferredBackBufferWidth = 1280;
             _screenWidth = _graphics.PreferredBackBufferWidth;
 
             // Screen HEIGHT
-            _graphics.PreferredBackBufferHeight = 1080;
+            _graphics.PreferredBackBufferHeight = 720;
             _screenHeight = _graphics.PreferredBackBufferHeight;
 
             _graphics.ApplyChanges();
@@ -61,18 +65,18 @@ namespace GameProject
 
         protected override void LoadContent()
         {
+            _blockTexture = new Texture2D(GraphicsDevice, 1, 1);
+            _blockTexture.SetData(new[] { Color.White });
+
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
 
-            _mcTexture = new Texture2D(GraphicsDevice,1,1); // GraphicsDevice, width, height
-            _mcTexture.SetData(new[] { Color.White });
+            _idleTexture = Content.Load<Texture2D>("Idle-Sheet");
+            _runningTexture = Content.Load<Texture2D>("Run-Sheet");
+            _attackTexture = Content.Load<Texture2D>("Attack-01-Sheet");
 
-            // Load any necessary content for your game objects here
-            // For example:
-            // _mainCharacter.MCTexture = Content.Load<Texture2D>("main_character_texture");
-
-            _mainCharacter = new MainCharacter(_mcTexture, new KeyBoardReader()); // Move to initialize if a sprite is imported
+            _mainCharacter = new MainCharacter(_idleTexture, _runningTexture, _attackTexture, new KeyBoardReader(), _blockTexture);
         }
 
         protected override void Update(GameTime gameTime)

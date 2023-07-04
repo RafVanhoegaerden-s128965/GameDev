@@ -12,6 +12,7 @@ namespace GameProject.Animations
     {
         public AnimationFrame CurrentFrame { get; set; }
         private List<AnimationFrame> _frames;
+
         private int _counter;
 
         private double _secondCounter = 0;
@@ -36,7 +37,7 @@ namespace GameProject.Animations
             {
                 for (int x = 0; x <= width - widthOfFrame; x += widthOfFrame)
                 {
-                    _frames.Add(new AnimationFrame(new Rectangle(x, y, widthOfFrame, heightOfFrame)));
+                    AddFrame(new AnimationFrame(new Rectangle(x, y, widthOfFrame, heightOfFrame)));
                 }
             }
 
@@ -48,7 +49,7 @@ namespace GameProject.Animations
 
             _secondCounter += gameTime.ElapsedGameTime.TotalSeconds;
             // FPS
-            int fps = 15;
+            int fps = 5;
 
             if(_secondCounter >= 1d/fps)
             {
