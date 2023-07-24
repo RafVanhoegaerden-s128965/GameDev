@@ -40,12 +40,12 @@ namespace GameProject.GameObjects
 
             // Moving
 
-            Position = new Vector2(100, 100);
+            Position = new Vector2(100, 600);
             Speed = new Vector2(10, 10);
             Acceleration = new Vector2(0f, 0f);
 
             IsJumping = false;
-            IsFalling = true;
+            IsFalling = false;
             StartY = Position.Y;
             JumpSpeed = 0;
 
@@ -67,7 +67,7 @@ namespace GameProject.GameObjects
 
             IsAttacking = InputReader.ReadIsFighting();
 
-            IsJumping = InputReader.ReadIsJumping();
+            //IsJumping = InputReader.ReadIsJumping();
 
             // Movement
 
@@ -119,10 +119,12 @@ namespace GameProject.GameObjects
             // credits => https://flatformer.blogspot.com/
             if (IsJumping)
             {
-                Speed += new Vector2(0, JumpSpeed);
+                Position += new Vector2(0, JumpSpeed);
                 JumpSpeed += 1;
 
-                if (Speed.Y >= StartY)
+
+
+                if (Position.Y >= StartY)
                 //If it's farther than ground
                 {
                     Speed = new Vector2(Speed.X, StartY); // Then set it on
