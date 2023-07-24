@@ -53,16 +53,15 @@ namespace GameProject.GameObjects
             AnimationManager = new AnimationManager();
         }
 
-        public void OnCollision(IGameObject other)
-        {
-            // Code voor de reactie van het hoofdpersonage op de botsing
-        }
-
         public void Update(GameTime gameTime)
         {
             // Read Input
 
-            InputReader.ReadInput(this);
+            Direction = InputReader.ReadMovementInput();
+
+            IsAttacking = InputReader.ReadIsFighting();
+
+            IsJumping = InputReader.ReadIsJumping();
 
             // Movement
 

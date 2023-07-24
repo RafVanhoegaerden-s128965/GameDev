@@ -13,13 +13,6 @@ namespace GameProject.Managers
 {
     internal class MovementManager
     {
-        public List<ICollidable> CollidableObjects { get; private set; }
-
-        public MovementManager()
-        {
-            CollidableObjects = new List<ICollidable>();
-        }
-
         public void Move(Entity entity)
         {
             entity.Speed += entity.Acceleration;
@@ -28,22 +21,22 @@ namespace GameProject.Managers
 
             // Collision with screen boundaries
 
-            if (entity.Position.X > Screen.Width - (entity.RunningAnimation.CurrentFrame.SourceRectangle.Width) * 1.5f) // RIGHT
-            {
-                entity.Position = new Vector2(Screen.Width - (entity.RunningAnimation.CurrentFrame.SourceRectangle.Width) * 1.5f, entity.Position.Y);
-            }
-            else if (entity.Position.X <= 0) // LEFT
-            {
-                entity.Position = new Vector2(0, entity.Position.Y);
-            }
-            else if (entity.Position.Y <= 0) // TOP
-            {
-                entity.Position = new Vector2(entity.Position.X, 0);
-            }
-            else if (entity.Position.Y > Screen.Height - (entity.RunningAnimation.CurrentFrame.SourceRectangle.Height) * 1.5f) // BOTTOM
-            {
-                entity.Position = new Vector2(entity.Position.X, Screen.Height - (entity.RunningAnimation.CurrentFrame.SourceRectangle.Height) * 1.5f);
-            }
+            //if (entity.Position.X > Screen.Width - (entity.RunningAnimation.CurrentFrame.SourceRectangle.Width) * 1.5f) // RIGHT
+            //{
+            //    entity.Position = new Vector2(Screen.Width - (entity.RunningAnimation.CurrentFrame.SourceRectangle.Width) * 1.5f, entity.Position.Y);
+            //}
+            //else if (entity.Position.X <= 0) // LEFT
+            //{
+            //    entity.Position = new Vector2(0, entity.Position.Y);
+            //}
+            //else if (entity.Position.Y <= 0) // TOP
+            //{
+            //    entity.Position = new Vector2(entity.Position.X, 0);
+            //}
+            //else if (entity.Position.Y > Screen.Height - (entity.RunningAnimation.CurrentFrame.SourceRectangle.Height) * 1.5f) // BOTTOM
+            //{
+            //    entity.Position = new Vector2(entity.Position.X, Screen.Height - (entity.RunningAnimation.CurrentFrame.SourceRectangle.Height) * 1.5f);
+            //}
         }
     }
 }
