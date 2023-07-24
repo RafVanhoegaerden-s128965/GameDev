@@ -47,6 +47,12 @@ namespace GameProject.GameObjects
 
             StartY = Position.Y;
 
+            // Jump State
+
+            IsFalling = true;
+            IsJumping = false;
+            
+
             // Hitbox
 
             this.Hitbox = new Rectangle((int)Position.X, (int)Position.Y, IdleAnimation.CurrentFrame.SourceRectangle.Width, IdleAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height

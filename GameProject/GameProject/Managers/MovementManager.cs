@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,22 +39,34 @@ namespace GameProject.Managers
             if (entity.Position.Y > Screen.Height - (entity.RunningAnimation.CurrentFrame.SourceRectangle.Height) * 1.5f) // BOTTOM
             {
                 entity.Position = new Vector2(entity.Position.X, Screen.Height - (entity.RunningAnimation.CurrentFrame.SourceRectangle.Height) * 1.5f);
+                entity.IsFalling = false;
             }
         }
         public void Jump(Player entity)
         {
-            entity.StartY = entity.Position.Y;
             // credits => https://flatformer.blogspot.com/
             if (entity.IsJumping)
             {
+                entity.StartY = entity.Position.Y;
                 entity.Position += new Vector2(0, entity.JumpSpeed);
                 entity.JumpSpeed += 1;
+
+                if (entity.JumpSpeed > 0)
+                {
+                    entity.IsFalling = true;
+                    entity.IsJumping = false;
+                }
+
+                Debug.WriteLine($"JUMP END Jumping: {entity.IsJumping} // Falling: {entity.IsFalling}");
+
 
                 if (entity.Position.Y >= entity.StartY)
                 //If it's farther than ground
                 {
                     entity.Speed = new Vector2(entity.Speed.X, entity.StartY); // Then set it on
                     entity.IsJumping = false;
+                    Debug.WriteLine($"ON GROUND Jumping: {entity.IsJumping} // Falling: {entity.IsFalling}");
+
                 }
             }
             else
@@ -63,6 +76,7 @@ namespace GameProject.Managers
                     entity.IsJumping = true;
                     entity.IsFalling = false;
                     entity.JumpSpeed = -18; // Give it upward thrust
+                    Debug.WriteLine($"JUMP START Jumping: {entity.IsJumping} // Falling: {entity.IsFalling}");
                 }
             }
         }
