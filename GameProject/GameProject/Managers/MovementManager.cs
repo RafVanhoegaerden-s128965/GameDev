@@ -19,6 +19,7 @@ namespace GameProject.Managers
             entity.Direction *= entity.Speed;
             entity.Position += entity.Direction;
 
+
             // Collision with screen boundaries
 
             //if (entity.Position.X > Screen.Width - (entity.RunningAnimation.CurrentFrame.SourceRectangle.Width) * 1.5f) // RIGHT

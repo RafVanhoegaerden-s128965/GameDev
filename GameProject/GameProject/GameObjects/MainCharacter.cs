@@ -7,6 +7,7 @@ using GameProject.StrategyPattern;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +44,11 @@ namespace GameProject.GameObjects
             Speed = new Vector2(10, 10);
             Acceleration = new Vector2(0f, 0f);
 
+            IsJumping = false;
+            IsFalling = true;
+            StartY = Position.Y;
+            JumpSpeed = 0;
+
             // Hitbox
 
             this.Hitbox = new Rectangle((int)Position.X, (int)Position.Y, IdleAnimation.CurrentFrame.SourceRectangle.Width, IdleAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
@@ -66,6 +72,7 @@ namespace GameProject.GameObjects
             // Movement
 
             MovementManager.Move(this);
+            Jump();
 
             // Update Hitbox
 
@@ -105,6 +112,31 @@ namespace GameProject.GameObjects
             {
                 spriteBatch.Draw(TestHitboxTexture, Position, Hitbox, Color.Blue * 0.6f, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
                 spriteBatch.Draw(AttackTexture, Position, AttackAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+            }
+        }
+        public void Jump()
+        {
+            // credits => https://flatformer.blogspot.com/
+            if (IsJumping)
+            {
+                Speed += new Vector2(0, JumpSpeed);
+                JumpSpeed += 1;
+
+                if (Speed.Y >= StartY)
+                //If it's farther than ground
+                {
+                    Speed = new Vector2(Speed.X, StartY); // Then set it on
+                    IsJumping = false;
+                }
+            }
+            else
+            {
+                if (Keyboard.GetState().IsKeyDown(Keys.W) && !IsFalling)
+                {
+                    IsJumping = true;
+                    IsFalling = false;
+                    JumpSpeed = -14; // Give it upward thrust
+                }
             }
         }
     }

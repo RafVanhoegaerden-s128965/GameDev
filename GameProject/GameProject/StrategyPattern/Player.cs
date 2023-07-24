@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GameProject.StrategyPattern
 {
-    internal class Player : Entity, IControllable
+    internal class Player : Entity, IControllable, IJumpable
     {
         // IControllable
         public IInputReader InputReader { get; set; }
@@ -18,8 +18,13 @@ namespace GameProject.StrategyPattern
         public Texture2D AttackTexture { get; set; }
         public Animation AttackAnimation { get; set; }
 
+        // IJumpable
+        public float StartY { get; set; }
+        public float JumpSpeed { get; set; }
+        public bool IsJumping { get; set; }
+        public bool IsFalling { get; set; }
+
         // Hitbox Texture
         public Texture2D TestHitboxTexture { get; set; }
-
     }
 }

@@ -24,7 +24,6 @@ namespace GameProject.StrategyPattern
         public Vector2 Acceleration { get; set; }
         public SpriteEffects DirectionPosition { get; set; }
         public bool IsMoving { get; set; }
-        public bool IsJumping { get; set; }
         public bool IsAttacking { get; set; }
 
         // IAnimatable
