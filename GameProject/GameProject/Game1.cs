@@ -18,14 +18,9 @@ namespace GameProject
         private static int _screenWidth;
         private static int _screenHeight;
 
-        private MovementManager _movementManager;
-
         private Texture2D _blockTexture;
 
         //Main Character
-        private Texture2D _idleTexture;
-        private Texture2D _runningTexture;
-        private Texture2D _attackTexture;
         private MainCharacter _mainCharacter;
 
         public Game1()
@@ -56,9 +51,6 @@ namespace GameProject
             // TODO: Add your initialization logic here
 
             // Add objects to MovementManagerList
-            _movementManager = new MovementManager();
-
-            _movementManager.CollidableObjects.Add(_mainCharacter);
 
             base.Initialize();
         }
@@ -72,11 +64,7 @@ namespace GameProject
 
             // TODO: use this.Content to load your game content here
 
-            _idleTexture = Content.Load<Texture2D>("Idle-Sheet");
-            _runningTexture = Content.Load<Texture2D>("Run-Sheet");
-            _attackTexture = Content.Load<Texture2D>("Attack-01-Sheet");
-
-            _mainCharacter = new MainCharacter(_idleTexture, _runningTexture, _attackTexture, new KeyBoardReader(), _blockTexture);
+            _mainCharacter = new MainCharacter(this.Content, _blockTexture);
         }
 
         protected override void Update(GameTime gameTime)

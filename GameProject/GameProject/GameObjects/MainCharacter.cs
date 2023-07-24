@@ -1,13 +1,16 @@
 ﻿using GameProject.Animations;
+using GameProject.InputReader;
 using GameProject.Interface;
 using GameProject.Managers;
 using GameProject.Settings;
 using GameProject.StrategyPattern;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,12 +18,12 @@ namespace GameProject.GameObjects
 {
     internal class MainCharacter : Player
     {
-        public MainCharacter(Texture2D _idleTexture, Texture2D _runningTexture, Texture2D _attackTexture, IInputReader _inputReader, Texture2D _testHitboxTexture)
+        public MainCharacter(ContentManager content, Texture2D _testHitboxTexture)
         {
-            this.IdleTexture = _idleTexture;
-            this.RunningTexture = _runningTexture;
-            this.AttackTexture = _attackTexture;
-            this.InputReader = _inputReader;
+            this.IdleTexture = content.Load<Texture2D>("Idle-Sheet");
+            this.RunningTexture = content.Load<Texture2D>("Run-Sheet");
+            this.AttackTexture = content.Load<Texture2D>("Attack-01-Sheet");
+            this.InputReader = new KeyBoardReader();
             this.TestHitboxTexture = _testHitboxTexture;
 
             // Animations
@@ -50,16 +53,15 @@ namespace GameProject.GameObjects
             AnimationManager = new AnimationManager();
         }
 
-        public void OnCollision(IGameObject other)
-        {
-            // Code voor de reactie van het hoofdpersonage op de botsing
-        }
-
         public void Update(GameTime gameTime)
         {
             // Read Input
 
-            InputReader.ReadInput(this);
+            Direction = InputReader.ReadMovementInput();
+
+            IsAttacking = InputReader.ReadIsFighting();
+
+            IsJumping = InputReader.ReadIsJumping();
 
             // Movement
 
