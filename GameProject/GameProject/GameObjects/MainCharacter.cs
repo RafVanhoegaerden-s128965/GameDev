@@ -19,6 +19,7 @@ namespace GameProject.GameObjects
 {
     internal class MainCharacter : Player
     {
+        float GravityFactor = 5f;
         public MainCharacter(ContentManager content, Texture2D _testHitboxTexture)
         {
             this.IdleTexture = content.Load<Texture2D>("Idle-Sheet");
@@ -40,14 +41,11 @@ namespace GameProject.GameObjects
 
             // Moving
 
-            Position = new Vector2(100, 600);
+            Position = new Vector2(100, 100);
             Speed = new Vector2(10, 10);
             Acceleration = new Vector2(0f, 0f);
 
-            IsJumping = false;
-            IsFalling = false;
             StartY = Position.Y;
-            JumpSpeed = 0;
 
             // Hitbox
 
@@ -61,18 +59,19 @@ namespace GameProject.GameObjects
 
         public void Update(GameTime gameTime)
         {
+            // Apply gravity
+            Gravity();
+
             // Read Input
 
             Direction = InputReader.ReadMovementInput();
 
             IsAttacking = InputReader.ReadIsFighting();
 
-            //IsJumping = InputReader.ReadIsJumping();
-
             // Movement
 
             MovementManager.Move(this);
-            Jump();
+            MovementManager.Jump(this);
 
             // Update Hitbox
 
@@ -114,31 +113,14 @@ namespace GameProject.GameObjects
                 spriteBatch.Draw(AttackTexture, Position, AttackAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
             }
         }
-        public void Jump()
+        
+        public void Gravity()
         {
-            // credits => https://flatformer.blogspot.com/
-            if (IsJumping)
+            Position += new Vector2(0, GravityFactor);
+            GravityFactor += 1f;
+            if (GravityFactor > 7f)
             {
-                Position += new Vector2(0, JumpSpeed);
-                JumpSpeed += 1;
-
-
-
-                if (Position.Y >= StartY)
-                //If it's farther than ground
-                {
-                    Speed = new Vector2(Speed.X, StartY); // Then set it on
-                    IsJumping = false;
-                }
-            }
-            else
-            {
-                if (Keyboard.GetState().IsKeyDown(Keys.W) && !IsFalling)
-                {
-                    IsJumping = true;
-                    IsFalling = false;
-                    JumpSpeed = -14; // Give it upward thrust
-                }
+                GravityFactor = 7f;
             }
         }
     }
