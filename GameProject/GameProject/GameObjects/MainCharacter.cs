@@ -7,6 +7,7 @@ using GameProject.StrategyPattern;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace GameProject.GameObjects
 {
     internal class MainCharacter : Player
     {
+        float GravityFactor = 5f;
         public MainCharacter(ContentManager content, Texture2D _testHitboxTexture)
         {
             this.IdleTexture = content.Load<Texture2D>("Idle-Sheet");
@@ -43,6 +45,14 @@ namespace GameProject.GameObjects
             Speed = new Vector2(10, 10);
             Acceleration = new Vector2(0f, 0f);
 
+            StartY = Position.Y;
+
+            // Jump State
+
+            IsFalling = true;
+            IsJumping = false;
+            
+
             // Hitbox
 
             this.Hitbox = new Rectangle((int)Position.X, (int)Position.Y, IdleAnimation.CurrentFrame.SourceRectangle.Width, IdleAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
@@ -55,17 +65,19 @@ namespace GameProject.GameObjects
 
         public void Update(GameTime gameTime)
         {
+            // Apply gravity
+            Gravity();
+
             // Read Input
 
             Direction = InputReader.ReadMovementInput();
 
             IsAttacking = InputReader.ReadIsFighting();
 
-            IsJumping = InputReader.ReadIsJumping();
-
             // Movement
 
             MovementManager.Move(this);
+            MovementManager.Jump(this);
 
             // Update Hitbox
 
@@ -105,6 +117,16 @@ namespace GameProject.GameObjects
             {
                 spriteBatch.Draw(TestHitboxTexture, Position, Hitbox, Color.Blue * 0.6f, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
                 spriteBatch.Draw(AttackTexture, Position, AttackAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+            }
+        }
+        
+        public void Gravity()
+        {
+            Position += new Vector2(0, GravityFactor);
+            GravityFactor += 1f;
+            if (GravityFactor > 7f)
+            {
+                GravityFactor = 7f;
             }
         }
     }

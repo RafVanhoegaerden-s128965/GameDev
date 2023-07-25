@@ -20,6 +20,5 @@ namespace GameProject.StrategyPattern
 
         // Hitbox Texture
         public Texture2D TestHitboxTexture { get; set; }
-
     }
 }

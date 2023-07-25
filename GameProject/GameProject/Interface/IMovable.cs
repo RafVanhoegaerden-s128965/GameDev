@@ -18,6 +18,5 @@ namespace GameProject.Interface
         public Vector2 Acceleration { get; set; }
         public SpriteEffects DirectionPosition { get; set; }
         public bool IsMoving { get; set; }
-        public bool IsJumping { get; set; }
     }
 }
