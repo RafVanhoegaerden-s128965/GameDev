@@ -57,8 +57,8 @@ namespace GameProject
 
         protected override void LoadContent()
         {
-            _blockTexture = new Texture2D(GraphicsDevice, 1, 1);
-            _blockTexture.SetData(new[] { Color.White });
+            //_blockTexture = new Texture2D(GraphicsDevice, 1, 1);
+            //_blockTexture.SetData(new[] { Color.White });
 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 

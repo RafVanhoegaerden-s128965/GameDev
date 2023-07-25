@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace GameProject.StrategyPattern
 {
-    internal abstract class Entity : Object, IMovable, IJumpable
+    internal abstract class Entity : Object, IMovable, IJumpable, IAnimatable
     {
         // Managers
         public MovementManager MovementManager { get; set; }
@@ -23,14 +23,6 @@ namespace GameProject.StrategyPattern
         public Vector2 Acceleration { get; set; }
         public SpriteEffects DirectionPosition { get; set; }
         public CurrentMovementState CurrentMovementState { get; set; }
-
-
-
-        public bool IsMoving { get; set; }
-        public bool IsAttacking { get; set; }
-
-
-
 
         // IJumpable
         public float StartY { get; set; }
