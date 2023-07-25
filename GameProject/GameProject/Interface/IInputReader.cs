@@ -10,9 +10,6 @@ namespace GameProject.Interface
 {
     internal interface IInputReader
     {
-        Vector2 ReadMovementInput();
-        public bool ReadIsFighting();
-        public bool ReadIsJumping();
-
+        void ReadInput(Player entity);
     }
 }

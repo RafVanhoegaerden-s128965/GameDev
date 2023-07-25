@@ -64,7 +64,7 @@ namespace GameProject
 
             // TODO: use this.Content to load your game content here
 
-            _mainCharacter = new MainCharacter(this.Content, _blockTexture);
+            _mainCharacter = new MainCharacter(this.Content);
         }
 
         protected override void Update(GameTime gameTime)

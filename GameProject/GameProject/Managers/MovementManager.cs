@@ -57,16 +57,14 @@ namespace GameProject.Managers
                     entity.IsJumping = false;
                 }
 
-                Debug.WriteLine($"JUMP END Jumping: {entity.IsJumping} // Falling: {entity.IsFalling}");
-
+                //Debug.WriteLine($"JUMP END Jumping: {entity.IsJumping} // Falling: {entity.IsFalling}");
 
                 if (entity.Position.Y >= entity.StartY)
                 //If it's farther than ground
                 {
                     entity.Speed = new Vector2(entity.Speed.X, entity.StartY); // Then set it on
                     entity.IsJumping = false;
-                    Debug.WriteLine($"ON GROUND Jumping: {entity.IsJumping} // Falling: {entity.IsFalling}");
-
+                    //Debug.WriteLine($"ON GROUND Jumping: {entity.IsJumping} // Falling: {entity.IsFalling}");
                 }
             }
             else
@@ -76,7 +74,7 @@ namespace GameProject.Managers
                     entity.IsJumping = true;
                     entity.IsFalling = false;
                     entity.JumpSpeed = -18; // Give it upward thrust
-                    Debug.WriteLine($"JUMP START Jumping: {entity.IsJumping} // Falling: {entity.IsFalling}");
+                    //Debug.WriteLine($"JUMP START Jumping: {entity.IsJumping} // Falling: {entity.IsFalling}");
                 }
             }
         }
