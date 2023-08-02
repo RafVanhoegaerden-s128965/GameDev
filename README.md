@@ -1,22 +1,24 @@
+# Bron
+https://www.monogameextended.net/docs/
 # Minimale vereisten
 
 - [ ] Werken met github: stuur naar jouw begeleider een invite link
 - [ ] Startscherm waar je ten minste op start kan drukken
-- [ ] Geanimeerde held
+- [x] Geanimeerde held
 - [ ] Minstens 2 levels waar je vanuit startscherm en/of opeenvolgend naartoe kan
 - [ ] Minstens 3 verschillende vijanden (waarvan maximaal 1 valstrik)
-- [ ] Minstens keyboard (up,down,left,right) moet ondersteund zijn
+- [x] Minstens keyboard (up,down,left,right) moet ondersteund zijn
 - [ ] Game Over scherm als de held verslagen/gewonnen is
-- [ ] Basic physics:
-  - [ ] Springen: gaat eerst omhoog, komt dan terug naar beneden (vallen)
-  - [ ] Stopt met vallen op bepaald moment (zichtbaar in scherm)
+- [x] Basic physics:
+  - [x] Springen: gaat eerst omhoog, komt dan terug naar beneden (vallen)
+  - [x] Stopt met vallen op bepaald moment (zichtbaar in scherm)
 - [ ] Basic AI:
   - [ ] Geen vijanden die gewoon blijven staan (tenzij een valstrik)
 - [ ] Sprites en Tileset/background moet aanwezig zijn
   - [ ] Geen blokjes oid die over de background color bewegen
 - [ ] Minstens 2 Design Patterns
-- [ ] Toepassen van SOLID
-  - [ ] Extra folders om klassen in te plaatsen
+- [x] Toepassen van SOLID
+  - [x] Extra folders om klassen in te plaatsen
   - [ ] Minstens 3 bewijzen van SOLID gebruik
 - [ ] Minstens 2 uitgewerkte Extra’s 
 - [ ] Meer dan 2x “dezelfde code” ➔ oplossen
