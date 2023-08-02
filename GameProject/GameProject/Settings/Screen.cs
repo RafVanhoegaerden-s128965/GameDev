@@ -8,14 +8,7 @@ namespace GameProject.Settings
 {
     public class Screen
     {
-        static public int Width { get; set; }
-        static public int Height { get; set; }
-
-        public Screen(int _width, int _height)
-        {
-            Width = _width;
-            Height = _height;
-        }
-
+        static public int Width = 1920;
+        static public int Height = 1080;
     }
 }

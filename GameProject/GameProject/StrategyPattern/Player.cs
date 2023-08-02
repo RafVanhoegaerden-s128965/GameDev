@@ -11,6 +11,8 @@ namespace GameProject.StrategyPattern
 {
     internal class Player : Entity, IControllable
     {
+        public float GravityFactor { get; set; }
+
         // IControllable
         public IInputReader InputReader { get; set; }
 

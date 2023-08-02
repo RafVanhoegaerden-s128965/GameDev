@@ -1,6 +1,7 @@
 ﻿using GameProject.Interface;
 using GameProject.StrategyPattern;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
@@ -12,31 +13,42 @@ namespace GameProject.InputReader
 {
     internal class KeyBoardReader : IInputReader
     {
-        public Vector2 ReadMovementInput()
+        public void ReadInput(Player entity)
         {
             KeyboardState state = Keyboard.GetState();
             Vector2 direction = Vector2.Zero;
 
             // Controls
 
-            if (state.IsKeyDown(Keys.A) && !(state.IsKeyDown(Keys.D))) // Move LEFT
+            if (state.IsKeyDown(Keys.A) && !(state.IsKeyDown(Keys.D))) // Running Right state
             {
-                direction.X -= 1;
+                entity.CurrentMovementState = CurrentMovementState.Running;
+
+                entity.DirectionPosition = SpriteEffects.FlipHorizontally;
+
+                entity.Direction = new Vector2(-1, 0);
             }
-            else if (state.IsKeyDown(Keys.D) && !(state.IsKeyDown(Keys.A))) // Move RIGHT
+            else if (state.IsKeyDown(Keys.D) && !(state.IsKeyDown(Keys.A))) // Running Right state
             {
-                direction.X += 1;
+                entity.CurrentMovementState = CurrentMovementState.Running;
+                
+                entity.DirectionPosition = SpriteEffects.None;
+                
+                entity.Direction = new Vector2(1, 0);
+            }
+            else if (state.IsKeyDown(Keys.Space)) // Attack state
+            {
+                entity.CurrentMovementState = CurrentMovementState.Attacking;
+
+                entity.Direction = new Vector2(0, 0);
+            }
+            else // Default state
+            {
+                entity.CurrentMovementState = CurrentMovementState.Idle;
+
+                entity.Direction = new Vector2(0, 0);
             }
 
-            return direction;
-        }
-        public bool ReadIsFighting() // Attack
-        {
-            return Keyboard.GetState().IsKeyDown(Keys.Space);
-        }
-        public bool ReadIsJumping() // Jump
-        {
-            return Keyboard.GetState().IsKeyDown(Keys.W);
         }
     }
 }

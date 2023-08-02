@@ -19,17 +19,18 @@ namespace GameProject.GameObjects
 {
     internal class MainCharacter : Player
     {
-        float GravityFactor = 5f;
-        public MainCharacter(ContentManager content, Texture2D _testHitboxTexture)
+        public MainCharacter(ContentManager content)
         {
-            this.IdleTexture = content.Load<Texture2D>("Idle-Sheet");
-            this.RunningTexture = content.Load<Texture2D>("Run-Sheet");
-            this.AttackTexture = content.Load<Texture2D>("Attack-01-Sheet");
-            this.InputReader = new KeyBoardReader();
-            this.TestHitboxTexture = _testHitboxTexture;
+            InputReader = new KeyBoardReader();
+            GravityFactor = 5;
 
-            // Animations
+            #region Textures
+            IdleTexture = content.Load<Texture2D>("Idle-Sheet");
+            RunningTexture = content.Load<Texture2D>("Run-Sheet");
+            AttackTexture = content.Load<Texture2D>("Attack-01-Sheet");
+            #endregion
 
+            #region Animations
             IdleAnimation = new Animation();
             IdleAnimation.GetFramesFromTextureProperties(IdleTexture.Width, IdleTexture.Height, 4, 1); // Widht, Height, NumberOfSpritesWidth, NumberOfSpritesHeight
 
@@ -38,6 +39,13 @@ namespace GameProject.GameObjects
 
             AttackAnimation = new Animation();
             AttackAnimation.GetFramesFromTextureProperties(AttackTexture.Width, AttackTexture.Height, 8, 1); // Widht, Height, NumberOfSpritesWidth, NumberOfSpritesHeight
+
+            CurrentMovementState = CurrentMovementState.Idle;
+            #endregion
+
+            // Hitbox
+
+            Hitbox = new Rectangle((int)Position.X, (int)Position.Y, IdleAnimation.CurrentFrame.SourceRectangle.Width, IdleAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
 
             // Moving
 
@@ -52,11 +60,6 @@ namespace GameProject.GameObjects
             IsFalling = true;
             IsJumping = false;
             
-
-            // Hitbox
-
-            this.Hitbox = new Rectangle((int)Position.X, (int)Position.Y, IdleAnimation.CurrentFrame.SourceRectangle.Width, IdleAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
-
             // Managers
 
             MovementManager = new MovementManager();
@@ -69,55 +72,20 @@ namespace GameProject.GameObjects
             Gravity();
 
             // Read Input
-
-            Direction = InputReader.ReadMovementInput();
-
-            IsAttacking = InputReader.ReadIsFighting();
+            InputReader.ReadInput(this);
 
             // Movement
-
             MovementManager.Move(this);
             MovementManager.Jump(this);
 
-            // Update Hitbox
-
-            if (AnimationManager.IsWalking(this)) // Running
-            {
-                RunningAnimation.Update(gameTime);
-                this.Hitbox = new Rectangle((int)Position.X, (int)Position.Y, RunningAnimation.CurrentFrame.SourceRectangle.Width, RunningAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
-            }
-            else if (AnimationManager.IsAttacking(this)) // Attacking
-            {
-                AttackAnimation.Update(gameTime);
-                this.Hitbox = new Rectangle((int)Position.X, (int)Position.Y, AttackAnimation.CurrentFrame.SourceRectangle.Width, AttackAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
-            }
-            else // Idle
-            {
-                IdleAnimation.Update(gameTime);
-                this.Hitbox = new Rectangle((int)Position.X, (int)Position.Y, IdleAnimation.CurrentFrame.SourceRectangle.Width, IdleAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
-            }
+            // Update Animations + Hitbox
+            AnimationManager.UpdateAnimation(gameTime, this);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // Idle
-            if (IsMoving == false && IsAttacking == false)
-            {
-                spriteBatch.Draw(TestHitboxTexture, Position, Hitbox, Color.Red * 0.6f, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
-                spriteBatch.Draw(IdleTexture, Position, IdleAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
-            }
-            // Running
-            else if (IsMoving == true)
-            {
-                spriteBatch.Draw(TestHitboxTexture, Position, Hitbox, Color.Yellow * 0.6f, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
-                spriteBatch.Draw(RunningTexture, Position, RunningAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
-            }
-            // Attacking
-            else if (IsAttacking == true)
-            {
-                spriteBatch.Draw(TestHitboxTexture, Position, Hitbox, Color.Blue * 0.6f, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
-                spriteBatch.Draw(AttackTexture, Position, AttackAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.5f, DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
-            }
+            // Draw Animations
+            AnimationManager.DrawAnimation(spriteBatch, this);
         }
         
         public void Gravity()

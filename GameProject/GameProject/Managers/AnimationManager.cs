@@ -1,6 +1,9 @@
-﻿using GameProject.Interface;
+﻿using GameProject.Animations;
+using GameProject.Interface;
 using GameProject.StrategyPattern;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Extended.Timers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,29 +14,45 @@ namespace GameProject.Managers
 {
     internal class AnimationManager
     {
-        public bool IsWalking(IMovable entity)
+        public void DrawAnimation(SpriteBatch spriteBatch, Player entity)
         {
-            if(entity.Direction.X > 0)
+            switch (entity.CurrentMovementState)
             {
-                entity.IsMoving = true;
-                entity.DirectionPosition = SpriteEffects.None;
+                case CurrentMovementState.Idle:
+                    //spriteBatch.Draw(_testHitboxTexture, entity.Position, entity.Hitbox, Color.Red * 0.6f, 0f, Vector2.Zero, 1.5f, entity.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+                    spriteBatch.Draw(entity.IdleTexture, entity.Position, entity.IdleAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.5f, entity.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+                    break;
+                case CurrentMovementState.Running:
+                    //spriteBatch.Draw(_testHitboxTexture, entity.Position, entity.Hitbox, Color.Yellow * 0.6f, 0f, Vector2.Zero, 1.5f, entity.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+                    spriteBatch.Draw(entity.RunningTexture, entity.Position, entity.RunningAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.5f, entity.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+                    break;
+                case CurrentMovementState.Attacking:
+                    //spriteBatch.Draw(_testHitboxTexture, entity.Position, entity.Hitbox, Color.Black * 0.6f, 0f, Vector2.Zero, 1.5f, entity.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+                    spriteBatch.Draw(entity.AttackTexture, entity.Position, entity.AttackAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.5f, entity.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+                    break;
+                default:
+                    break;
             }
-            else if(entity.Direction.X < 0)
-            {
-                entity.IsMoving = true;
-                entity.DirectionPosition = SpriteEffects.FlipHorizontally;
-            }
-            else
-            {
-                entity.IsMoving = false;
-            }
-
-            return entity.IsMoving;
         }
-        public bool IsAttacking(Player entity)
+        public void UpdateAnimation(GameTime gameTime, Player entity) 
         {
-            
-            return entity.IsAttacking;
+            switch (entity.CurrentMovementState)
+            {
+                case CurrentMovementState.Idle:
+                    entity.IdleAnimation.Update(gameTime);
+                    entity.Hitbox = new Rectangle((int)entity.Position.X, (int)entity.Position.Y, entity.IdleAnimation.CurrentFrame.SourceRectangle.Width, entity.IdleAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
+                    break;
+                case CurrentMovementState.Running:
+                    entity.RunningAnimation.Update(gameTime);
+                    entity.Hitbox = new Rectangle((int)entity.Position.X, (int)entity.Position.Y, entity.RunningAnimation.CurrentFrame.SourceRectangle.Width, entity.RunningAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
+                    break;
+                case CurrentMovementState.Attacking:
+                    entity.AttackAnimation.Update(gameTime);
+                    entity.Hitbox = new Rectangle((int)entity.Position.X, (int)entity.Position.Y, entity.AttackAnimation.CurrentFrame.SourceRectangle.Width, entity.AttackAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
