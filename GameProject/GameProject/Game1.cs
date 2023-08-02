@@ -1,4 +1,4 @@
-﻿using GameProject.GameObjects;
+﻿using GameProject.GameObjects.Playable;
 using GameProject.InputReader;
 using GameProject.Managers;
 using GameProject.Settings;
@@ -14,8 +14,7 @@ namespace GameProject
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        //Main Character
-        private MainCharacter _mainCharacter;
+
 
         public Game1()
         {
@@ -56,7 +55,7 @@ namespace GameProject
 
             // TODO: use this.Content to load your game content here
 
-            _mainCharacter = new MainCharacter(this.Content);
+            //_mainCharacter = new MainCharacter(this.Content);
         }
 
         protected override void Update(GameTime gameTime)
@@ -66,7 +65,7 @@ namespace GameProject
 
             // TODO: Add your update logic here
 
-            _mainCharacter.Update(gameTime);
+            //_mainCharacter.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -78,7 +77,7 @@ namespace GameProject
 
             // TODO: Add your drawing code here
 
-            _mainCharacter.Draw(_spriteBatch);
+            //_mainCharacter.Draw(_spriteBatch);
 
             _spriteBatch.End();
             base.Draw(gameTime);
