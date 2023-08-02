@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameProject.StrategyPattern
+namespace GameProject.GameObjects
 {
     internal abstract class Entity : Object, IMovable, IJumpable, IAnimatable
     {

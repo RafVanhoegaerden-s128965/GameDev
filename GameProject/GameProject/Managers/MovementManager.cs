@@ -1,7 +1,7 @@
 ﻿using GameProject.GameObjects;
+using GameProject.GameObjects.Playable;
 using GameProject.Interface;
 using GameProject.Settings;
-using GameProject.StrategyPattern;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;

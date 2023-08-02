@@ -37,3 +37,4 @@ C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\
 C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\StbTrueTypeSharp.dll
 C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Run-Sheet.xnb
 C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Attack-01-Sheet.xnb
+C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\BlackRectangle.xnb
