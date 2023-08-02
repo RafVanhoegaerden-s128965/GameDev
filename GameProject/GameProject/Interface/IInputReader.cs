@@ -1,4 +1,4 @@
-﻿using GameProject.StrategyPattern;
+﻿using GameProject.GameObjects.Playable;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;

@@ -7,13 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameProject.StrategyPattern
+namespace GameProject.GameObjects
 {
-    internal class Object : IGameObject
+    internal abstract class Object : IGameObject
     {
+        public Texture2D Texture;
         public Vector2 Position { get; set; }
 
         // ICollidable
+        public bool Passable { get; set; }
         public Rectangle Hitbox { get; set; }
+        public Rectangle BoundingBox { get; set; }
     }
 }

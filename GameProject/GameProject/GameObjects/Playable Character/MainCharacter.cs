@@ -3,7 +3,6 @@ using GameProject.InputReader;
 using GameProject.Interface;
 using GameProject.Managers;
 using GameProject.Settings;
-using GameProject.StrategyPattern;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -15,7 +14,7 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameProject.GameObjects
+namespace GameProject.GameObjects.Playable
 {
     internal class MainCharacter : Player
     {
@@ -59,7 +58,7 @@ namespace GameProject.GameObjects
 
             IsFalling = true;
             IsJumping = false;
-            
+
             // Managers
 
             MovementManager = new MovementManager();
@@ -87,7 +86,7 @@ namespace GameProject.GameObjects
             // Draw Animations
             AnimationManager.DrawAnimation(spriteBatch, this);
         }
-        
+
         public void Gravity()
         {
             Position += new Vector2(0, GravityFactor);

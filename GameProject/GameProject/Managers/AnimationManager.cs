@@ -1,6 +1,6 @@
 ﻿using GameProject.Animations;
+using GameProject.GameObjects.Playable;
 using GameProject.Interface;
-using GameProject.StrategyPattern;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Timers;
