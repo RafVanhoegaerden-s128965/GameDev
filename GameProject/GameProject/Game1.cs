@@ -1,11 +1,11 @@
 ﻿using GameProject.GameObjects.Playable;
-using GameProject.InputReader;
-using GameProject.Managers;
-using GameProject.Settings;
+using GameProject.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
+using MonoGame.Extended.Screens;
+using MonoGame.Extended.Sprites;
+using TiledSharp;
 
 namespace GameProject
 {
@@ -13,7 +13,12 @@ namespace GameProject
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private ScreenManager _screenManager;
 
+        private MainCharacter _mainCharacter;
+        private Texture2D _background;
+        private TmxMap _map;
+        private MapDrawer _mapDrawer;
 
 
         public Game1()
@@ -54,8 +59,13 @@ namespace GameProject
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            _background = Content.Load<Texture2D>("Background");
 
-            //_mainCharacter = new MainCharacter(this.Content);
+            _map = new TmxMap("Content\\Levels\\Level1.tmx");
+            var _tileset = Content.Load<Texture2D>("TileSheets\\" + _map.Tilesets[0].Name.ToString());
+            _mapDrawer = new MapDrawer(_spriteBatch,_map, _tileset);
+
+            _mainCharacter = new MainCharacter(this.Content);
         }
 
         protected override void Update(GameTime gameTime)
@@ -65,7 +75,7 @@ namespace GameProject
 
             // TODO: Add your update logic here
 
-            //_mainCharacter.Update(gameTime);
+            _mainCharacter.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -76,8 +86,9 @@ namespace GameProject
             _spriteBatch.Begin();
 
             // TODO: Add your drawing code here
+            _spriteBatch.Draw(_background, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, 4, SpriteEffects.None, 0f);
 
-            //_mainCharacter.Draw(_spriteBatch);
+            _mapDrawer.Draw();
 
             _spriteBatch.End();
             base.Draw(gameTime);

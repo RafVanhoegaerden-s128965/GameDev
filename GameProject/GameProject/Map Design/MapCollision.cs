@@ -12,10 +12,33 @@ namespace GameProject.Map_Design
 {
     internal class MapCollision
     {
-        // COLLISION Map
-        public void DrawLevelMap(SpriteBatch spriteBatch, MapDrawer _desiredMap)
+        public void DrawLevel(MapDrawer _desiredLevel)
         {
-            _desiredMap.Draw(spriteBatch);
+            _desiredLevel.Draw();
+        }
+
+        public List<Rectangle> GetTilesCollision(TmxMap _map, List<Rectangle> _collisionTiles)
+        {
+            foreach (var CollisionRect in _map.ObjectGroups["Collisions"].Objects)
+            {
+                if (CollisionRect.Name == "")
+                {
+                    _collisionTiles.Add(new Rectangle((int)CollisionRect.X, (int)CollisionRect.Y, (int)CollisionRect.Width - 10, (int)CollisionRect.Height - 10));
+                }
+            }
+            return _collisionTiles;
+        }
+
+        public List<Rectangle> GetRespawnCollision(TmxMap _map, List<Rectangle> _collisionTiles)
+        {
+            foreach (var CollisionRect in _map.ObjectGroups["Collisions"].Objects)
+            {
+                if (CollisionRect.Name == "Respawn")
+                {
+                    _collisionTiles.Add(new Rectangle((int)CollisionRect.X, (int)CollisionRect.Y, (int)CollisionRect.Width - 10, (int)CollisionRect.Height));
+                }
+            }
+            return _collisionTiles;
         }
     }
 }
