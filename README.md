@@ -1,5 +1,6 @@
 # Bron
-https://www.monogameextended.net/docs/
++ https://www.monogameextended.net/docs/
++ https://lioncatdevstudio.blogspot.com
 # Minimale vereisten
 
 - [ ] Werken met github: stuur naar jouw begeleider een invite link
