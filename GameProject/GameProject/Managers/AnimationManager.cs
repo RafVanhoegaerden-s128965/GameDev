@@ -19,15 +19,15 @@ namespace GameProject.Managers
             switch (entity.CurrentMovementState)
             {
                 case CurrentMovementState.Idle:
-                    //spriteBatch.Draw(_testHitboxTexture, entity.Position, entity.Hitbox, Color.Red * 0.6f, 0f, Vector2.Zero, 1.5f, entity.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+                    //spriteBatch.DrawLevel(_testHitboxTexture, entity.Position, entity.Hitbox, Color.Red * 0.6f, 0f, Vector2.Zero, 1.5f, entity.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
                     spriteBatch.Draw(entity.IdleTexture, entity.Position, entity.IdleAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.5f, entity.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
                     break;
                 case CurrentMovementState.Running:
-                    //spriteBatch.Draw(_testHitboxTexture, entity.Position, entity.Hitbox, Color.Yellow * 0.6f, 0f, Vector2.Zero, 1.5f, entity.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+                    //spriteBatch.DrawLevel(_testHitboxTexture, entity.Position, entity.Hitbox, Color.Yellow * 0.6f, 0f, Vector2.Zero, 1.5f, entity.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
                     spriteBatch.Draw(entity.RunningTexture, entity.Position, entity.RunningAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.5f, entity.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
                     break;
                 case CurrentMovementState.Attacking:
-                    //spriteBatch.Draw(_testHitboxTexture, entity.Position, entity.Hitbox, Color.Black * 0.6f, 0f, Vector2.Zero, 1.5f, entity.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+                    //spriteBatch.DrawLevel(_testHitboxTexture, entity.Position, entity.Hitbox, Color.Black * 0.6f, 0f, Vector2.Zero, 1.5f, entity.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
                     spriteBatch.Draw(entity.AttackTexture, entity.Position, entity.AttackAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.5f, entity.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
                     break;
                 default:

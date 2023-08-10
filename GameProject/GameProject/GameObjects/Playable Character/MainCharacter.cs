@@ -24,9 +24,9 @@ namespace GameProject.GameObjects.Playable
             GravityFactor = 5;
 
             #region Textures
-            IdleTexture = content.Load<Texture2D>("Idle-Sheet");
-            RunningTexture = content.Load<Texture2D>("Run-Sheet");
-            AttackTexture = content.Load<Texture2D>("Attack-01-Sheet");
+            IdleTexture = content.Load<Texture2D>("Sprites\\MainCharacter\\Idle-Sheet");
+            RunningTexture = content.Load<Texture2D>("Sprites\\MainCharacter\\Run-Sheet");
+            AttackTexture = content.Load<Texture2D>("Sprites\\MainCharacter\\Attack-01-Sheet");
             #endregion
 
             #region Animations
@@ -77,13 +77,13 @@ namespace GameProject.GameObjects.Playable
             MovementManager.Move(this);
             MovementManager.Jump(this);
 
-            // Update Animations + Hitbox
+            // UpdateLevel Animations + Hitbox
             AnimationManager.UpdateAnimation(gameTime, this);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // Draw Animations
+            // DrawLevel Animations
             AnimationManager.DrawAnimation(spriteBatch, this);
         }
 

@@ -10,6 +10,7 @@ namespace GameProject.Map
 {
     internal abstract class Map
     {
+        public SpriteBatch SpriteBatch { get; set; }
         public TmxMap TileMap { get; set; }
         public Texture2D Tileset { get; set; }
         public int TilesetTilesWide { get; set; }
