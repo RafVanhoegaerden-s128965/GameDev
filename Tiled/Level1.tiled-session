@@ -45,8 +45,8 @@
             "scale": 0.5,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 1025,
-                "y": 384
+                "x": 1021,
+                "y": 308
             }
         },
         "Level1.tmx#Level1 TileSheet": {
@@ -102,12 +102,13 @@
     "map.tileWidth": 32,
     "map.width": 60,
     "openFiles": [
-        "Level1.tmx"
+        "Level1.tmx",
+        "Level1 TileSheet.tsx"
     ],
     "project": "Level1.tiled-project",
     "recentFiles": [
-        "Level1.tmx",
         "Level1 TileSheet.tsx",
+        "Level1.tmx",
         "Level1-Protype.tmx",
         "TX Village Props.tsx",
         "TX Tileset Ground.tsx",

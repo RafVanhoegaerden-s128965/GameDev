@@ -18,6 +18,7 @@ namespace GameProject.GameObjects.Playable
 {
     internal class MainCharacter : Player
     {
+
         public MainCharacter(Vector2 _position, ContentManager content)
         {
             InputReader = new KeyBoardReader();
@@ -65,7 +66,7 @@ namespace GameProject.GameObjects.Playable
             AnimationManager = new AnimationManager();
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, SpriteBatch spriteBatch)
         {
             // Apply gravity
             Gravity();
@@ -78,7 +79,7 @@ namespace GameProject.GameObjects.Playable
             MovementManager.Jump(this);
 
             // UpdateLevel Animations + Hitbox
-            AnimationManager.UpdateAnimation(gameTime, this);
+            AnimationManager.UpdateAnimation(gameTime, spriteBatch, this);
         }
 
         public void Draw(SpriteBatch spriteBatch)

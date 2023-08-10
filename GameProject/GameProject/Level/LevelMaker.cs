@@ -58,7 +58,7 @@ namespace GameProject.Level
         {
             MainCharacterInitPosition = MainCharacter.Position;
 
-            MainCharacter.Update(gameTime); // Update MainCharacter
+            MainCharacter.Update(gameTime, SpriteBatch); // Update MainCharacter
 
             LevelCollisionController.GetMainCharacterCollides(MainCharacter, CollisionTiles, MainCharacterInitPosition);
         }
