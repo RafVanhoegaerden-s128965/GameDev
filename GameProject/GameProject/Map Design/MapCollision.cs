@@ -19,7 +19,7 @@ namespace GameProject.Map_Design
 
         public List<Rectangle> GetTilesCollision(TmxMap _map, List<Rectangle> _collisionTiles)
         {
-            foreach (var CollisionRect in _map.ObjectGroups["Collisions"].Objects)
+            foreach (var CollisionRect in _map.ObjectGroups["Collision"].Objects)
             {
                 if (CollisionRect.Name == "")
                 {
@@ -31,9 +31,9 @@ namespace GameProject.Map_Design
 
         public List<Rectangle> GetRespawnCollision(TmxMap _map, List<Rectangle> _collisionTiles)
         {
-            foreach (var CollisionRect in _map.ObjectGroups["Collisions"].Objects)
+            foreach (var CollisionRect in _map.ObjectGroups["Collision"].Objects)
             {
-                if (CollisionRect.Name == "Respawn")
+                if (CollisionRect.Name == "Spawn")
                 {
                     _collisionTiles.Add(new Rectangle((int)CollisionRect.X, (int)CollisionRect.Y, (int)CollisionRect.Width - 10, (int)CollisionRect.Height));
                 }

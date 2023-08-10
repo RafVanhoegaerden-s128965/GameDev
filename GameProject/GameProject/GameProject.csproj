@@ -11,6 +11,14 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="GameObjects\Non-Playable Characters\**" />
+    <Compile Remove="Level Design\**" />
+    <EmbeddedResource Remove="GameObjects\Non-Playable Characters\**" />
+    <EmbeddedResource Remove="Level Design\**" />
+    <None Remove="GameObjects\Non-Playable Characters\**" />
+    <None Remove="Level Design\**" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
   </ItemGroup>
@@ -27,8 +35,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Levels\" />
-    <Folder Include="GameObjects\Non-Playable Characters\" />
-    <Folder Include="Level Design\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />

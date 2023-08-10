@@ -16,13 +16,11 @@ namespace GameProject
         private SpriteBatch _spriteBatch;
         private ScreenManager _screenManager;
 
-        private Texture2D _background;
-        private Level1 _level1;
-
 
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
+            Content.RootDirectory = "Content";
 
             #region Screen
             _graphics.IsFullScreen = false;
@@ -36,17 +34,15 @@ namespace GameProject
             _graphics.ApplyChanges();
             #endregion
 
-            Content.RootDirectory = "Content";
-
             IsMouseVisible = true;
+
+            _screenManager = new ScreenManager();
+            Components.Add(_screenManager);
         }
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
-            // Add objects to MovementManagerList
-            _level1 = new Level1(this);
 
             base.Initialize();
         }
@@ -61,7 +57,7 @@ namespace GameProject
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            _screenManager.LoadScreen(new Level1(this));
 
             base.Update(gameTime);
         }
@@ -69,10 +65,10 @@ namespace GameProject
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+
             _spriteBatch.Begin();
 
             // TODO: Add your drawing code here
-            //_spriteBatch.Draw(_background, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, 4, SpriteEffects.None, 0f);
 
             _spriteBatch.End();
             base.Draw(gameTime);
