@@ -63,7 +63,7 @@ namespace TiledSharp
             TileHeight = (int)xMap.Attribute("tileheight");
             HexSideLength = (int?)xMap.Attribute("hexsidelength");
 
-            // Map orientation type
+            // Level orientation type
             var orientDict = new Dictionary<string, OrientationType> {
                 {"unknown", OrientationType.Unknown},
                 {"orthogonal", OrientationType.Orthogonal},

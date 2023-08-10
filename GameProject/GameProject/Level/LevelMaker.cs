@@ -10,42 +10,57 @@ using TiledSharp;
 
 namespace GameProject.Level
 {
-    internal class LevelMaker : GameScreen
+    internal abstract class LevelMaker : GameScreen
     {
-        public LevelMaker(Game game) : base(game) { }       //dit is van gamescreen
-        private SpriteBatch _spriteBatch { get; set; }
+        public LevelMaker(Game game) : base(game) { } // Gamescreen
+        public SpriteBatch SpriteBatch { get; set; }
 
-        private MainCharacter _mainCharacter;
+        public Texture2D Background { get; set; }
 
-        private TmxMap _map { get; set; }
-        private Texture2D _tileset { get; set; }
-        private MapDrawer _mapMaker { get; set; }
+        public MainCharacter MainCharacter { get; set; }
+        public Vector2 MainCharacterInitPosition { get; set; }
 
+        #region Tiled
+        public TmxMap Level { get; set; }
+        public Texture2D Tileset { get; set; }
+        public MapDrawer Map { get; set; }
+        #endregion
+
+        #region Collision
+        public MapCollision CollisionController { get; set; } = new MapCollision();
+        public LevelInteractions LevelCollisionController { get; set; } = new LevelInteractions();
         public List<Rectangle> CollisionTiles { get; set; } = new List<Rectangle>();
+        #endregion
+
         public List<Rectangle> RespawnZone { get; set; } = new List<Rectangle>();
 
-        public MapCollision _collisionController { get; set; } = new MapCollision();
 
         public void GetCollisionOfMap()
         {
-            CollisionTiles = _collisionController.GetTilesCollision(_map, CollisionTiles);
-            RespawnZone = _collisionController.GetRespawnCollision(_map, RespawnZone);
+            CollisionTiles = CollisionController.GetTilesCollision(Level, CollisionTiles);
+            RespawnZone = CollisionController.GetRespawnCollision(Level, RespawnZone);
         }
 
-        public override void Draw(GameTime gameTime)
+        public void DrawLevel(GameTime gameTime)
         {
-            _spriteBatch.Begin();
+            SpriteBatch.Begin();
 
-            _collisionController.DrawLevel(_mapMaker); // Tekenen van de map
+            SpriteBatch.Draw(Background, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, 4, SpriteEffects.None, 0f); // Draw Background
 
-            _mainCharacter.Draw(_spriteBatch); //Tekenen van Player
+            CollisionController.DrawLevel(Map); // Draw Level
 
-            _spriteBatch.End();
+            MainCharacter.Draw(SpriteBatch); // Draw MainCharacter
+
+            SpriteBatch.End();
         }
 
-        public override void Update(GameTime gameTime)
+        public void UpdateLevel(GameTime gameTime)
         {
+            MainCharacterInitPosition = MainCharacter.Position;
 
+            MainCharacter.Update(gameTime); // Update MainCharacter
+
+            LevelCollisionController.GetMainCharacterCollides(MainCharacter, CollisionTiles, MainCharacterInitPosition);
         }
     }
 }

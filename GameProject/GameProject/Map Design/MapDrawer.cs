@@ -7,7 +7,7 @@ namespace GameProject.Map
 {
     internal class MapDrawer : Map
     {
-        // DRAW Map
+        // DRAW Level
         public MapDrawer(SpriteBatch _spriteBatch, TmxMap _map, Texture2D _tileset)
         {
             this.SpriteBatch = _spriteBatch;

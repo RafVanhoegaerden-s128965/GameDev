@@ -77,13 +77,13 @@ namespace GameProject.GameObjects.Playable
             MovementManager.Move(this);
             MovementManager.Jump(this);
 
-            // Update Animations + Hitbox
+            // UpdateLevel Animations + Hitbox
             AnimationManager.UpdateAnimation(gameTime, this);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // Draw Animations
+            // DrawLevel Animations
             AnimationManager.DrawAnimation(spriteBatch, this);
         }
 
