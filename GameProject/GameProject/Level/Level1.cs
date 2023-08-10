@@ -1,4 +1,5 @@
-﻿using GameProject.Map;
+﻿using GameProject.GameObjects.Playable;
+using GameProject.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -29,6 +30,8 @@ namespace GameProject.Level
             Map = new MapDrawer(SpriteBatch, Level, Tileset);
 
             GetCollisionOfMap();
+
+            MainCharacter = new MainCharacter(new Vector2(RespawnZone[0].X, RespawnZone[0].Y), Content);
 
             base.LoadContent();
         }

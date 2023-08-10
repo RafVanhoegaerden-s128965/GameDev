@@ -18,7 +18,7 @@ namespace GameProject.GameObjects.Playable
 {
     internal class MainCharacter : Player
     {
-        public MainCharacter(ContentManager content)
+        public MainCharacter(Vector2 _position, ContentManager content)
         {
             InputReader = new KeyBoardReader();
             GravityFactor = 5;
@@ -48,7 +48,7 @@ namespace GameProject.GameObjects.Playable
 
             // Moving
 
-            Position = new Vector2(100, 100);
+            Position = new Vector2(_position.X, _position.Y);
             Speed = new Vector2(10, 10);
             Acceleration = new Vector2(0f, 0f);
 
