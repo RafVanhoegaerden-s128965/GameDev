@@ -87,7 +87,7 @@ namespace GameProject.Level
                 }
 
                 // Check if enough time has passed since the character was last hit
-                if (!mainCharacter.IsDamaged && mainCharacter.IsDamaged >= 3)
+                if (!mainCharacter.IsDamaged && (currentTime - mainCharacter.LastHitTime).TotalSeconds >= 3)
                 {
                     mainCharacter.IsDamaged = false;
                 }
