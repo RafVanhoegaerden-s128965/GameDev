@@ -20,27 +20,7 @@ namespace GameProject.Managers
             entity.Speed += entity.Acceleration;
             entity.Direction *= entity.Speed;
             entity.Position += entity.Direction;
-
-
-            // Collision with screen boundaries
-
-                //if (entity.Position.X > Screen.Width - (entity.RunningAnimation.CurrentFrame.SourceRectangle.Width) * 1.5f) // RIGHT
-                //{
-                //    entity.Position = new Vector2(Screen.Width - (entity.RunningAnimation.CurrentFrame.SourceRectangle.Width) * 1.5f, entity.Position.Y);
-                //}
-                //else if (entity.Position.X <= 0) // LEFT
-                //{
-                //    entity.Position = new Vector2(0, entity.Position.Y);
-                //}
-                //else if (entity.Position.Y <= 0) // TOP
-                //{
-                //    entity.Position = new Vector2(entity.Position.X, 0);
-                //}
-            if (entity.Position.Y > Screen.Height - (entity.RunningAnimation.CurrentFrame.SourceRectangle.Height) * 1.5f) // BOTTOM
-            {
-                entity.Position = new Vector2(entity.Position.X, Screen.Height - (entity.RunningAnimation.CurrentFrame.SourceRectangle.Height) * 1.5f);
-                entity.IsFalling = false;
-            }
+            Debug.WriteLine($"Position: {entity.Position} // Direction: {entity.Direction}");
         }
         public void Jump(Player entity)
         {
@@ -73,7 +53,7 @@ namespace GameProject.Managers
                 {
                     entity.IsJumping = true;
                     entity.IsFalling = false;
-                    entity.JumpSpeed = -18; // Give it upward thrust
+                    entity.JumpSpeed = -20; // Give it upward thrust
                     //Debug.WriteLine($"JUMP START Jumping: {entity.IsJumping} // Falling: {entity.IsFalling}");
                 }
             }

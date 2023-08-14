@@ -19,7 +19,7 @@ namespace GameProject.GameObjects.Playable
     internal class MainCharacter : Player
     {
 
-        public MainCharacter(Vector2 _position, ContentManager content)
+        public MainCharacter(ContentManager content)
         {
             InputReader = new KeyBoardReader();
             GravityFactor = 5;
@@ -45,12 +45,13 @@ namespace GameProject.GameObjects.Playable
 
             // Hitbox
 
-            Hitbox = new Rectangle((int)Position.X, (int)Position.Y, IdleAnimation.CurrentFrame.SourceRectangle.Width, IdleAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
+            //Hitbox = new Rectangle((int)Position.X, (int)Position.Y, IdleAnimation.CurrentFrame.SourceRectangle.Width, IdleAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
+            //Hitbox = new Rectangle((int)Position.X, (int)Position.Y, 20, 60); // X, Y, width, height
 
             // Moving
 
-            Position = new Vector2(_position.X, _position.Y);
-            Speed = new Vector2(10, 10);
+            Position = new Vector2(0, 0);
+            Speed = new Vector2(7, 10);
             Acceleration = new Vector2(0f, 0f);
 
             StartY = Position.Y;
@@ -65,8 +66,13 @@ namespace GameProject.GameObjects.Playable
             MovementManager = new MovementManager();
             AnimationManager = new AnimationManager();
         }
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            // DrawLevel Animations
+            AnimationManager.DrawAnimation(spriteBatch, this);
+        }
 
-        public void Update(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Update(GameTime gameTime)
         {
             // Apply gravity
             Gravity();
@@ -79,22 +85,16 @@ namespace GameProject.GameObjects.Playable
             MovementManager.Jump(this);
 
             // UpdateLevel Animations + Hitbox
-            AnimationManager.UpdateAnimation(gameTime, spriteBatch, this);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            // DrawLevel Animations
-            AnimationManager.DrawAnimation(spriteBatch, this);
+            AnimationManager.UpdateAnimation(gameTime, this);
         }
 
         public void Gravity()
         {
             Position += new Vector2(0, GravityFactor);
             GravityFactor += 1f;
-            if (GravityFactor > 7f)
+            if (GravityFactor > 8f)
             {
-                GravityFactor = 7f;
+                GravityFactor = 8f;
             }
         }
     }

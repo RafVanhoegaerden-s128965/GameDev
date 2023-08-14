@@ -8,19 +8,18 @@ namespace GameProject.Map
     internal class MapDrawer : Map
     {
         // DRAW Level
-        public MapDrawer(SpriteBatch _spriteBatch, TmxMap _map, Texture2D _tileset)
+        public MapDrawer(TmxMap map, Texture2D tileset)
         {
-            this.SpriteBatch = _spriteBatch;
-            this.TileMap = _map;
-            this.Tileset = _tileset;
+            this.TileMap = map;
+            this.Tileset = tileset;
 
             /// Fixed values
-            this.TileWidth = _map.Tilesets[0].TileWidth;
-            this.TilesetTilesWide = _tileset.Width / TileWidth;
-            this.TileHeight = _map.Tilesets[0].TileHeight;
+            this.TileWidth = map.Tilesets[0].TileWidth;
+            this.TilesetTilesWide = tileset.Width / TileWidth;
+            this.TileHeight = map.Tilesets[0].TileHeight;
         }
 
-        public void Draw()
+        public void Draw(SpriteBatch spriteBatch)
         {
             for (int i = 0; i < TileMap.TileLayers.Count; i++)
             {
@@ -39,7 +38,7 @@ namespace GameProject.Map
                         float x = (j%TileMap.Width)*TileMap.TileWidth;
                         float y = (float)Math.Floor(j / (double)TileMap.Width) * TileMap.TileHeight;
                         Rectangle tilesetRec = new Rectangle((TileWidth)*column, (TileHeight)*row, TileWidth, TileHeight);
-                        SpriteBatch.Draw(Tileset, new Rectangle((int)x, (int)y, TileWidth, TileHeight), tilesetRec, Color.White);
+                        spriteBatch.Draw(Tileset, new Rectangle((int)x, (int)y, TileWidth, TileHeight), tilesetRec, Color.White);
                     }
                 }
             }

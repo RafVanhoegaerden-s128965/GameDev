@@ -42,15 +42,15 @@
             "scaleInDock": 1
         },
         "Level1.tmx": {
-            "scale": 0.5,
+            "scale": 1.5,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 1021,
-                "y": 308
+                "x": 525,
+                "y": 684.6666666666666
             }
         },
         "Level1.tmx#Level1 TileSheet": {
-            "scaleInDock": 1
+            "scaleInDock": 0.75
         },
         "Level1.tmx#TX Tileset Ground": {
             "dynamicWrapping": false,
