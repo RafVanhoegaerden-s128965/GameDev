@@ -15,8 +15,8 @@
   - [x] Stopt met vallen op bepaald moment (zichtbaar in scherm)
 - [ ] Basic AI:
   - [ ] Geen vijanden die gewoon blijven staan (tenzij een valstrik)
-- [ ] Sprites en Tileset/background moet aanwezig zijn
-  - [ ] Geen blokjes oid die over de background color bewegen
+- [x] Sprites en Tileset/background moet aanwezig zijn
+  - [x] Geen blokjes oid die over de background color bewegen
 - [ ] Minstens 2 Design Patterns
 - [x] Toepassen van SOLID
   - [x] Extra folders om klassen in te plaatsen
