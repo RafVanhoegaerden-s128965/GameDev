@@ -28,7 +28,7 @@ namespace GameProject.Level
 
         #region Collision
         public MapCollision CollisionController { get; set; } = new MapCollision();
-        public LevelInteractions LevelCollisionController { get; set; } = new LevelInteractions();
+        public LevelInteractions LevelInteractions { get; set; } = new LevelInteractions();
         public List<Rectangle> CollisionTiles { get; set; } = new List<Rectangle>();
         #endregion
 
@@ -47,7 +47,7 @@ namespace GameProject.Level
 
             SpriteBatch.Draw(Background, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, 4, SpriteEffects.None, 0f); // Draw Background
 
-            CollisionController.DrawLevel(Map); // Draw Level
+            CollisionController.DrawLevel(SpriteBatch, Map); // Draw Level
 
             MainCharacter.Draw(SpriteBatch); // Draw MainCharacter
 
@@ -60,7 +60,7 @@ namespace GameProject.Level
 
             MainCharacter.Update(gameTime); // Update MainCharacter
 
-            LevelCollisionController.GetMainCharacterCollides(MainCharacter, CollisionTiles, MainCharacterInitPosition);
+            LevelInteractions.GetMainCharacterCollides(MainCharacter, CollisionTiles, MainCharacterInitPosition);
         }
     }
 }

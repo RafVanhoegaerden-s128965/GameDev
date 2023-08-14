@@ -16,7 +16,6 @@ namespace GameProject.InputReader
         public void ReadInput(Player entity)
         {
             KeyboardState state = Keyboard.GetState();
-            Vector2 direction = Vector2.Zero;
 
             // Controls
 
@@ -33,7 +32,7 @@ namespace GameProject.InputReader
                 entity.CurrentMovementState = CurrentMovementState.Running;
                 
                 entity.DirectionPosition = SpriteEffects.None;
-                
+
                 entity.Direction = new Vector2(1, 0);
             }
             else if (state.IsKeyDown(Keys.Space)) // Attack state
@@ -48,7 +47,6 @@ namespace GameProject.InputReader
 
                 entity.Direction = new Vector2(0, 0);
             }
-
         }
     }
 }

@@ -12,33 +12,33 @@ namespace GameProject.Map_Design
 {
     internal class MapCollision
     {
-        public void DrawLevel(MapDrawer _desiredLevel)
+        public void DrawLevel(SpriteBatch spriteBatch, MapDrawer desiredLevel)
         {
-            _desiredLevel.Draw();
+            desiredLevel.Draw(spriteBatch);
         }
 
-        public List<Rectangle> GetTilesCollision(TmxMap _map, List<Rectangle> _collisionTiles)
+        public List<Rectangle> GetTilesCollision(TmxMap map, List<Rectangle> collisionTiles)
         {
-            foreach (var CollisionRect in _map.ObjectGroups["Collision"].Objects)
+            foreach (var CollisionRect in map.ObjectGroups["Collision"].Objects)
             {
                 if (CollisionRect.Name == "")
                 {
-                    _collisionTiles.Add(new Rectangle((int)CollisionRect.X, (int)CollisionRect.Y, (int)CollisionRect.Width - 10, (int)CollisionRect.Height - 10));
+                    collisionTiles.Add(new Rectangle((int)CollisionRect.X, (int)CollisionRect.Y, (int)CollisionRect.Width - 10, (int)CollisionRect.Height - 10));
                 }
             }
-            return _collisionTiles;
+            return collisionTiles;
         }
 
-        public List<Rectangle> GetRespawnCollision(TmxMap _map, List<Rectangle> _collisionTiles)
+        public List<Rectangle> GetRespawnCollision(TmxMap map, List<Rectangle> collisionTiles)
         {
-            foreach (var CollisionRect in _map.ObjectGroups["Collision"].Objects)
+            foreach (var CollisionRect in map.ObjectGroups["Collision"].Objects)
             {
                 if (CollisionRect.Name == "Spawn")
                 {
-                    _collisionTiles.Add(new Rectangle((int)CollisionRect.X, (int)CollisionRect.Y, (int)CollisionRect.Width - 10, (int)CollisionRect.Height));
+                    collisionTiles.Add(new Rectangle((int)CollisionRect.X, (int)CollisionRect.Y, (int)CollisionRect.Width - 10, (int)CollisionRect.Height));
                 }
             }
-            return _collisionTiles;
+            return collisionTiles;
         }
     }
 }

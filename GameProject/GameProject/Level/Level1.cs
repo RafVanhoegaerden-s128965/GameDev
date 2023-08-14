@@ -2,12 +2,6 @@
 using GameProject.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TiledSharp;
 
 namespace GameProject.Level
@@ -15,7 +9,10 @@ namespace GameProject.Level
     internal class Level1 : LevelMaker
     {
         private new Game1 Game => (Game1)base.Game;
-        public Level1(Game game) : base(game) { }
+        public Level1(Game game, MainCharacter mainCharacter) : base(game) 
+        {
+            this.MainCharacter = mainCharacter;
+        }
 
         public override void LoadContent()
         {
@@ -27,11 +24,9 @@ namespace GameProject.Level
             // Load Level
             Level = new  TmxMap("Content\\Levels\\Level1.tmx");
             Tileset = Content.Load<Texture2D>("TileSheets\\" + Level.Tilesets[0].Name.ToString());
-            Map = new MapDrawer(SpriteBatch, Level, Tileset);
+            Map = new MapDrawer(Level, Tileset);
 
             GetCollisionOfMap();
-
-            MainCharacter = new MainCharacter(new Vector2(RespawnZone[0].X, RespawnZone[0].Y), Content);
 
             base.LoadContent();
         }

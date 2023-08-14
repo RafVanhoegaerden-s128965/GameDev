@@ -48,6 +48,7 @@ namespace GameProject.Animations
             CurrentFrame = _frames[_counter];
 
             _secondCounter += gameTime.ElapsedGameTime.TotalSeconds;
+
             // FPS
             int fps = 5;
 

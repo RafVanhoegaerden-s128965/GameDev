@@ -16,6 +16,12 @@ namespace GameProject
         private SpriteBatch _spriteBatch;
         private ScreenManager _screenManager;
 
+        private MainCharacter _mainCharacter;
+
+        #region Levels
+        private Level1 _level1;
+        #endregion
+
 
         public Game1()
         {
@@ -50,6 +56,18 @@ namespace GameProject
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            _mainCharacter = new MainCharacter(Content);
+
+            #region levels
+            _level1 = new Level1(this, _mainCharacter);
+            _screenManager.LoadScreen(_level1);
+            #endregion
+
+            //_level1.MainCharacter.Position = new Vector2(_level1.RespawnZone[0].X, _level1.RespawnZone[0].Y);
+            _level1.MainCharacter.Position = new Vector2(350, 100);
+
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -57,7 +75,6 @@ namespace GameProject
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            _screenManager.LoadScreen(new Level1(this));
 
             base.Update(gameTime);
         }
@@ -71,6 +88,7 @@ namespace GameProject
             // TODO: Add your drawing code here
 
             _spriteBatch.End();
+
             base.Draw(gameTime);
         }
     }
