@@ -18,7 +18,6 @@ namespace GameProject.GameObjects.Playable
 {
     internal class MainCharacter : Player
     {
-
         public MainCharacter(ContentManager content)
         {
             InputReader = new KeyBoardReader();

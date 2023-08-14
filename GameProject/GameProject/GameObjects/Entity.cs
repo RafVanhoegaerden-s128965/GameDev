@@ -35,5 +35,7 @@ namespace GameProject.GameObjects
         public Animation IdleAnimation { get; set; }
         public Texture2D RunningTexture { get; set; }
         public Animation RunningAnimation { get; set; }
+        public Texture2D AttackTexture { get; set; }
+        public Animation AttackAnimation { get; set; }
     }
 }

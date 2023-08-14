@@ -1,4 +1,5 @@
-﻿using GameProject.GameObjects.Playable;
+﻿using GameProject.GameObjects.Non_Playable_Character;
+using GameProject.GameObjects.Playable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Sprites;
 using System;
@@ -61,6 +62,14 @@ namespace GameProject.Level
                 //        mainCharacter.Hitbox.Left < rectangle.Right;
                 //}
             }
+        }
+
+
+
+        public Vector2 GetEnemyPosition(List<Enemy> EnemyList, Vector2 enemyInitPost)
+        {
+            if (EnemyList.Count > 0) { return EnemyList.Last().Position; }
+            else { return new Vector2(); }
         }
     }
 }

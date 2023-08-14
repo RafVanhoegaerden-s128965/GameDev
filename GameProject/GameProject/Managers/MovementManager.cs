@@ -1,15 +1,12 @@
 ﻿using GameProject.GameObjects;
+using GameProject.GameObjects.Non_Playable_Character;
 using GameProject.GameObjects.Playable;
-using GameProject.Interface;
-using GameProject.Settings;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameProject.Managers
 {
@@ -53,10 +50,32 @@ namespace GameProject.Managers
                 {
                     entity.IsJumping = true;
                     entity.IsFalling = false;
-                    entity.JumpSpeed = -20; // Give it upward thrust
+                    entity.JumpSpeed = -25; // Give it upward thrust
                     //Debug.WriteLine($"JUMP START Jumping: {entity.IsJumping} // Falling: {entity.IsFalling}");
                 }
             }
+        }
+
+        public void EnemyMove(Enemy enemy)
+        {
+            if (!enemy.Pathway.Contains(enemy.Hitbox))
+            {
+                enemy.Speed = -enemy.Speed;
+                enemy.IsFacingLeft = !enemy.IsFacingLeft;
+            }
+
+            if (!enemy.IsFacingLeft)
+            {
+                enemy.DirectionPosition = SpriteEffects.None;
+            }
+            else
+            {
+                enemy.DirectionPosition = SpriteEffects.FlipHorizontally;
+            }
+
+            enemy.Position += new Vector2(enemy.Speed.X, enemy.Speed.Y);
+
+            enemy.Hitbox = new Rectangle((int)enemy.Position.X, (int)enemy.Position.Y, enemy.Hitbox.Width, enemy.Hitbox.Height);
         }
     }
 }

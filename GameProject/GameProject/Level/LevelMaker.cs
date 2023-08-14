@@ -1,4 +1,5 @@
-﻿using GameProject.GameObjects.Playable;
+﻿using GameProject.GameObjects.Non_Playable_Character;
+using GameProject.GameObjects.Playable;
 using GameProject.Map;
 using GameProject.Map_Design;
 using Microsoft.Xna.Framework;
@@ -20,6 +21,8 @@ namespace GameProject.Level
         public MainCharacter MainCharacter { get; set; }
         public Vector2 MainCharacterInitPosition { get; set; }
 
+        public Vector2 EnemyInitPosition { get; set; }
+
         #region Tiled
         public TmxMap Level { get; set; }
         public Texture2D Tileset { get; set; }
@@ -32,35 +35,45 @@ namespace GameProject.Level
         public List<Rectangle> CollisionTiles { get; set; } = new List<Rectangle>();
         #endregion
 
+        #region Zones
         public List<Rectangle> RespawnZone { get; set; } = new List<Rectangle>();
+        public Rectangle FinishZone { get; set; } = new Rectangle();
+        #endregion
 
+        #region Enemies
+        public List<Rectangle> EnemyPath { get; set; } = new List<Rectangle>();
+        public List<Enemy> EnemyList { get; set; } = new List<Enemy>();
+        #endregion
 
         public void GetCollisionOfMap()
         {
             CollisionTiles = CollisionController.GetTilesCollision(Level, CollisionTiles);
+            EnemyPath = CollisionController.GetEnemyPathCollision(Level, EnemyPath);
             RespawnZone = CollisionController.GetRespawnCollision(Level, RespawnZone);
+            FinishZone = CollisionController.GetFinishCollision(Level, FinishZone);
         }
 
         public void DrawLevel(GameTime gameTime)
         {
-            SpriteBatch.Begin();
-
             SpriteBatch.Draw(Background, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, 4, SpriteEffects.None, 0f); // Draw Background
 
             CollisionController.DrawLevel(SpriteBatch, Map); // Draw Level
 
             MainCharacter.Draw(SpriteBatch); // Draw MainCharacter
-
-            SpriteBatch.End();
         }
 
         public void UpdateLevel(GameTime gameTime)
         {
-            MainCharacterInitPosition = MainCharacter.Position;
+            EnemyInitPosition = LevelInteractions.GetEnemyPosition(EnemyList, EnemyInitPosition);
 
-            MainCharacter.Update(gameTime); // Update MainCharacter
+            #region MainCharacter
+            MainCharacterInitPosition = MainCharacter.Position; // Position
+            MainCharacter.Update(gameTime); // Update
+            LevelInteractions.GetMainCharacterCollides(MainCharacter, CollisionTiles, MainCharacterInitPosition); // Collision
+            #endregion
 
-            LevelInteractions.GetMainCharacterCollides(MainCharacter, CollisionTiles, MainCharacterInitPosition);
+            //LevelInteractions.GetEnemyCollides(CollisionTiles, EnemyList, EnemyInitPosition);
+
         }
     }
 }
