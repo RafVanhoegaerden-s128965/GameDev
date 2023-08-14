@@ -1,12 +1,11 @@
-﻿using GameProject.GameObjects.Playable;
+﻿using GameProject.GameObjects;
+using GameProject.GameObjects.Non_Playable_Character;
+using GameProject.GameObjects.Playable;
 using Microsoft.Xna.Framework;
-using MonoGame.Extended.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameProject.Level
 {
@@ -21,7 +20,7 @@ namespace GameProject.Level
                     mainCharacter.IsFalling = true;
                 }
 
-                if (rectangle.Intersects(mainCharacter.Hitbox))
+                if (rectangle.Intersects(mainCharacter.Hitbox) && mainCharacter.Direction.Y == 0)
                 {
                     mainCharacter.Position = new Vector2(mainCharacter.Position.X, mainCharacterInitPosition.Y);
 
@@ -62,5 +61,40 @@ namespace GameProject.Level
                 //}
             }
         }
+
+        public void GetEnemyCollides(MainCharacter mainCharacter, List<Enemy> enemyList)
+        {
+            DateTime currentTime = DateTime.Now;
+
+            mainCharacter.IsDamaged = (currentTime - mainCharacter.LastHitTime).TotalSeconds < 3; // Adjust the time duration if needed
+
+            foreach (var enemy in enemyList)
+            {
+                if (!mainCharacter.IsDamaged && mainCharacter.Hitbox.Intersects(enemy.Hitbox))
+                {
+                    // Check if enough time has passed since the last hit
+                    if ((currentTime - mainCharacter.LastHitTime).TotalSeconds >= 1)
+                    {
+                        if (enemy.IsAlive)
+                        {
+                            mainCharacter.HP -= enemy.Damage;
+                            mainCharacter.IsDamaged = true;
+
+                            // Update the last hit time
+                            mainCharacter.LastHitTime = currentTime;
+                        }
+                    }
+                }
+
+                // Check if enough time has passed since the character was last hit
+                if (!mainCharacter.IsDamaged && (currentTime - mainCharacter.LastHitTime).TotalSeconds >= 3)
+                {
+                    mainCharacter.IsDamaged = false;
+                }
+            }
+            Debug.WriteLine($"HP: {mainCharacter.HP}");
+
+        }
     }
 }
+

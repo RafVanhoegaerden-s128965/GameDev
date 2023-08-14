@@ -18,7 +18,6 @@ namespace GameProject.GameObjects.Playable
 {
     internal class MainCharacter : Player
     {
-
         public MainCharacter(ContentManager content)
         {
             InputReader = new KeyBoardReader();
@@ -45,8 +44,10 @@ namespace GameProject.GameObjects.Playable
 
             // Hitbox
 
-            //Hitbox = new Rectangle((int)Position.X, (int)Position.Y, IdleAnimation.CurrentFrame.SourceRectangle.Width, IdleAnimation.CurrentFrame.SourceRectangle.Height); // X, Y, width, height
-            //Hitbox = new Rectangle((int)Position.X, (int)Position.Y, 20, 60); // X, Y, width, height
+            // Combat
+
+            HP = 3;
+            Damage = 1;
 
             // Moving
 

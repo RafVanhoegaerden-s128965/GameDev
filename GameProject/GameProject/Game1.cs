@@ -18,6 +18,7 @@ namespace GameProject
 
         private MainCharacter _mainCharacter;
 
+
         #region Levels
         private Level1 _level1;
         #endregion
@@ -64,10 +65,7 @@ namespace GameProject
             _screenManager.LoadScreen(_level1);
             #endregion
 
-            //_level1.MainCharacter.Position = new Vector2(_level1.RespawnZone[0].X, _level1.RespawnZone[0].Y);
-            _level1.MainCharacter.Position = new Vector2(350, 100);
-
-
+            _level1.MainCharacter.Position = new Vector2(_level1.RespawnZone[0].X, _level1.RespawnZone[0].Y);
         }
 
         protected override void Update(GameTime gameTime)
