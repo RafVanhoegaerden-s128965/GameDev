@@ -13,6 +13,8 @@ namespace GameProject.GameObjects.Playable
     {
         public float GravityFactor { get; set; }
 
+        public DateTime LastHitTime { get; set; } = DateTime.MinValue;
+
         // IControllable
         public IInputReader InputReader { get; set; }
 

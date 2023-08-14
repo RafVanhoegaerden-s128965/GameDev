@@ -53,11 +53,11 @@
             "scaleInDock": 1
         },
         "Level1.tmx": {
-            "scale": 2,
-            "selectedLayer": 8,
+            "scale": 1.5,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 1000.25,
-                "y": 265
+                "x": 214.99999999999994,
+                "y": 607.3333333333333
             }
         },
         "Level1.tmx#Level1 TileSheet": {

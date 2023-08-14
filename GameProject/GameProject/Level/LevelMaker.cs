@@ -21,8 +21,6 @@ namespace GameProject.Level
         public MainCharacter MainCharacter { get; set; }
         public Vector2 MainCharacterInitPosition { get; set; }
 
-        public Vector2 EnemyInitPosition { get; set; }
-
         #region Tiled
         public TmxMap Level { get; set; }
         public Texture2D Tileset { get; set; }
@@ -64,7 +62,6 @@ namespace GameProject.Level
 
         public void UpdateLevel(GameTime gameTime)
         {
-            EnemyInitPosition = LevelInteractions.GetEnemyPosition(EnemyList, EnemyInitPosition);
 
             #region MainCharacter
             MainCharacterInitPosition = MainCharacter.Position; // Position
@@ -72,7 +69,7 @@ namespace GameProject.Level
             LevelInteractions.GetMainCharacterCollides(MainCharacter, CollisionTiles, MainCharacterInitPosition); // Collision
             #endregion
 
-            //LevelInteractions.GetEnemyCollides(CollisionTiles, EnemyList, EnemyInitPosition);
+            LevelInteractions.GetEnemyCollides(MainCharacter, EnemyList);
 
         }
     }

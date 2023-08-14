@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GameProject.GameObjects.Non_Playable_Character
 {
-    internal class Trap : Entity
+    internal class Trap : Object
     {
         public Trap(ContentManager content)
         {

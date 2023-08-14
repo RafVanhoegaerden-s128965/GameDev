@@ -27,6 +27,8 @@ namespace GameProject.Managers
                 entity.StartY = entity.Position.Y;
                 entity.Position += new Vector2(0, entity.JumpSpeed);
                 entity.JumpSpeed += 1;
+                Debug.WriteLine($"Jump: {entity.Position}");
+
 
                 if (entity.JumpSpeed > 0)
                 {

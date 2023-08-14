@@ -5,6 +5,7 @@ using GameProject.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TiledSharp;
 
 namespace GameProject.Level
@@ -37,9 +38,17 @@ namespace GameProject.Level
 
             GetCollisionOfMap();
 
+            #region Enemies
+            // Load Enemies
             Boar = new Boar(Content, EnemyPath[0]);
             Bat1 = new Bat(Content, EnemyPath[1]);
             Bat2 = new Bat(Content, EnemyPath[2]);
+
+            // Add to List
+            EnemyList.Add(Bat1);
+            EnemyList.Add(Bat2);
+            EnemyList.Add(Boar);
+            #endregion
 
             base.LoadContent();
         }
@@ -51,11 +60,10 @@ namespace GameProject.Level
             DrawLevel(gameTime); // Draw Map
 
             #region Entities
-
-            Boar.Draw(SpriteBatch); // Draw Boar
-            Bat1.Draw(SpriteBatch); // Draw Bat1
-            Bat2.Draw(SpriteBatch); // Draw Bat2
-
+            // Draw Enemies
+            Boar.Draw(SpriteBatch);
+            Bat1.Draw(SpriteBatch);
+            Bat2.Draw(SpriteBatch);
             #endregion
 
             SpriteBatch.End();
@@ -66,11 +74,10 @@ namespace GameProject.Level
             UpdateLevel(gameTime); // Update Map
 
             #region Entities
-
-            Boar.Update(gameTime); // Update Boar
-            Bat1.Update(gameTime); // Update Bat1
-            Bat2.Update(gameTime); // Update Bat2
-
+            // Update Enemies
+            Boar.Update(gameTime);
+            Bat1.Update(gameTime);
+            Bat2.Update(gameTime);
             #endregion
         }
     }

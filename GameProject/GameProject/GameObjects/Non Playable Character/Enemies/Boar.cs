@@ -24,6 +24,13 @@ namespace GameProject.GameObjects.Non_Playable_Character.Enemies
             RunningAnimation.GetFramesFromTextureProperties(RunningTexture.Width, RunningTexture.Height, 6, 1); // Widht, Height, NumberOfSpritesWidth, NumberOfSpritesHeight
             #endregion
 
+            // Hitbox
+            Hitbox = new Rectangle((int)Position.X, (int)Position.Y, RunningAnimation.CurrentFrame.SourceRectangle.Width, RunningAnimation.CurrentFrame.SourceRectangle.Height);
+
+            // Combat
+
+            Damage = 2;
+
             // Moving
 
             Position = new Vector2(path.X, path.Y);

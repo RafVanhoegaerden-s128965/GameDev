@@ -5,6 +5,7 @@ using GameProject.GameObjects.Playable;
 using GameProject.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Diagnostics;
 
 namespace GameProject.Managers
@@ -13,23 +14,26 @@ namespace GameProject.Managers
     {
         public void DrawAnimation(SpriteBatch spriteBatch, Entity entity)
         {
+            DateTime currentTime = DateTime.Now;
+
             switch (entity.CurrentMovementState)
             {
                 case CurrentMovementState.Idle:
-                    //MainCharacter
-                    spriteBatch.Draw(entity.IdleTexture, entity.Position, entity.IdleAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.2f, entity.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+                    Color idleColor = entity.IsDamaged && currentTime.Millisecond % 500 < 250 ? Color.Red * 0.7f : Color.White;
+                    spriteBatch.Draw(entity.IdleTexture, entity.Position, entity.IdleAnimation.CurrentFrame.SourceRectangle, idleColor, 0f, Vector2.Zero, 1.2f, entity.DirectionPosition, 0f);
                     break;
                 case CurrentMovementState.Running:
-                    //MainCharacter
-                    spriteBatch.Draw(entity.RunningTexture, entity.Position, entity.RunningAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.2f, entity.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+                    Color runningColor = entity.IsDamaged && currentTime.Millisecond % 500 < 250 ? Color.Red * 0.7f : Color.White;
+                    spriteBatch.Draw(entity.RunningTexture, entity.Position, entity.RunningAnimation.CurrentFrame.SourceRectangle, runningColor, 0f, Vector2.Zero, 1.2f, entity.DirectionPosition, 0f);
                     break;
                 case CurrentMovementState.Attacking:
-                    //MainCharacter
-                    spriteBatch.Draw(entity.AttackTexture, entity.Position, entity.AttackAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.2f, entity.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+                    Color attackColor = entity.IsDamaged && currentTime.Millisecond % 500 < 250 ? Color.Red * 0.7f : Color.White;
+                    spriteBatch.Draw(entity.AttackTexture, entity.Position, entity.AttackAnimation.CurrentFrame.SourceRectangle, attackColor, 0f, Vector2.Zero, 1.2f, entity.DirectionPosition, 0f);
                     break;
                 default:
                     break;
             }
+
         }
         public void UpdateAnimation(GameTime gameTime, Entity entity) 
         {
