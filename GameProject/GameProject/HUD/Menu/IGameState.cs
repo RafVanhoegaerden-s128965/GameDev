@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameProject.HUD.Menu
 {
-    public enum CurrentGameState { Level1, Level2, Menu, GameOver }
+    public enum CurrentGameState { Level1, Level2, Menu, Ended }
     public enum CurrentPlayerState { Won, Lost }
     internal interface IGameState
     {

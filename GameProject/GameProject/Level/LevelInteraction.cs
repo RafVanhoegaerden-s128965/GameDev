@@ -2,6 +2,7 @@
 using GameProject.GameObjects.Non_Playable_Character;
 using GameProject.GameObjects.Playable;
 using GameProject.GameObjects.PowerUps;
+using GameProject.HUD.Menu;
 using GameProject.Interface;
 using Microsoft.Xna.Framework;
 using System;
@@ -31,6 +32,15 @@ namespace GameProject.Level
                 }
             }
         }
+        public void GetMainCharacterGameState(MainCharacter mainCharacter, Game1 game)
+        {
+            if (!mainCharacter.IsAlive)
+            {
+                game.StateOfGame = CurrentGameState.Ended;
+                game.StateOfPlayer = CurrentPlayerState.Lost;
+            }
+        }
+
 
         public void GetEnemyCollides(MainCharacter mainCharacter, List<Enemy> enemyList)
         {
@@ -112,33 +122,34 @@ namespace GameProject.Level
             }
         }
 
-        public void GetPlayerToNextZone(Player Player, Rectangle EndZone, Game1 Game, int DesiredLVL)
+        public void GetMainCharacterToNextZone(MainCharacter mainCharacter, Rectangle endZone, Game1 game, int desiredLVL)
         {
-            if (EndZone.Intersects(Player.Hitbox))
+            if (endZone.Intersects(mainCharacter.Hitbox))
             {
-                //switch (DesiredLVL)
-                //{
-                //    case 0:
-                //        Game.StateOfPlayer = Menu.currentPlayerState.Win;
-                //        Game.StateOfGame = Menu.currentGameState.GameOver;
-                //        break;
-                //    case 1:
-                //        Game.StateOfGame = Menu.currentGameState.level1;
-                //        break;
-                //    case 2:
-                //        Game.StateOfGame = Menu.currentGameState.level2;
-                //        break;
-                //    case 3:
-                //        Game.StateOfGame = Menu.currentGameState.level3;
-                //        break;
-                //    case 4:
-                //        Game.StateOfGame = Menu.currentGameState.level4;
-                //        break;
-                //    default:
-                //        break;
-                //}
+                switch (desiredLVL)
+                {
+                    case 0:
+                        game.StateOfPlayer = CurrentPlayerState.Won;
+                        game.StateOfGame = CurrentGameState.Ended;
+                        break;
+                    case 1:
+                        game.StateOfGame = CurrentGameState.Level1;
+                        break;
+                    case 2:
+                        game.StateOfGame = CurrentGameState.Level2;
+                        break;
+                    case 3:
+                        game.StateOfGame = CurrentGameState.Menu;
+                        break;
+                    default:
+                        break;
+                }
             }
+        }
 
+        public void GetEndzone(MainCharacter mainCharacter, Rectangle endZone, Game1 game)
+        {
+            if (endZone.Intersects(mainCharacter.Hitbox)) { game.StateOfGame = CurrentGameState.Ended; }
         }
     }
 }

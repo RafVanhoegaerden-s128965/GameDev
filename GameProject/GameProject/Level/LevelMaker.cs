@@ -74,9 +74,9 @@ namespace GameProject.Level
             #endregion
         }
 
-        public void UpdateLevel(GameTime gameTime)
+        public void UpdateLevel(GameTime gameTime, Game1 game, int nextState)
         {
-
+            LevelInteractions.GetMainCharacterToNextZone(MainCharacter, FinishZone, game, nextState);
             #region MainCharacter
             MainCharacterInitPosition = MainCharacter.Position; // Position
             MainCharacter.Update(gameTime); // Update
@@ -88,6 +88,8 @@ namespace GameProject.Level
             LevelInteractions.GetEnemyCollides(MainCharacter, EnemyList);
             LevelInteractions.GetPowerUpCollides(MainCharacter, PowerUpList);
             #endregion
+
+            LevelInteractions.GetMainCharacterGameState(MainCharacter, game);
         }
     }
 }

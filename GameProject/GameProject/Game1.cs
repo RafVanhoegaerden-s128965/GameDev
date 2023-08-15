@@ -21,9 +21,9 @@ namespace GameProject
         private ScreenManager _screenManager;
 
         #region GameState
-        private CurrentGameState StateOfGame { get; set; }
-        private CurrentPlayerState StateOfPlayer { get; set; }
-        private CurrentGameState PreviousStateOfGame { get; set; }
+        public CurrentGameState StateOfGame { get; set; }
+        public CurrentPlayerState StateOfPlayer { get; set; }
+        public CurrentGameState PreviousStateOfGame { get; set; }
         #endregion
 
         private MainCharacter _mainCharacter;
@@ -117,12 +117,12 @@ namespace GameProject
                         _screenManager.LoadScreen(_level1, new FadeTransition(GraphicsDevice, Color.Black));
                         break;
                     //case CurrentGameState.level2:
-                        //_screenManager.LoadScreen(new Level2(this), new FadeTransition(GraphicsDevice, Color.Black));
-                        //break;
-                    //case CurrentGameState.Menu:
-                    //    _screenManager.LoadScreen(new MenuState(this), new FadeTransition(GraphicsDevice, Color.Black));
-                    //    break;
-                    //case CurrentGameState.GameOver:
+                    //_screenManager.LoadScreen(new Level2(this), new FadeTransition(GraphicsDevice, Color.Black));
+                    //break;
+                    case CurrentGameState.Menu:
+                        _screenManager.LoadScreen(new Menu(this), new FadeTransition(GraphicsDevice, Color.Black));
+                        break;
+                    //case CurrentGameState.Ended:
                     //    _screenManager.LoadScreen(new GameOverPanel(this), new FadeTransition(GraphicsDevice, Color.Black));
                     //    break;
                     default:
