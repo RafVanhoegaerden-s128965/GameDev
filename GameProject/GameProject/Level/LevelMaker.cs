@@ -77,6 +77,7 @@ namespace GameProject.Level
         public void UpdateLevel(GameTime gameTime, Game1 game, int nextState)
         {
             LevelInteractions.GetMainCharacterToNextZone(MainCharacter, FinishZone, game, nextState);
+
             #region MainCharacter
             MainCharacterInitPosition = MainCharacter.Position; // Position
             MainCharacter.Update(gameTime); // Update

@@ -51,10 +51,7 @@ namespace GameProject.Level
 
             GetCollisionOfMap();
 
-            //MainCharacter.Position = new Vector2(RespawnZone[0].X, RespawnZone[0].Y);
-            MainCharacter.Position = new Vector2(1700, 10);
-
-
+            MainCharacter.Position = new Vector2(RespawnZone[0].X, RespawnZone[0].Y);
             #endregion
 
             #region Enemies
@@ -111,7 +108,7 @@ namespace GameProject.Level
 
         public override void Update(GameTime gameTime)
         {
-            UpdateLevel(gameTime, this.Game, 3); // Update Map
+            UpdateLevel(gameTime, this.Game, 3); // Update Map + Last value = State of Game ==> load new screen
 
             #region Enemies
             // Update Enemies

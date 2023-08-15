@@ -122,9 +122,9 @@ namespace GameProject
                     case CurrentGameState.Menu:
                         _screenManager.LoadScreen(new Menu(this), new FadeTransition(GraphicsDevice, Color.Black));
                         break;
-                    //case CurrentGameState.Ended:
-                    //    _screenManager.LoadScreen(new GameOverPanel(this), new FadeTransition(GraphicsDevice, Color.Black));
-                    //    break;
+                    case CurrentGameState.Ended:
+                        _screenManager.LoadScreen(new GameOver(this), new FadeTransition(GraphicsDevice, Color.Black));
+                        break;
                     default:
                         break;
                 }

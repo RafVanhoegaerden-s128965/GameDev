@@ -88,6 +88,11 @@ namespace GameProject.Level
                             mainCharacter.HP -= enemy.Damage;
                             mainCharacter.IsDamaged = true;
 
+                            if (mainCharacter.HP <= 0)
+                            {
+                                mainCharacter.IsAlive = false;
+                            }
+
                             // Update the last hit time
                             mainCharacter.LastHitTime = currentTime;
                         }
