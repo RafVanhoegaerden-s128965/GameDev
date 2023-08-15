@@ -1,4 +1,6 @@
-﻿using GameProject.Interface;
+﻿using GameProject.Animations;
+using GameProject.Interface;
+using GameProject.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace GameProject.GameObjects
 {
-    internal abstract class Object : IGameObject
+    internal abstract class Object : IGameObject, IAnimatable
     {
         public Texture2D Texture;
         public Vector2 Position { get; set; }
@@ -18,5 +20,14 @@ namespace GameProject.GameObjects
         public bool Passable { get; set; }
         public Rectangle Hitbox { get; set; }
         public Rectangle BoundingBox { get; set; }
+
+        // IAnimatable
+        public AnimationManager AnimationManager { get; set; }
+        public Texture2D IdleTexture { get; set; }
+        public Animation IdleAnimation { get; set; }
+        public Texture2D RunningTexture { get; set; }
+        public Animation RunningAnimation { get; set; }
+        public Texture2D AttackTexture { get; set; }
+        public Animation AttackAnimation { get; set; }
     }
 }

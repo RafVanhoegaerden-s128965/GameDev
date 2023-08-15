@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace GameProject.GameObjects.Playable
 {
-    internal class Player : Entity, IControllable
+    internal class Player : Entity, IControllable, IJumpable
     {
         public float GravityFactor { get; set; }
-
         public DateTime LastHitTime { get; set; } = DateTime.MinValue;
+        public bool PowerUpActive { get; set; } = false;
 
         // IControllable
         public IInputReader InputReader { get; set; }

@@ -2,6 +2,7 @@
 using GameProject.GameObjects;
 using GameProject.GameObjects.Non_Playable_Character;
 using GameProject.GameObjects.Playable;
+using GameProject.GameObjects.PowerUps;
 using GameProject.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -70,6 +71,15 @@ namespace GameProject.Managers
         public void UpdateEnemyAnimation(GameTime gameTime, Enemy enemy)
         {
             enemy.RunningAnimation.Update(gameTime);
+        }
+
+        public void DrawPowerUpAnimation(SpriteBatch spriteBatch, PowerUp powerUp)
+        {
+            spriteBatch.Draw(powerUp.IdleTexture, powerUp.Position, powerUp.IdleAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.8f, SpriteEffects.None, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+        }
+        public void UpdatePowerUpAnimation(GameTime gameTime, PowerUp powerUp)
+        {
+            powerUp.IdleAnimation.Update(gameTime);
         }
     }
 }

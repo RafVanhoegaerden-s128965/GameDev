@@ -1,6 +1,7 @@
 ﻿using GameProject.GameObjects;
 using GameProject.GameObjects.Non_Playable_Character;
 using GameProject.GameObjects.Playable;
+using GameProject.GameObjects.PowerUps;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -92,8 +93,17 @@ namespace GameProject.Level
                     mainCharacter.IsDamaged = false;
                 }
             }
-            Debug.WriteLine($"HP: {mainCharacter.HP}");
+        }
 
+        public void GetPowerUpCollides(MainCharacter mainCharacter, List<PowerUp> powerUpList)
+        {
+            foreach (var powerUp in powerUpList)
+            {
+                if (mainCharacter.Hitbox.Intersects(powerUp.Hitbox))
+                {
+                    mainCharacter.PowerUpActive = true;
+                }
+            }
         }
     }
 }

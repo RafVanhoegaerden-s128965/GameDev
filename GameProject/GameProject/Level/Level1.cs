@@ -1,6 +1,7 @@
 ﻿using GameProject.GameObjects.Non_Playable_Character;
 using GameProject.GameObjects.Non_Playable_Character.Enemies;
 using GameProject.GameObjects.Playable;
+using GameProject.GameObjects.PowerUps;
 using GameProject.HUD;
 using GameProject.Map;
 using Microsoft.Xna.Framework;
@@ -19,6 +20,7 @@ namespace GameProject.Level
         private Bat Bat2 { get; set; }
         private Boar Boar { get; set; }
 
+        private JumpPowerUp PowerUp1 { get; set; }
 
         public Level1(Game game, MainCharacter mainCharacter, HPBar hpBar) : base(game) 
         {
@@ -30,6 +32,7 @@ namespace GameProject.Level
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
+            #region Map
             // Load Background
             Background = Content.Load<Texture2D>("Background");
 
@@ -39,6 +42,7 @@ namespace GameProject.Level
             Map = new MapDrawer(Level, Tileset);
 
             GetCollisionOfMap();
+            #endregion
 
             #region Enemies
             // Load Enemies
@@ -52,6 +56,11 @@ namespace GameProject.Level
             EnemyList.Add(Boar);
             #endregion
 
+            #region PowerUps
+            PowerUp1 = new JumpPowerUp(Content, PowerUpPosition[0]);
+            PowerUpList.Add(PowerUp1);
+            #endregion
+
             base.LoadContent();
         }
 
@@ -61,11 +70,17 @@ namespace GameProject.Level
 
             DrawLevel(gameTime); // Draw Map
 
-            #region Entities
+            #region Objects
             // Draw Enemies
             Boar.Draw(SpriteBatch);
             Bat1.Draw(SpriteBatch);
             Bat2.Draw(SpriteBatch);
+
+            if (!MainCharacter.PowerUpActive)
+            {
+                // Draw PowerUps
+                PowerUp1.Draw(SpriteBatch);
+            }
             #endregion
 
             SpriteBatch.End();
@@ -75,11 +90,18 @@ namespace GameProject.Level
         {
             UpdateLevel(gameTime); // Update Map
 
-            #region Entities
+            #region Objects
             // Update Enemies
             Boar.Update(gameTime);
             Bat1.Update(gameTime);
             Bat2.Update(gameTime);
+
+            // Update PowerUps
+            if (!MainCharacter.PowerUpActive)
+            {
+                // Update PowerUps
+                PowerUp1.Update(gameTime);
+            }
             #endregion
         }
     }
