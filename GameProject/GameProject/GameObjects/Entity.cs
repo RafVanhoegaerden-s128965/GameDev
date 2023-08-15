@@ -13,6 +13,8 @@ namespace GameProject.GameObjects
 {
     internal abstract class Entity : Object, ICombat, IMovable
     {
+        public DateTime LastHitTime { get; set; } = DateTime.MinValue;
+
         // ICombat
         public bool IsAlive { get; set; } = true;
         public int HP { get; set; }

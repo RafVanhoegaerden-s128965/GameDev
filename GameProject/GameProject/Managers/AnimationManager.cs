@@ -54,7 +54,7 @@ namespace GameProject.Managers
                     break;
                 case CurrentMovementState.Attacking:
                     entity.AttackAnimation.Update(gameTime);
-                    hitbox.Width = 40;
+                    hitbox.Width = 85;
                     hitbox.Height = 71;
                     break;
                 default:
@@ -65,7 +65,11 @@ namespace GameProject.Managers
 
         public void DrawEnemyAnimation(SpriteBatch spriteBatch, Enemy enemy) 
         {
-            spriteBatch.Draw(enemy.RunningTexture, enemy.Position, enemy.RunningAnimation.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 1.4f, enemy.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
+            DateTime currentTime = DateTime.Now;
+
+            Color runningColor = enemy.IsDamaged && currentTime.Millisecond % 500 < 250 ? Color.Red * 0.7f : Color.White;
+
+            spriteBatch.Draw(enemy.RunningTexture, enemy.Position, enemy.RunningAnimation.CurrentFrame.SourceRectangle, runningColor, 0f, Vector2.Zero, 1.4f, enemy.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
         }
 
         public void UpdateEnemyAnimation(GameTime gameTime, Enemy enemy)

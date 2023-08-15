@@ -72,15 +72,12 @@ namespace GameProject.Level
 
             #region Objects
             // Draw Enemies
-            Boar.Draw(SpriteBatch);
-            Bat1.Draw(SpriteBatch);
-            Bat2.Draw(SpriteBatch);
+            if (Boar.IsAlive){ Boar.Draw(SpriteBatch); }
+            if (Bat1.IsAlive){ Bat1.Draw(SpriteBatch); }
+            if (Bat2.IsAlive) { Bat2.Draw(SpriteBatch); }
 
-            if (!MainCharacter.PowerUpActive)
-            {
-                // Draw PowerUps
-                PowerUp1.Draw(SpriteBatch);
-            }
+            // Draw PowerUps
+            if (!MainCharacter.PowerUpActive) { PowerUp1.Draw(SpriteBatch); }
             #endregion
 
             SpriteBatch.End();
@@ -92,16 +89,12 @@ namespace GameProject.Level
 
             #region Objects
             // Update Enemies
-            Boar.Update(gameTime);
-            Bat1.Update(gameTime);
-            Bat2.Update(gameTime);
+            if (Boar.IsAlive) { Boar.Update(gameTime); }
+            if (Bat1.IsAlive) { Bat1.Update(gameTime); }
+            if (Bat2.IsAlive) { Bat2.Update(gameTime); }
 
             // Update PowerUps
-            if (!MainCharacter.PowerUpActive)
-            {
-                // Update PowerUps
-                PowerUp1.Update(gameTime);
-            }
+            if (!MainCharacter.PowerUpActive) { PowerUp1.Update(gameTime); }
             #endregion
         }
     }

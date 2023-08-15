@@ -2,6 +2,7 @@
 using GameProject.GameObjects.Non_Playable_Character;
 using GameProject.GameObjects.Playable;
 using GameProject.GameObjects.PowerUps;
+using GameProject.Interface;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -28,38 +29,6 @@ namespace GameProject.Level
                     mainCharacter.IsFalling = false;
                     break;
                 }
-
-                //bool IsTouchingLeft()
-                //{
-                //    return mainCharacter.Hitbox.Right + mainCharacter.Direction.X > rectangle.Left &&
-                //        mainCharacter.Hitbox.Left < rectangle.Left &&
-                //        mainCharacter.Hitbox.Bottom > rectangle.Top &&
-                //        mainCharacter.Hitbox.Top < rectangle.Bottom;
-                //}
-
-                //bool IsTouchingRight()
-                //{
-                //    return mainCharacter.Hitbox.Left + mainCharacter.Direction.X < rectangle.Right &&
-                //        mainCharacter.Hitbox.Right > rectangle.Right &&
-                //        mainCharacter.Hitbox.Bottom > rectangle.Top &&
-                //        mainCharacter.Hitbox.Top < rectangle.Bottom;
-                //}
-
-                //bool IsTouchingTop()
-                //{
-                //    return mainCharacter.Hitbox.Bottom + mainCharacter.Direction.Y > rectangle.Top &&
-                //        mainCharacter.Hitbox.Top < rectangle.Top &&
-                //        mainCharacter.Hitbox.Right > rectangle.Left &&
-                //        mainCharacter.Hitbox.Left < rectangle.Right;
-                //}
-
-                //bool IsTouchingBottom()
-                //{
-                //    return mainCharacter.Hitbox.Top + mainCharacter.Direction.Y < rectangle.Bottom &&
-                //        mainCharacter.Hitbox.Bottom > rectangle.Bottom &&
-                //        mainCharacter.Hitbox.Right > rectangle.Left &&
-                //        mainCharacter.Hitbox.Left < rectangle.Right;
-                //}
             }
         }
 
@@ -71,7 +40,35 @@ namespace GameProject.Level
 
             foreach (var enemy in enemyList)
             {
-                if (!mainCharacter.IsDamaged && mainCharacter.Hitbox.Intersects(enemy.Hitbox))
+                enemy.IsDamaged = (currentTime - enemy.LastHitTime).TotalSeconds < 1; // Adjust the time duration if needed
+
+                // MainCharacter DOES Damage
+                if (!enemy.IsDamaged && mainCharacter.CurrentMovementState == CurrentMovementState.Attacking && mainCharacter.Hitbox.Intersects(enemy.Hitbox))
+                {
+                    // Check if enough time has passed since the last hit
+                    if ((currentTime - enemy.LastHitTime).TotalSeconds >= 1)
+                    {
+                        if (enemy.IsAlive)
+                        {
+                            enemy.HP -= mainCharacter.Damage;
+                            enemy.IsDamaged = true;
+
+                            if (enemy.HP <= 0)
+                            {
+                                enemy.IsAlive = false;
+                            }
+
+                            // Update the last hit time
+                            enemy.LastHitTime = currentTime;
+                        }
+                    }
+                }
+            }
+
+            // MainCharacter IS Damaged
+            foreach (var enemy in enemyList)
+            {
+                if (!mainCharacter.IsDamaged && mainCharacter.CurrentMovementState != CurrentMovementState.Attacking && mainCharacter.Hitbox.Intersects(enemy.Hitbox))
                 {
                     // Check if enough time has passed since the last hit
                     if ((currentTime - mainCharacter.LastHitTime).TotalSeconds >= 1)
@@ -86,14 +83,24 @@ namespace GameProject.Level
                         }
                     }
                 }
+            }
 
-                // Check if enough time has passed since the character was last hit
-                if (!mainCharacter.IsDamaged && (currentTime - mainCharacter.LastHitTime).TotalSeconds >= 3)
+            // Check if enough time has passed since the character was last hit
+            if (!mainCharacter.IsDamaged && (currentTime - mainCharacter.LastHitTime).TotalSeconds >= 3)
+            {
+                mainCharacter.IsDamaged = false;
+            }
+
+            // Check if enough time has passed since the enemy was last hit
+            foreach (var enemy in enemyList)
+            {
+                if (!enemy.IsDamaged && (currentTime - enemy.LastHitTime).TotalSeconds >= 1)
                 {
-                    mainCharacter.IsDamaged = false;
+                    enemy.IsDamaged = false;
                 }
             }
         }
+
 
         public void GetPowerUpCollides(MainCharacter mainCharacter, List<PowerUp> powerUpList)
         {
