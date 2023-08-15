@@ -1,12 +1,10 @@
-﻿
-
-using GameProject.GameObjects.Playable;
+﻿using GameProject.GameObjects.Playable;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Diagnostics;
 
-namespace GameProject.HUD
+namespace GameProject.HUD.Menu.LevelComponents
 {
     internal class HPBar : HudComponent
     {

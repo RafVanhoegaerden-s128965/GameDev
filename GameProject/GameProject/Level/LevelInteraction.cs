@@ -101,7 +101,6 @@ namespace GameProject.Level
             }
         }
 
-
         public void GetPowerUpCollides(MainCharacter mainCharacter, List<PowerUp> powerUpList)
         {
             foreach (var powerUp in powerUpList)
@@ -111,6 +110,35 @@ namespace GameProject.Level
                     mainCharacter.PowerUpActive = true;
                 }
             }
+        }
+
+        public void GetPlayerToNextZone(Player Player, Rectangle EndZone, Game1 Game, int DesiredLVL)
+        {
+            if (EndZone.Intersects(Player.Hitbox))
+            {
+                //switch (DesiredLVL)
+                //{
+                //    case 0:
+                //        Game.StateOfPlayer = Menu.currentPlayerState.Win;
+                //        Game.StateOfGame = Menu.currentGameState.GameOver;
+                //        break;
+                //    case 1:
+                //        Game.StateOfGame = Menu.currentGameState.level1;
+                //        break;
+                //    case 2:
+                //        Game.StateOfGame = Menu.currentGameState.level2;
+                //        break;
+                //    case 3:
+                //        Game.StateOfGame = Menu.currentGameState.level3;
+                //        break;
+                //    case 4:
+                //        Game.StateOfGame = Menu.currentGameState.level4;
+                //        break;
+                //    default:
+                //        break;
+                //}
+            }
+
         }
     }
 }

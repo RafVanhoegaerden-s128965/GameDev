@@ -1,7 +1,7 @@
 ﻿using GameProject.GameObjects.Non_Playable_Character;
 using GameProject.GameObjects.Playable;
 using GameProject.GameObjects.PowerUps;
-using GameProject.HUD;
+using GameProject.HUD.Menu.LevelComponents;
 using GameProject.Map;
 using GameProject.Map_Design;
 using Microsoft.Xna.Framework;

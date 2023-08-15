@@ -2,7 +2,7 @@
 using GameProject.GameObjects.Non_Playable_Character.Enemies;
 using GameProject.GameObjects.Playable;
 using GameProject.GameObjects.PowerUps;
-using GameProject.HUD;
+using GameProject.HUD.Menu.LevelComponents;
 using GameProject.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -30,7 +30,9 @@ namespace GameProject.Level
         public Level1(Game game, ContentManager content, MainCharacter mainCharacter, HPBar hpBar) : base(game) 
         {
             this.MainCharacter = mainCharacter;
+
             this.HpBar = hpBar;
+
             this._font = content.Load<SpriteFont>("Fonts\\Font");
         }
 
@@ -48,6 +50,9 @@ namespace GameProject.Level
             Map = new MapDrawer(Level, Tileset);
 
             GetCollisionOfMap();
+
+            MainCharacter.Position = new Vector2(RespawnZone[0].X, RespawnZone[0].Y);
+
             #endregion
 
             #region Enemies
@@ -117,6 +122,7 @@ namespace GameProject.Level
             // Update PowerUps
             if (!MainCharacter.PowerUpActive) { _powerUp1.Update(gameTime); }
             #endregion
+
         }
     }
 }
