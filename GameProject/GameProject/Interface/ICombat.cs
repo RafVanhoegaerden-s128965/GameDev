@@ -10,6 +10,7 @@ namespace GameProject.Interface
     {
         public bool IsAlive { get; set; }
         public int HP { get; set; }
+        public int MaxHP { get; set; }
         public int Damage { get; set; }
         public bool IsDamaged { get; set; }
     }

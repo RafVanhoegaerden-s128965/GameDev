@@ -28,7 +28,8 @@ namespace GameProject.GameObjects.Non_Playable_Character.Enemies
             Hitbox = new Rectangle((int)Position.X, (int)Position.Y, RunningAnimation.CurrentFrame.SourceRectangle.Width, RunningAnimation.CurrentFrame.SourceRectangle.Height);
 
             // Combat
-
+            HP = 2;
+            MaxHP = 2;
             Damage = 2;
 
             // Moving

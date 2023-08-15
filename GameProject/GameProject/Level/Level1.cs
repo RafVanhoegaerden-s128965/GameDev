@@ -1,6 +1,7 @@
 ﻿using GameProject.GameObjects.Non_Playable_Character;
 using GameProject.GameObjects.Non_Playable_Character.Enemies;
 using GameProject.GameObjects.Playable;
+using GameProject.HUD;
 using GameProject.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -19,9 +20,10 @@ namespace GameProject.Level
         private Boar Boar { get; set; }
 
 
-        public Level1(Game game, MainCharacter mainCharacter) : base(game) 
+        public Level1(Game game, MainCharacter mainCharacter, HPBar hpBar) : base(game) 
         {
             this.MainCharacter = mainCharacter;
+            this.HpBar = hpBar;
         }
 
         public override void LoadContent()

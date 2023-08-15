@@ -49,3 +49,4 @@ C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\
 C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\TileSheets\Level1 TileSheet.xnb
 C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Sprites\Enemies\BatMovement.xnb
 C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Sprites\Enemies\BoarMovement.xnb
+C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Fonts\Font.xnb

@@ -1,5 +1,6 @@
 ﻿using GameProject.GameObjects.Non_Playable_Character;
 using GameProject.GameObjects.Playable;
+using GameProject.HUD;
 using GameProject.Map;
 using GameProject.Map_Design;
 using Microsoft.Xna.Framework;
@@ -20,6 +21,8 @@ namespace GameProject.Level
 
         public MainCharacter MainCharacter { get; set; }
         public Vector2 MainCharacterInitPosition { get; set; }
+
+        public HPBar HpBar { get; set; }
 
         #region Tiled
         public TmxMap Level { get; set; }
@@ -58,6 +61,8 @@ namespace GameProject.Level
             CollisionController.DrawLevel(SpriteBatch, Map); // Draw Level
 
             MainCharacter.Draw(SpriteBatch); // Draw MainCharacter
+
+            HpBar.Draw(SpriteBatch);
         }
 
         public void UpdateLevel(GameTime gameTime)
@@ -68,6 +73,8 @@ namespace GameProject.Level
             MainCharacter.Update(gameTime); // Update
             LevelInteractions.GetMainCharacterCollides(MainCharacter, CollisionTiles, MainCharacterInitPosition); // Collision
             #endregion
+
+            HpBar.Update(gameTime);
 
             LevelInteractions.GetEnemyCollides(MainCharacter, EnemyList);
 

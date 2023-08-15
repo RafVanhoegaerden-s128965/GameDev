@@ -1,4 +1,5 @@
 ﻿using GameProject.GameObjects.Playable;
+using GameProject.HUD;
 using GameProject.Level;
 using GameProject.Map;
 using Microsoft.Xna.Framework;
@@ -18,6 +19,8 @@ namespace GameProject
 
         private MainCharacter _mainCharacter;
 
+        private HPBar _hpBar;
+        private Texture2D _hpBarTexture;
 
         #region Levels
         private Level1 _level1;
@@ -60,8 +63,15 @@ namespace GameProject
 
             _mainCharacter = new MainCharacter(Content);
 
+            #region HpBar
+            _hpBarTexture = new Texture2D(GraphicsDevice, 1, 1);
+            _hpBarTexture.SetData(new[] { Color.White });
+
+            _hpBar = new HPBar(_mainCharacter, _hpBarTexture, Content);
+            #endregion
+
             #region levels
-            _level1 = new Level1(this, _mainCharacter);
+            _level1 = new Level1(this, _mainCharacter, _hpBar);
             _screenManager.LoadScreen(_level1);
             #endregion
 

@@ -47,6 +47,7 @@ namespace GameProject.GameObjects.Playable
             // Combat
 
             HP = 3;
+            MaxHP = 3;
             Damage = 1;
 
             // Moving

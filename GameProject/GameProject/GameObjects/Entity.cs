@@ -20,6 +20,7 @@ namespace GameProject.GameObjects
         // ICombat
         public bool IsAlive { get; set; } = true;
         public int HP { get; set; }
+        public int MaxHP { get; set; }
         public int Damage { get; set; }
         public bool IsDamaged { get; set; } = false;
 
