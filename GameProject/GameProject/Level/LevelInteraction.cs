@@ -38,11 +38,11 @@ namespace GameProject.Level
 
             mainCharacter.IsDamaged = (currentTime - mainCharacter.LastHitTime).TotalSeconds < 3; // Adjust the time duration if needed
 
+            // MainCharacter DOES Damage
             foreach (var enemy in enemyList)
             {
                 enemy.IsDamaged = (currentTime - enemy.LastHitTime).TotalSeconds < 1; // Adjust the time duration if needed
 
-                // MainCharacter DOES Damage
                 if (!enemy.IsDamaged && mainCharacter.CurrentMovementState == CurrentMovementState.Attacking && mainCharacter.Hitbox.Intersects(enemy.Hitbox))
                 {
                     // Check if enough time has passed since the last hit

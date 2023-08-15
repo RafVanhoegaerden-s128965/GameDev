@@ -68,7 +68,6 @@ namespace GameProject.Managers
             DateTime currentTime = DateTime.Now;
 
             Color runningColor = enemy.IsDamaged && currentTime.Millisecond % 500 < 250 ? Color.Red * 0.7f : Color.White;
-
             spriteBatch.Draw(enemy.RunningTexture, enemy.Position, enemy.RunningAnimation.CurrentFrame.SourceRectangle, runningColor, 0f, Vector2.Zero, 1.4f, enemy.DirectionPosition, 0f); // Texture, Position, Hitbox, Color, Rotation, Origin, Scale, Effects, LayerDepth
         }
 

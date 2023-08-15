@@ -20,9 +20,11 @@ namespace GameProject.Level
 
         public Texture2D Background { get; set; }
 
+        #region MainCharacter
         public MainCharacter MainCharacter { get; set; }
         public Vector2 MainCharacterInitPosition { get; set; }
         public HPBar HpBar { get; set; }
+        #endregion
 
         #region Tiled
         public TmxMap Level { get; set; }
@@ -82,7 +84,7 @@ namespace GameProject.Level
             HpBar.Update(gameTime); // Update HP
             #endregion
 
-            #region Objects
+            #region GetCollisions
             LevelInteractions.GetEnemyCollides(MainCharacter, EnemyList);
             LevelInteractions.GetPowerUpCollides(MainCharacter, PowerUpList);
             #endregion

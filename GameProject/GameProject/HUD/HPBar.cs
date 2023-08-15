@@ -16,11 +16,11 @@ namespace GameProject.HUD
         private int _maxHP;
 
         private Texture2D _backgroundTexture;
-        private SpriteFont _font;
 
         private Color _hpBarColor = Color.Red;
         private int _hpBarWidth = 400;
         private int _hpBarHeight = 35;
+        private SpriteFont _font;
 
         public HPBar(MainCharacter mainCharacter, Texture2D backgroundTexture, ContentManager content)
         {

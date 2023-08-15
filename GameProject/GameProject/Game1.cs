@@ -71,22 +71,12 @@ namespace GameProject
             #endregion
 
             #region levels
-            _level1 = new Level1(this, _mainCharacter, _hpBar);
+            _level1 = new Level1(this, Content, _mainCharacter, _hpBar);
             _screenManager.LoadScreen(_level1);
             #endregion
 
             _level1.MainCharacter.Position = new Vector2(_level1.RespawnZone[0].X, _level1.RespawnZone[0].Y);
         }
-
-        protected override void Update(GameTime gameTime)
-        {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-
-            base.Update(gameTime);
-        }
-
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
@@ -98,6 +88,15 @@ namespace GameProject
             _spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        protected override void Update(GameTime gameTime)
+        {
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
+
+
+            base.Update(gameTime);
         }
     }
 }
