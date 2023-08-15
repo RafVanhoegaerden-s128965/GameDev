@@ -52,7 +52,12 @@ namespace GameProject.Managers
                 {
                     entity.IsJumping = true;
                     entity.IsFalling = false;
-                    entity.JumpSpeed = -25; // Give it upward thrust
+                    entity.JumpSpeed = -20; // Give it upward thrust
+
+                    if (entity.PowerUpActive) 
+                    {
+                        entity.JumpSpeed = -25;
+                    }
                     //Debug.WriteLine($"JUMP START Jumping: {entity.IsJumping} // Falling: {entity.IsFalling}");
                 }
             }

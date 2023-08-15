@@ -44,9 +44,8 @@ namespace GameProject.GameObjects.Non_Playable_Character
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            // DrawLevel Animations
+            // DrawEnemy Animations
             AnimationManager.DrawEnemyAnimation(spriteBatch, this);
-
         }
 
         public void Update(GameTime gameTime)
@@ -54,7 +53,7 @@ namespace GameProject.GameObjects.Non_Playable_Character
             // Movement
             MovementManager.EnemyMove(this);
 
-            // UpdateLevel Animations + Hitbox
+            // UpdateEnemy Animations
             AnimationManager.UpdateEnemyAnimation(gameTime, this);
         }
     }

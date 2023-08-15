@@ -1,12 +1,15 @@
 ﻿using GameProject.GameObjects.Playable;
-using GameProject.HUD;
+using GameProject.HUD.Menu;
+using GameProject.HUD.Menu.LevelComponents;
 using GameProject.Level;
 using GameProject.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Screens;
+using MonoGame.Extended.Screens.Transitions;
 using MonoGame.Extended.Sprites;
+using System.Diagnostics;
 using TiledSharp;
 
 namespace GameProject
@@ -17,10 +20,18 @@ namespace GameProject
         private SpriteBatch _spriteBatch;
         private ScreenManager _screenManager;
 
+        #region GameState
+        public CurrentGameState StateOfGame { get; set; }
+        public CurrentPlayerState StateOfPlayer { get; set; }
+        public CurrentGameState PreviousStateOfGame { get; set; }
+        #endregion
+
         private MainCharacter _mainCharacter;
 
+        #region HPBar
         private HPBar _hpBar;
         private Texture2D _hpBarTexture;
+        #endregion
 
         #region Levels
         private Level1 _level1;
@@ -52,7 +63,8 @@ namespace GameProject
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            StateOfGame = CurrentGameState.Level1;
+            PreviousStateOfGame = CurrentGameState.Menu;
 
             base.Initialize();
         }
@@ -71,22 +83,9 @@ namespace GameProject
             #endregion
 
             #region levels
-            _level1 = new Level1(this, _mainCharacter, _hpBar);
-            _screenManager.LoadScreen(_level1);
+            _level1 = new Level1(this, Content, _mainCharacter, _hpBar);
             #endregion
-
-            _level1.MainCharacter.Position = new Vector2(_level1.RespawnZone[0].X, _level1.RespawnZone[0].Y);
         }
-
-        protected override void Update(GameTime gameTime)
-        {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-
-            base.Update(gameTime);
-        }
-
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
@@ -98,6 +97,42 @@ namespace GameProject
             _spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        protected override void Update(GameTime gameTime)
+        {
+            // Exit Control
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
+
+            Debug.WriteLine($"StateOfGame: {StateOfGame}");
+            Debug.WriteLine(PreviousStateOfGame);
+
+
+            if (PreviousStateOfGame != StateOfGame)
+            {
+                switch (StateOfGame)
+                {
+                    case CurrentGameState.Level1:
+                        _screenManager.LoadScreen(_level1, new FadeTransition(GraphicsDevice, Color.Black));
+                        break;
+                    //case CurrentGameState.level2:
+                    //_screenManager.LoadScreen(new Level2(this), new FadeTransition(GraphicsDevice, Color.Black));
+                    //break;
+                    case CurrentGameState.Menu:
+                        _screenManager.LoadScreen(new Menu(this), new FadeTransition(GraphicsDevice, Color.Black));
+                        break;
+                    case CurrentGameState.Ended:
+                        _screenManager.LoadScreen(new GameOver(this), new FadeTransition(GraphicsDevice, Color.Black));
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            PreviousStateOfGame = StateOfGame;
+
+            base.Update(gameTime);
         }
     }
 }

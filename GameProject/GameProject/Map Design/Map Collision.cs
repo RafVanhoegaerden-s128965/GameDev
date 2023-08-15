@@ -41,28 +41,37 @@ namespace GameProject.Map_Design
             return collisionTiles;
         }
 
-        public Rectangle GetFinishCollision(TmxMap _map, Rectangle _endRect)
+        public Rectangle GetFinishCollision(TmxMap _map, Rectangle endRect)
         {
             foreach (var CollisionRect in _map.ObjectGroups["Collision"].Objects)
             {
                 if (CollisionRect.Name == "Finish")
                 {
-                    _endRect = new Rectangle((int)CollisionRect.X, (int)CollisionRect.Y, (int)CollisionRect.Width - 10, (int)CollisionRect.Height);
+                    endRect = new Rectangle((int)CollisionRect.X, (int)CollisionRect.Y, (int)CollisionRect.Width - 10, (int)CollisionRect.Height);
                 }
             }
-            return _endRect;
+            return endRect;
 
         }
 
-        public List<Rectangle> GetEnemyPathCollision(TmxMap _map, List<Rectangle> _enemyPath)
+        public List<Rectangle> GetEnemyPathCollision(TmxMap map, List<Rectangle> enemyPath)
         {
-            foreach (var CollisionRect in _map.ObjectGroups["EnemyPath"].Objects)
+            foreach (var CollisionRect in map.ObjectGroups["EnemyPath"].Objects)
             {
-                _enemyPath.Add(new Rectangle((int)CollisionRect.X, (int)CollisionRect.Y, (int)CollisionRect.Width, (int)CollisionRect.Height));
+                enemyPath.Add(new Rectangle((int)CollisionRect.X, (int)CollisionRect.Y, (int)CollisionRect.Width, (int)CollisionRect.Height));
             }
 
-            return _enemyPath;
+            return enemyPath;
         }
 
+        public List<Rectangle> GetPowerUpPositionCollision(TmxMap _map, List<Rectangle> position)
+        {
+            foreach (var CollisionRect in _map.ObjectGroups["PowerUpPosition"].Objects)
+            {
+                position.Add(new Rectangle((int)CollisionRect.X, (int)CollisionRect.Y, (int)CollisionRect.Width, (int)CollisionRect.Height));
+            }
+
+            return position;
+        }
     }
 }

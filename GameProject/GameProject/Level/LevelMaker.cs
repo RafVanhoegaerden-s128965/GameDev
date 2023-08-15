@@ -1,6 +1,7 @@
 ﻿using GameProject.GameObjects.Non_Playable_Character;
 using GameProject.GameObjects.Playable;
-using GameProject.HUD;
+using GameProject.GameObjects.PowerUps;
+using GameProject.HUD.Menu.LevelComponents;
 using GameProject.Map;
 using GameProject.Map_Design;
 using Microsoft.Xna.Framework;
@@ -19,10 +20,11 @@ namespace GameProject.Level
 
         public Texture2D Background { get; set; }
 
+        #region MainCharacter
         public MainCharacter MainCharacter { get; set; }
         public Vector2 MainCharacterInitPosition { get; set; }
-
         public HPBar HpBar { get; set; }
+        #endregion
 
         #region Tiled
         public TmxMap Level { get; set; }
@@ -46,10 +48,16 @@ namespace GameProject.Level
         public List<Enemy> EnemyList { get; set; } = new List<Enemy>();
         #endregion
 
+        #region PowerUps
+        public List<Rectangle> PowerUpPosition { get; set; } = new List<Rectangle>();
+        public List<PowerUp> PowerUpList { get; set; } = new List<PowerUp>();
+        #endregion
+
         public void GetCollisionOfMap()
         {
             CollisionTiles = CollisionController.GetTilesCollision(Level, CollisionTiles);
             EnemyPath = CollisionController.GetEnemyPathCollision(Level, EnemyPath);
+            PowerUpPosition = CollisionController.GetPowerUpPositionCollision(Level, PowerUpPosition);
             RespawnZone = CollisionController.GetRespawnCollision(Level, RespawnZone);
             FinishZone = CollisionController.GetFinishCollision(Level, FinishZone);
         }
@@ -60,24 +68,29 @@ namespace GameProject.Level
 
             CollisionController.DrawLevel(SpriteBatch, Map); // Draw Level
 
+            #region MainCharacter
             MainCharacter.Draw(SpriteBatch); // Draw MainCharacter
-
-            HpBar.Draw(SpriteBatch);
+            HpBar.Draw(SpriteBatch); // Draw HP Bar
+            #endregion
         }
 
-        public void UpdateLevel(GameTime gameTime)
+        public void UpdateLevel(GameTime gameTime, Game1 game, int nextState)
         {
+            LevelInteractions.GetMainCharacterToNextZone(MainCharacter, FinishZone, game, nextState);
 
             #region MainCharacter
             MainCharacterInitPosition = MainCharacter.Position; // Position
             MainCharacter.Update(gameTime); // Update
             LevelInteractions.GetMainCharacterCollides(MainCharacter, CollisionTiles, MainCharacterInitPosition); // Collision
+            HpBar.Update(gameTime); // Update HP
             #endregion
 
-            HpBar.Update(gameTime);
-
+            #region GetCollisions
             LevelInteractions.GetEnemyCollides(MainCharacter, EnemyList);
+            LevelInteractions.GetPowerUpCollides(MainCharacter, PowerUpList);
+            #endregion
 
+            LevelInteractions.GetMainCharacterGameState(MainCharacter, game);
         }
     }
 }
