@@ -12,7 +12,7 @@ namespace GameProject.GameObjects.Playable
     internal class Player : Entity, IControllable, IJumpable
     {
         public float GravityFactor { get; set; }
-        public bool PowerUpActive { get; set; } = false;
+        public bool JumpPowerUpActive { get; set; } = false;
 
         // IControllable
         public IInputReader InputReader { get; set; }

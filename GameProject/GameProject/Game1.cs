@@ -35,6 +35,7 @@ namespace GameProject
 
         #region Levels
         private Level1 _level1;
+        private Level2 _level2;
         #endregion
 
 
@@ -44,7 +45,7 @@ namespace GameProject
             Content.RootDirectory = "Content";
 
             #region Screen
-            _graphics.IsFullScreen = false;
+            _graphics.IsFullScreen = true;
 
             // Screen WIDTH
             _graphics.PreferredBackBufferWidth = Settings.Screen.Width;
@@ -84,6 +85,7 @@ namespace GameProject
 
             #region levels
             _level1 = new Level1(this, Content, _mainCharacter, _hpBar);
+            _level2 = new Level2(this, Content, _mainCharacter, _hpBar, _mainCharacter.JumpPowerUpActive);
             #endregion
         }
         protected override void Draw(GameTime gameTime)
@@ -116,9 +118,9 @@ namespace GameProject
                     case CurrentGameState.Level1:
                         _screenManager.LoadScreen(_level1, new FadeTransition(GraphicsDevice, Color.Black));
                         break;
-                    //case CurrentGameState.level2:
-                    //_screenManager.LoadScreen(new Level2(this), new FadeTransition(GraphicsDevice, Color.Black));
-                    //break;
+                    case CurrentGameState.Level2:
+                        _screenManager.LoadScreen(_level2, new FadeTransition(GraphicsDevice, Color.Black));
+                        break;
                     case CurrentGameState.Menu:
                         _screenManager.LoadScreen(new Menu(this), new FadeTransition(GraphicsDevice, Color.Black));
                         break;

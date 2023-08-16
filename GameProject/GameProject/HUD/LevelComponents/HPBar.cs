@@ -34,19 +34,19 @@ namespace GameProject.HUD.Menu.LevelComponents
         public override void Draw(SpriteBatch spriteBatch)
         {
             // Background Bar
-            Rectangle backgroundRect = new Rectangle(780, 980, _hpBarWidth + 10, _hpBarHeight + 10);
+            Rectangle backgroundRect = new Rectangle(780, 995, _hpBarWidth + 10, _hpBarHeight + 10);
             spriteBatch.Draw(_backgroundTexture, backgroundRect, Color.Black);
 
             // Foreground Bar
             float healthRatio = (float)_hp / _maxHP;
             Debug.WriteLine($"{_hp}/ {_maxHP}");
             int filledWidth = (int)(_hpBarWidth * healthRatio);
-            Rectangle filledRect = new Rectangle(785, 985, filledWidth, _hpBarHeight);
+            Rectangle filledRect = new Rectangle(785, 1000, filledWidth, _hpBarHeight);
             spriteBatch.Draw(_backgroundTexture, filledRect, _hpBarColor);
 
             // Text Label
             string labelText = $"HP Bar:";
-            Vector2 labelPosition = new Vector2(780, 950);
+            Vector2 labelPosition = new Vector2(780, 960);
             Color labelColor = Color.Black;
             spriteBatch.DrawString(_font, labelText, labelPosition, labelColor);
         }

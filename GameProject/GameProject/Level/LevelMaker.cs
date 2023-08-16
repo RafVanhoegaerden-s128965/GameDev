@@ -18,6 +18,8 @@ namespace GameProject.Level
         public LevelMaker(Game game) : base(game) { } // Gamescreen
         public SpriteBatch SpriteBatch { get; set; }
 
+        public SpriteFont Font { get; set; }
+
         public Texture2D Background { get; set; }
 
         #region MainCharacter

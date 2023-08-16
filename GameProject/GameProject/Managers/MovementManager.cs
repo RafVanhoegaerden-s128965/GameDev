@@ -54,7 +54,7 @@ namespace GameProject.Managers
                     entity.IsFalling = false;
                     entity.JumpSpeed = -20; // Give it upward thrust
 
-                    if (entity.PowerUpActive) 
+                    if (entity.JumpPowerUpActive) 
                     {
                         entity.JumpSpeed = -25;
                     }

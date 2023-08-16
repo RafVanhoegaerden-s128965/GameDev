@@ -35,6 +35,9 @@
 #begin Levels/Level1.tmx
 /copy:Levels/Level1.tmx
 
+#begin Levels/Level2.tmx
+/copy:Levels/Level2.tmx
+
 #begin Sprites/Enemies/BatMovement.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -118,4 +121,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:TileSheets/Level1 TileSheet.png
+
+#begin TileSheets/Level2 TileSheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:TileSheets/Level2 TileSheet.png
 

@@ -51,3 +51,5 @@ C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\
 C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Sprites\Enemies\BoarMovement.xnb
 C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Fonts\Font.xnb
 C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Sprites\PowerUps\JumpPowerUp.xnb
+C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Levels\Level2.tmx
+C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\TileSheets\Level2 TileSheet.xnb

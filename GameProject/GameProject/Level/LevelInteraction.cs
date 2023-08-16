@@ -122,7 +122,7 @@ namespace GameProject.Level
             {
                 if (mainCharacter.Hitbox.Intersects(powerUp.Hitbox))
                 {
-                    mainCharacter.PowerUpActive = true;
+                    mainCharacter.JumpPowerUpActive = true;
                 }
             }
         }
