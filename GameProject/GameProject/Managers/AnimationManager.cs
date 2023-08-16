@@ -1,6 +1,7 @@
 ﻿using GameProject.Animations;
 using GameProject.GameObjects;
 using GameProject.GameObjects.Non_Playable_Character;
+using GameProject.GameObjects.Non_Playable_Character.Enemies;
 using GameProject.GameObjects.Playable;
 using GameProject.GameObjects.PowerUps;
 using GameProject.Interface;

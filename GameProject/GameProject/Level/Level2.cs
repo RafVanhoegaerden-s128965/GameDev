@@ -29,6 +29,7 @@ namespace GameProject.Level
         private Bat _bat1 { get; set; }
         private Snail _snail1 { get; set; }
         private Boar _boar1 { get; set; }
+        private Reaper _reaper1 { get; set; }
         #endregion
 
         #region PowerUps
@@ -77,11 +78,13 @@ namespace GameProject.Level
             _bat1 = new Bat(Content, EnemyPath[2]);
             _snail1 = new Snail(Content, EnemyPath[1]);
             _boar1 = new Boar(Content, EnemyPath[3]);
+            _reaper1 = new Reaper(Content, EnemyPath[0]);
 
             // Add to List
             EnemyList.Add(_bat1);
             EnemyList.Add(_snail1);
             EnemyList.Add(_boar1);
+            EnemyList.Add(_reaper1);
             #endregion
 
             #region PowerUps
@@ -106,6 +109,7 @@ namespace GameProject.Level
             if (_bat1.IsAlive) { _bat1.Draw(SpriteBatch); }
             if (_snail1.IsAlive) { _snail1.Draw(SpriteBatch); }
             if (_boar1.IsAlive) { _boar1.Draw(SpriteBatch); }
+            if (_reaper1.IsAlive) { _reaper1.Draw(SpriteBatch); }
             #endregion
 
             #region PowerUps
@@ -141,13 +145,14 @@ namespace GameProject.Level
 
         public override void Update(GameTime gameTime)
         {
-            UpdateLevel(gameTime, this.Game, 3); // Update Map + Last value = State of Game ==> load new screen
+            UpdateLevel(gameTime, this.Game, 0); // Update Map + Last value = State of Game ==> load new screen
 
             #region Enemies
             // Update Enemies
             if (_bat1.IsAlive) { _bat1.Update(gameTime); }
             if (_snail1.IsAlive) { _snail1.Update(gameTime); }
             if (_boar1.IsAlive) { _boar1.Update(gameTime); }
+            if (_reaper1.IsAlive) { _reaper1.Update(gameTime); }
             #endregion
 
             #region PowerUps

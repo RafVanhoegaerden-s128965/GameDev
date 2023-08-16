@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameProject.HUD.Menu
+namespace GameProject.HUD.Ending
 {
     internal class GameOver : GameScreen
     {
-        private new Game1 game => (Game1)base.Game;
+        private new Game1 game => (Game1)Game;
 
         public SpriteBatch SpriteBatch;
 
@@ -23,12 +23,16 @@ namespace GameProject.HUD.Menu
 
         public override void Draw(GameTime gameTime)
         {
-            
+            SpriteBatch.Begin();
+
+            SpriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"You Lost", new Vector2(330, 150), Color.Red);
+
+            SpriteBatch.End();
         }
 
         public override void Update(GameTime gameTime)
         {
-            
+
         }
     }
 }

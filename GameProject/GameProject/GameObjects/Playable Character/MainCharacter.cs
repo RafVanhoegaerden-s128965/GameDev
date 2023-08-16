@@ -95,7 +95,7 @@ namespace GameProject.GameObjects.Playable
 
             if (AttackPowerUpActive)
             {
-                Damage += AttackEffect;
+                Damage = AttackEffect;
             }
 
             // Movement

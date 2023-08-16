@@ -82,16 +82,16 @@
         },
         "Level2.tmx": {
             "expandedObjectLayers": [
-                10,
-                9,
                 11,
-                8
+                8,
+                9,
+                10
             ],
-            "scale": 0.75,
-            "selectedLayer": 7,
+            "scale": 1,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 866,
-                "y": 445.33333333333326
+                "x": 991.5,
+                "y": 147
             }
         },
         "Level2.tmx#Level2 TileSheet": {

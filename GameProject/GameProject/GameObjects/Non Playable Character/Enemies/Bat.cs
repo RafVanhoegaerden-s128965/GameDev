@@ -31,6 +31,8 @@ namespace GameProject.GameObjects.Non_Playable_Character
             #endregion
 
             #region Moving
+            CurrentMovementState = Interface.CurrentMovementState.Running;
+
             Position = new Vector2(path.X, path.Y);
             Speed = new Vector2(2, 0);
             Acceleration = new Vector2(0f, 0f);

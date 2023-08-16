@@ -1,5 +1,6 @@
 ﻿using GameProject.GameObjects;
 using GameProject.GameObjects.Non_Playable_Character;
+using GameProject.GameObjects.Non_Playable_Character.Enemies;
 using GameProject.GameObjects.Playable;
 using GameProject.GameObjects.PowerUps;
 using GameProject.HUD.Menu;
@@ -120,7 +121,7 @@ namespace GameProject.Level
         #endregion
 
         #region Methods
-        public void MainCharacterIsDamaged(MainCharacter mainCharacter, DateTime currentTime, List<Enemy> enemyList)
+        public void MainCharacterDoesDamage(MainCharacter mainCharacter, DateTime currentTime, List<Enemy> enemyList)
         {
             mainCharacter.IsDamaged = (currentTime - mainCharacter.LastHitTime).TotalSeconds < 3; // Adjust the time duration if needed
 
@@ -154,7 +155,7 @@ namespace GameProject.Level
             }
         }
 
-        public void MainCharacterDoesDamage(MainCharacter mainCharacter, DateTime currentTime, List<Enemy> enemyList) 
+        public void MainCharacterIsDamaged(MainCharacter mainCharacter, DateTime currentTime, List<Enemy> enemyList) 
         {
             foreach (var enemy in enemyList)
             {
