@@ -21,8 +21,13 @@ namespace GameProject.Level
     {
         private new Game1 Game => (Game1)base.Game;
 
+        #region Trap
+        private Trap _trap1 { get; set; }
+        #endregion
+
         #region Enemies
-        private Trap _trap1 { get; set; } 
+        private Bat _bat1 { get; set; }
+        private Snail _snail1 { get; set; }
         #endregion
 
         #region PowerUps
@@ -32,9 +37,8 @@ namespace GameProject.Level
         public Level2(Game game, ContentManager content, MainCharacter mainCharacter, HPBar hpBar, bool jumpPowerUpActive) : base(game)
         {
             this.MainCharacter = mainCharacter;
-            this.MainCharacter.JumpPowerUpActive = jumpPowerUpActive;
-            //this.MainCharacter.JumpPowerUpActive = true;
-
+            //this.MainCharacter.JumpPowerUpActive = jumpPowerUpActive;
+            this.MainCharacter.JumpPowerUpActive = true;
 
             this.HpBar = hpBar;
 
@@ -68,9 +72,11 @@ namespace GameProject.Level
 
             #region Enemies
             // Load Enemies
-
+            _bat1 = new Bat(Content, EnemyPath[2]);
+            _snail1 = new Snail(Content, EnemyPath[1]);
             // Add to List
-
+            EnemyList.Add(_bat1);
+            EnemyList.Add(_snail1);
             #endregion
 
             #region PowerUps
@@ -88,6 +94,8 @@ namespace GameProject.Level
 
             #region Enemies
             // Draw Enemies
+            if (_bat1.IsAlive) { _bat1.Draw(SpriteBatch); }
+            if (_snail1.IsAlive) { _snail1.Draw(SpriteBatch); }
             #endregion
 
             #region PowerUps
@@ -114,7 +122,8 @@ namespace GameProject.Level
 
             #region Enemies
             // Update Enemies
-
+            if (_bat1.IsAlive) { _bat1.Update(gameTime); }
+            if (_snail1.IsAlive) { _snail1.Update(gameTime); }
             #endregion
 
             #region PowerUps

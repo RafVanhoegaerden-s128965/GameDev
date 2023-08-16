@@ -9,9 +9,11 @@ using System.Threading.Tasks;
 
 namespace GameProject.GameObjects.Playable
 {
-    internal class Player : Entity, IControllable, IJumpable
+    internal class Player : Entity, IControllable, IJumpable, IActivatePowerUp
     {
         public float GravityFactor { get; set; }
+
+        // IActivatePowerUp
         public bool JumpPowerUpActive { get; set; } = false;
 
         // IControllable
@@ -19,5 +21,6 @@ namespace GameProject.GameObjects.Playable
 
         // Hitbox Texture
         public Texture2D TestHitboxTexture { get; set; }
+        
     }
 }

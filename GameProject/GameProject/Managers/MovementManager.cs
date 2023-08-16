@@ -12,6 +12,7 @@ namespace GameProject.Managers
 {
     internal class MovementManager
     {
+        #region MainCharacter
         public void Move(Entity entity)
         {
             entity.Speed += entity.Acceleration;
@@ -62,7 +63,9 @@ namespace GameProject.Managers
                 }
             }
         }
+        #endregion
 
+        #region Enemy
         public void EnemyMove(Enemy enemy)
         {
             if (!enemy.Pathway.Contains(enemy.Hitbox))
@@ -84,5 +87,6 @@ namespace GameProject.Managers
 
             enemy.Hitbox = new Rectangle((int)enemy.Position.X, (int)enemy.Position.Y, enemy.Hitbox.Width, enemy.Hitbox.Height);
         }
+        #endregion
     }
 }

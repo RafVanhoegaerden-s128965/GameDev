@@ -13,7 +13,6 @@ namespace GameProject.GameObjects
 {
     internal abstract class Object : IGameObject, IAnimatable
     {
-        public Texture2D Texture;
         public Vector2 Position { get; set; }
 
         // ICollidable

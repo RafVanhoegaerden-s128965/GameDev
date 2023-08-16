@@ -1,23 +1,27 @@
 ﻿using GameProject.Animations;
 using GameProject.Managers;
-using GameProject.Interface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace GameProject.GameObjects.Non_Playable_Character
+namespace GameProject.GameObjects.Non_Playable_Character.Enemies
 {
-    internal class Bat : Enemy
+    internal class Snail : Enemy
     {
-        public Bat(ContentManager content, Rectangle path)
+        public Snail(ContentManager content, Rectangle path)
         {
             #region Textures
-            RunningTexture = content.Load<Texture2D>("Sprites\\Enemies\\BatMovement");
+            RunningTexture = content.Load<Texture2D>("Sprites\\Enemies\\SnailMovement");
             #endregion
-
+            
             #region Animations
             RunningAnimation = new Animation();
-            RunningAnimation.GetFramesFromTextureProperties(RunningTexture.Width, RunningTexture.Height, 3, 1); // Widht, Height, NumberOfSpritesWidth, NumberOfSpritesHeight
+            RunningAnimation.GetFramesFromTextureProperties(RunningTexture.Width, RunningTexture.Height, 8, 1); // Widht, Height, NumberOfSpritesWidth, NumberOfSpritesHeight
             #endregion
 
             #region Hitbox
@@ -27,18 +31,18 @@ namespace GameProject.GameObjects.Non_Playable_Character
             #region Combat
             HP = 1;
             MaxHP = 1;
-            Damage = 1;
+            Damage = 2;
             #endregion
 
             #region Moving
             Position = new Vector2(path.X, path.Y);
-            Speed = new Vector2(2, 0);
+            Speed = new Vector2(0.5f, 0);
             Acceleration = new Vector2(0f, 0f);
 
             Pathway = path;
-            IsFacingLeft = false;
+            IsFacingLeft = true;
             #endregion
-            
+
             #region Managers
             MovementManager = new MovementManager();
             AnimationManager = new AnimationManager();

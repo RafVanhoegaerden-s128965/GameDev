@@ -42,16 +42,17 @@ namespace GameProject.GameObjects.Playable
             CurrentMovementState = CurrentMovementState.Idle;
             #endregion
 
-            // Hitbox
+            #region Hitbox
 
-            // Combat
+            #endregion
 
+            #region Combat
             HP = 3;
             MaxHP = 3;
             Damage = 1;
+            #endregion
 
-            // Moving
-
+            #region Moving
             Position = new Vector2(0, 0);
             Speed = new Vector2(7, 10);
             Acceleration = new Vector2(0f, 0f);
@@ -59,14 +60,14 @@ namespace GameProject.GameObjects.Playable
             StartY = Position.Y;
 
             // Jump State
-
             IsFalling = true;
             IsJumping = false;
+            #endregion
 
-            // Managers
-
+            #region Managers
             MovementManager = new MovementManager();
             AnimationManager = new AnimationManager();
+            #endregion
         }
         public void Draw(SpriteBatch spriteBatch)
         {

@@ -14,9 +14,9 @@ namespace GameProject.GameObjects.Non_Playable_Character
         {
             Position = new Vector2(position.X, position.Y);
 
-            // Hitbox
+            #region Hitbox
             Hitbox = new Rectangle((int)Position.X, (int)Position.Y, position.Width, position.Height);
-
+            #endregion
         }
     }
 }
