@@ -1,4 +1,5 @@
 ﻿using GameProject.Animations;
+using GameProject.GameObjects.PowerUps;
 using GameProject.InputReader;
 using GameProject.Interface;
 using GameProject.Managers;
@@ -9,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
@@ -42,16 +44,17 @@ namespace GameProject.GameObjects.Playable
             CurrentMovementState = CurrentMovementState.Idle;
             #endregion
 
-            // Hitbox
+            #region Hitbox
 
-            // Combat
+            #endregion
 
+            #region Combat
             HP = 3;
             MaxHP = 3;
             Damage = 1;
+            #endregion
 
-            // Moving
-
+            #region Moving
             Position = new Vector2(0, 0);
             Speed = new Vector2(7, 10);
             Acceleration = new Vector2(0f, 0f);
@@ -59,14 +62,14 @@ namespace GameProject.GameObjects.Playable
             StartY = Position.Y;
 
             // Jump State
-
             IsFalling = true;
             IsJumping = false;
+            #endregion
 
-            // Managers
-
+            #region Managers
             MovementManager = new MovementManager();
             AnimationManager = new AnimationManager();
+            #endregion
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -81,6 +84,19 @@ namespace GameProject.GameObjects.Playable
 
             // Read Input
             InputReader.ReadInput(this);
+
+            // Combat
+            if (HealthPowerUpActive && !HealthEffectApplied)
+            {
+                MaxHP += HealthEffect;
+                HP = MaxHP;
+                HealthEffectApplied = true;
+            }
+
+            if (AttackPowerUpActive)
+            {
+                Damage = AttackEffect;
+            }
 
             // Movement
             MovementManager.Move(this);

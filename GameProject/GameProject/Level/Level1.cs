@@ -15,8 +15,6 @@ namespace GameProject.Level
     {
         private new Game1 Game => (Game1)base.Game;
 
-        private SpriteFont _font { get; set; }
-
         #region Enemies
         private Bat _bat1 { get; set; }
         private Bat _bat2 { get; set; }
@@ -33,7 +31,7 @@ namespace GameProject.Level
 
             this.HpBar = hpBar;
 
-            this._font = content.Load<SpriteFont>("Fonts\\Font");
+            this.Font = content.Load<SpriteFont>("Fonts\\Font");
         }
 
         public override void LoadContent()
@@ -46,12 +44,15 @@ namespace GameProject.Level
 
             // Load Level
             Level = new  TmxMap("Content\\Levels\\Level1.tmx");
-            Tileset = Content.Load<Texture2D>("TileSheets\\" + Level.Tilesets[0].Name.ToString());
+            Tileset = Content.Load<Texture2D>("TileSheets\\Level1 TileSheet");
             Map = new MapDrawer(Level, Tileset);
 
             GetCollisionOfMap();
 
             MainCharacter.Position = new Vector2(RespawnZone[0].X, RespawnZone[0].Y);
+
+            //MainCharacter.Position = new Vector2(1700, 50);
+
             #endregion
 
             #region Enemies
@@ -67,7 +68,7 @@ namespace GameProject.Level
             #endregion
 
             #region PowerUps
-            _powerUp1 = new JumpPowerUp(Content, PowerUpPosition[0]);
+            _powerUp1 = new JumpPowerUp(Content, PowerUpPosition[0], MainCharacter);
             PowerUpList.Add(_powerUp1);
             #endregion
 
@@ -89,16 +90,16 @@ namespace GameProject.Level
 
             #region PowerUps
             // Draw PowerUps
-            if (!MainCharacter.PowerUpActive) { _powerUp1.Draw(SpriteBatch); }
+            if (!MainCharacter.JumpPowerUpActive) { _powerUp1.Draw(SpriteBatch); }
 
             #region PowerUpText
             // Text Label
-            if (MainCharacter.PowerUpActive)
+            if (MainCharacter.JumpPowerUpActive)
             {
                 string labelText = $"JumpBoost Activated";
-                Vector2 labelPosition = new Vector2(780, 920);
+                Vector2 labelPosition = new Vector2(85, 995);
                 Color labelColor = Color.Yellow;
-                SpriteBatch.DrawString(_font, labelText, labelPosition, labelColor);
+                SpriteBatch.DrawString(Font, labelText, labelPosition, labelColor);
             }
             #endregion
             #endregion
@@ -108,7 +109,7 @@ namespace GameProject.Level
 
         public override void Update(GameTime gameTime)
         {
-            UpdateLevel(gameTime, this.Game, 3); // Update Map + Last value = State of Game ==> load new screen
+            UpdateLevel(gameTime, this.Game, 2); // Update Map + Last value = State of Game ==> load new screen
 
             #region Enemies
             // Update Enemies
@@ -119,7 +120,7 @@ namespace GameProject.Level
 
             #region PowerUps
             // Update PowerUps
-            if (!MainCharacter.PowerUpActive) { _powerUp1.Update(gameTime); }
+            if (!MainCharacter.JumpPowerUpActive) { _powerUp1.Update(gameTime); }
             #endregion
 
         }

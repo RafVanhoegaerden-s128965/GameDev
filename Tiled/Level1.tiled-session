@@ -3,13 +3,13 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Level1.tmx",
+    "activeFile": "Level2.tmx",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "": {
-            "scaleInDock": 1,
+            "scaleInDock": 0.75,
             "scaleInEditor": 1
         },
         "C:/Users/Raf/Documents/AP Hoge School/Herexamen/GameDev/GameProject/GameProject/Content/Levels/Level1.tmx": {
@@ -33,7 +33,7 @@
         },
         "Level1 TileSheet.tsx": {
             "scaleInDock": 0.75,
-            "scaleInEditor": 1.5
+            "scaleInEditor": 0.5
         },
         "Level1-Protype.tmx": {
             "scale": 1,
@@ -53,11 +53,14 @@
             "scaleInDock": 1
         },
         "Level1.tmx": {
-            "scale": 0.75,
-            "selectedLayer": 9,
+            "expandedObjectLayers": [
+                9
+            ],
+            "scale": 0.5,
+            "selectedLayer": 10,
             "viewCenter": {
-                "x": 1407.3333333333335,
-                "y": 614.6666666666667
+                "x": 955,
+                "y": 526
             }
         },
         "Level1.tmx#Level1 TileSheet": {
@@ -73,6 +76,26 @@
         "Level1.tmx#TX_Tileset_Ground": {
             "dynamicWrapping": false,
             "scaleInDock": 1
+        },
+        "Level2 TileSheet.tsx": {
+            "scaleInDock": 0.75
+        },
+        "Level2.tmx": {
+            "expandedObjectLayers": [
+                11,
+                8,
+                9,
+                10
+            ],
+            "scale": 1,
+            "selectedLayer": 8,
+            "viewCenter": {
+                "x": 991.5,
+                "y": 147
+            }
+        },
+        "Level2.tmx#Level2 TileSheet": {
+            "scaleInDock": 0.75
         },
         "Resized.tsx": {
             "scaleInDock": 1,
@@ -107,19 +130,19 @@
     },
     "last.externalTilesetPath": "C:/Users/Raf/Documents/AP Hoge School/Herexamen/GameDev/Tiled",
     "last.imagePath": "C:/Users/Raf/Documents/AP Hoge School/Herexamen/GameDev/Images/Map Sprites v1",
-    "map.height": 33,
+    "map.height": 34,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 32,
     "map.tileWidth": 32,
     "map.width": 60,
     "openFiles": [
-        "Level1.tmx",
-        "Level1 TileSheet.tsx"
+        "Level2.tmx"
     ],
     "project": "Level1.tiled-project",
     "recentFiles": [
-        "Level1 TileSheet.tsx",
+        "Level2.tmx",
         "Level1.tmx",
+        "Level1 TileSheet.tsx",
         "C:/Users/Raf/Documents/AP Hoge School/Herexamen/GameDev/GameProject/GameProject/Content/Levels/Level1.tmx",
         "Level1-Protype.tmx",
         "TX Village Props.tsx",
@@ -128,8 +151,7 @@
         "GroundTiles.tsx",
         "Green-Tree.tsx",
         "pixil-frame-0.tsx",
-        "Tiles.tsx",
-        "Resized.tsx"
+        "Tiles.tsx"
     ],
     "tileset.embedInMap": true,
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",

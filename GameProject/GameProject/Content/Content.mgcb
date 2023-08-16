@@ -35,6 +35,9 @@
 #begin Levels/Level1.tmx
 /copy:Levels/Level1.tmx
 
+#begin Levels/Level2.tmx
+/copy:Levels/Level2.tmx
+
 #begin Sprites/Enemies/BatMovement.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -58,6 +61,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/BoarMovement.png
+
+#begin Sprites/Enemies/Reaper/ReaperMovement.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Reaper/ReaperMovement.png
+
+#begin Sprites/Enemies/SnailMovement.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/SnailMovement.png
 
 #begin Sprites/MainCharacter/Attack-01-Sheet.png
 /importer:TextureImporter
@@ -95,7 +122,7 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/MainCharacter/Run-Sheet.png
 
-#begin Sprites/PowerUps/JumpPowerUp.png
+#begin Sprites/PowerUps/PowerUp.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -105,7 +132,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/PowerUps/JumpPowerUp.png
+/build:Sprites/PowerUps/PowerUp.png
 
 #begin TileSheets/Level1 TileSheet.png
 /importer:TextureImporter
@@ -118,4 +145,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:TileSheets/Level1 TileSheet.png
+
+#begin TileSheets/Level2 TileSheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:TileSheets/Level2 TileSheet.png
 

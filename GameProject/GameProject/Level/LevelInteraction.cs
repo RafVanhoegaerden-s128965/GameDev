@@ -1,5 +1,6 @@
 ﻿using GameProject.GameObjects;
 using GameProject.GameObjects.Non_Playable_Character;
+using GameProject.GameObjects.Non_Playable_Character.Enemies;
 using GameProject.GameObjects.Playable;
 using GameProject.GameObjects.PowerUps;
 using GameProject.HUD.Menu;
@@ -14,6 +15,7 @@ namespace GameProject.Level
 {
     internal class LevelInteractions
     {
+        #region GetCollision
         public void GetMainCharacterCollides(MainCharacter mainCharacter, List<Rectangle> collisionTiles, Vector2 mainCharacterInitPosition)
         {
             foreach (var rectangle in collisionTiles)
@@ -32,98 +34,58 @@ namespace GameProject.Level
                 }
             }
         }
+        public void GetEnemyCollides(MainCharacter mainCharacter, List<Enemy> enemyList)
+        {
+            DateTime currentTime = DateTime.Now;
+
+            MainCharacterIsDamaged(mainCharacter, currentTime, enemyList);
+
+            MainCharacterDoesDamage(mainCharacter, currentTime, enemyList);
+        }
+        public void GetTrapCollides(MainCharacter mainCharacter, List<Trap> trapList)
+        {
+            foreach (var trap in trapList) 
+            {
+                if (mainCharacter.Hitbox.Intersects(trap.Hitbox))
+                {
+                    mainCharacter.HP = 0;
+
+                    EntityDead(mainCharacter);
+                }
+            }
+        }
+        public void GetPowerUpCollides(MainCharacter mainCharacter, List<PowerUp> powerUpList)
+        {
+            foreach (var powerUp in powerUpList)
+            {
+                // Jump PowerUp
+                if (mainCharacter.Hitbox.Intersects(powerUp.Hitbox) && powerUp.GetType() == typeof(JumpPowerUp))
+                {
+                    mainCharacter.JumpPowerUpActive = true;
+                }
+
+                // Health PowerUp
+                if (mainCharacter.Hitbox.Intersects(powerUp.Hitbox) && powerUp.GetType() == typeof(HealthPowerUp))
+                {
+                    mainCharacter.HealthPowerUpActive = true;
+                }
+
+                // Attack PowerUp
+                if (mainCharacter.Hitbox.Intersects(powerUp.Hitbox) && powerUp.GetType() == typeof(AttackPowerUp))
+                {
+                    mainCharacter.AttackPowerUpActive = true;
+                }
+            }
+        }
+        #endregion
+
+        #region GetGameState
         public void GetMainCharacterGameState(MainCharacter mainCharacter, Game1 game)
         {
             if (!mainCharacter.IsAlive)
             {
                 game.StateOfGame = CurrentGameState.Ended;
                 game.StateOfPlayer = CurrentPlayerState.Lost;
-            }
-        }
-
-
-        public void GetEnemyCollides(MainCharacter mainCharacter, List<Enemy> enemyList)
-        {
-            DateTime currentTime = DateTime.Now;
-
-            mainCharacter.IsDamaged = (currentTime - mainCharacter.LastHitTime).TotalSeconds < 3; // Adjust the time duration if needed
-
-            // MainCharacter DOES Damage
-            foreach (var enemy in enemyList)
-            {
-                enemy.IsDamaged = (currentTime - enemy.LastHitTime).TotalSeconds < 1; // Adjust the time duration if needed
-
-                if (!enemy.IsDamaged && mainCharacter.CurrentMovementState == CurrentMovementState.Attacking && mainCharacter.Hitbox.Intersects(enemy.Hitbox))
-                {
-                    // Check if enough time has passed since the last hit
-                    if ((currentTime - enemy.LastHitTime).TotalSeconds >= 1)
-                    {
-                        if (enemy.IsAlive)
-                        {
-                            enemy.HP -= mainCharacter.Damage;
-                            enemy.IsDamaged = true;
-
-                            if (enemy.HP <= 0)
-                            {
-                                enemy.IsAlive = false;
-                            }
-
-                            // Update the last hit time
-                            enemy.LastHitTime = currentTime;
-                        }
-                    }
-                }
-            }
-
-            // MainCharacter IS Damaged
-            foreach (var enemy in enemyList)
-            {
-                if (!mainCharacter.IsDamaged && mainCharacter.CurrentMovementState != CurrentMovementState.Attacking && mainCharacter.Hitbox.Intersects(enemy.Hitbox))
-                {
-                    // Check if enough time has passed since the last hit
-                    if ((currentTime - mainCharacter.LastHitTime).TotalSeconds >= 1)
-                    {
-                        if (enemy.IsAlive)
-                        {
-                            mainCharacter.HP -= enemy.Damage;
-                            mainCharacter.IsDamaged = true;
-
-                            if (mainCharacter.HP <= 0)
-                            {
-                                mainCharacter.IsAlive = false;
-                            }
-
-                            // Update the last hit time
-                            mainCharacter.LastHitTime = currentTime;
-                        }
-                    }
-                }
-            }
-
-            // Check if enough time has passed since the character was last hit
-            if (!mainCharacter.IsDamaged && (currentTime - mainCharacter.LastHitTime).TotalSeconds >= 3)
-            {
-                mainCharacter.IsDamaged = false;
-            }
-
-            // Check if enough time has passed since the enemy was last hit
-            foreach (var enemy in enemyList)
-            {
-                if (!enemy.IsDamaged && (currentTime - enemy.LastHitTime).TotalSeconds >= 1)
-                {
-                    enemy.IsDamaged = false;
-                }
-            }
-        }
-
-        public void GetPowerUpCollides(MainCharacter mainCharacter, List<PowerUp> powerUpList)
-        {
-            foreach (var powerUp in powerUpList)
-            {
-                if (mainCharacter.Hitbox.Intersects(powerUp.Hitbox))
-                {
-                    mainCharacter.PowerUpActive = true;
-                }
             }
         }
 
@@ -156,6 +118,84 @@ namespace GameProject.Level
         {
             if (endZone.Intersects(mainCharacter.Hitbox)) { game.StateOfGame = CurrentGameState.Ended; }
         }
+        #endregion
+
+        #region Methods
+        public void MainCharacterDoesDamage(MainCharacter mainCharacter, DateTime currentTime, List<Enemy> enemyList)
+        {
+            mainCharacter.IsDamaged = (currentTime - mainCharacter.LastHitTime).TotalSeconds < 3; // Adjust the time duration if needed
+
+            foreach (var enemy in enemyList)
+            {
+                enemy.IsDamaged = (currentTime - enemy.LastHitTime).TotalSeconds < 1; // Adjust the time duration if needed
+
+                if (!enemy.IsDamaged && mainCharacter.CurrentMovementState == CurrentMovementState.Attacking && mainCharacter.Hitbox.Intersects(enemy.Hitbox))
+                {
+                    // Check if enough time has passed since the last hit
+                    if ((currentTime - enemy.LastHitTime).TotalSeconds >= 1)
+                    {
+                        if (enemy.IsAlive)
+                        {
+                            enemy.HP -= mainCharacter.Damage;
+                            enemy.IsDamaged = true;
+
+                            EntityDead(enemy);
+
+                            // Update the last hit time
+                            enemy.LastHitTime = currentTime;
+                        }
+                    }
+                }
+            }
+
+            // Check if enough time has passed since the character was last hit
+            if (!mainCharacter.IsDamaged && (currentTime - mainCharacter.LastHitTime).TotalSeconds >= 3)
+            {
+                mainCharacter.IsDamaged = false;
+            }
+        }
+
+        public void MainCharacterIsDamaged(MainCharacter mainCharacter, DateTime currentTime, List<Enemy> enemyList) 
+        {
+            foreach (var enemy in enemyList)
+            {
+                if (!mainCharacter.IsDamaged && mainCharacter.CurrentMovementState != CurrentMovementState.Attacking && mainCharacter.Hitbox.Intersects(enemy.Hitbox))
+                {
+                    // Check if enough time has passed since the last hit
+                    if ((currentTime - mainCharacter.LastHitTime).TotalSeconds >= 1)
+                    {
+                        if (enemy.IsAlive)
+                        {
+                            mainCharacter.HP -= enemy.Damage;
+                            mainCharacter.IsDamaged = true;
+
+                            EntityDead(mainCharacter);
+
+                            // Update the last hit time
+                            mainCharacter.LastHitTime = currentTime;
+                        }
+                    }
+                }
+            }
+
+            // Check if enough time has passed since the enemy was last hit
+            foreach (var enemy in enemyList)
+            {
+                if (!enemy.IsDamaged && (currentTime - enemy.LastHitTime).TotalSeconds >= 1)
+                {
+                    enemy.IsDamaged = false;
+                }
+            }
+        }
+
+        public void EntityDead(Entity entity)
+        {
+            if (entity.HP <= 0)
+            {
+                entity.IsAlive = false;
+            }
+        }
+        #endregion
     }
 }
 

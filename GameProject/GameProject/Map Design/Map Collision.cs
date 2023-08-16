@@ -64,6 +64,16 @@ namespace GameProject.Map_Design
             return enemyPath;
         }
 
+        public List<Rectangle> GetTrapCollision(TmxMap map, List<Rectangle> trapPosition)
+        {
+            foreach (var CollisionRect in map.ObjectGroups["Trap"].Objects)
+            {
+                trapPosition.Add(new Rectangle((int)CollisionRect.X, (int)CollisionRect.Y, (int)CollisionRect.Width, (int)CollisionRect.Height));
+            }
+
+            return trapPosition;
+        }
+
         public List<Rectangle> GetPowerUpPositionCollision(TmxMap _map, List<Rectangle> position)
         {
             foreach (var CollisionRect in _map.ObjectGroups["PowerUpPosition"].Objects)

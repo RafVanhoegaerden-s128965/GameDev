@@ -18,6 +18,8 @@ namespace GameProject.Level
         public LevelMaker(Game game) : base(game) { } // Gamescreen
         public SpriteBatch SpriteBatch { get; set; }
 
+        public SpriteFont Font { get; set; }
+
         public Texture2D Background { get; set; }
 
         #region MainCharacter
@@ -46,6 +48,9 @@ namespace GameProject.Level
         #region Enemies
         public List<Rectangle> EnemyPath { get; set; } = new List<Rectangle>();
         public List<Enemy> EnemyList { get; set; } = new List<Enemy>();
+
+        public List<Rectangle> TrapPosition { get; set; } = new List<Rectangle>();
+        public List<Trap> TrapList { get; set; } = new List<Trap>();
         #endregion
 
         #region PowerUps
@@ -57,6 +62,7 @@ namespace GameProject.Level
         {
             CollisionTiles = CollisionController.GetTilesCollision(Level, CollisionTiles);
             EnemyPath = CollisionController.GetEnemyPathCollision(Level, EnemyPath);
+            TrapPosition = CollisionController.GetTrapCollision(Level, TrapPosition);
             PowerUpPosition = CollisionController.GetPowerUpPositionCollision(Level, PowerUpPosition);
             RespawnZone = CollisionController.GetRespawnCollision(Level, RespawnZone);
             FinishZone = CollisionController.GetFinishCollision(Level, FinishZone);
@@ -86,11 +92,12 @@ namespace GameProject.Level
             #endregion
 
             #region GetCollisions
-            LevelInteractions.GetEnemyCollides(MainCharacter, EnemyList);
-            LevelInteractions.GetPowerUpCollides(MainCharacter, PowerUpList);
+            LevelInteractions.GetEnemyCollides(MainCharacter, EnemyList); // Enemies
+            LevelInteractions.GetTrapCollides(MainCharacter, TrapList); // Traps
+            LevelInteractions.GetPowerUpCollides(MainCharacter, PowerUpList); // PowerUp
             #endregion
 
-            LevelInteractions.GetMainCharacterGameState(MainCharacter, game);
+            LevelInteractions.GetMainCharacterGameState(MainCharacter, game); // MainCharacter State
         }
     }
 }

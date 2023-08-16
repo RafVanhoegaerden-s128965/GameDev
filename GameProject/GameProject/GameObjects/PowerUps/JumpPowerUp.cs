@@ -1,4 +1,5 @@
 ﻿using GameProject.Animations;
+using GameProject.GameObjects.Playable;
 using GameProject.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -10,10 +11,10 @@ namespace GameProject.GameObjects.PowerUps
 {
     internal class JumpPowerUp : PowerUp
     {
-        public JumpPowerUp(ContentManager content, Rectangle position)
+        public JumpPowerUp(ContentManager content, Rectangle position, MainCharacter mainCharacter)
         {
             #region Textures
-            IdleTexture = content.Load<Texture2D>("Sprites\\PowerUps\\JumpPowerUp");
+            IdleTexture = content.Load<Texture2D>("Sprites\\PowerUps\\PowerUp");
             #endregion
 
             #region Animations
@@ -23,16 +24,18 @@ namespace GameProject.GameObjects.PowerUps
 
             Position = new Vector2(position.X, position.Y);
 
-            // Hitbox
+            #region Hitbox
             Hitbox = new Rectangle((int)Position.X, (int)Position.Y, IdleAnimation.CurrentFrame.SourceRectangle.Width, IdleAnimation.CurrentFrame.SourceRectangle.Height);
+            #endregion
 
-            // Effect
+            #region Effect
+            Effect = 5; // Enhance jump effect --> Jumps higher
+            mainCharacter.JumpEffect = Effect;
+            #endregion
 
-            Effect = -5; // Enhance jump effect --> Jumps higher
-
-            // Manager
-
+            #region Managers
             AnimationManager = new AnimationManager();
+            #endregion
         }
         public void Draw(SpriteBatch spriteBatch)
         {

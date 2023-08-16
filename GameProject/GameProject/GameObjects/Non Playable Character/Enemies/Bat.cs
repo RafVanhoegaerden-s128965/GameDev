@@ -20,15 +20,18 @@ namespace GameProject.GameObjects.Non_Playable_Character
             RunningAnimation.GetFramesFromTextureProperties(RunningTexture.Width, RunningTexture.Height, 3, 1); // Widht, Height, NumberOfSpritesWidth, NumberOfSpritesHeight
             #endregion
 
-            // Hitbox
+            #region Hitbox
             Hitbox = new Rectangle((int)Position.X, (int)Position.Y, RunningAnimation.CurrentFrame.SourceRectangle.Width, RunningAnimation.CurrentFrame.SourceRectangle.Height);
+            #endregion
 
-            // Combat
+            #region Combat
             HP = 1;
             MaxHP = 1;
             Damage = 1;
+            #endregion
 
-            // Moving
+            #region Moving
+            CurrentMovementState = Interface.CurrentMovementState.Running;
 
             Position = new Vector2(path.X, path.Y);
             Speed = new Vector2(2, 0);
@@ -36,11 +39,12 @@ namespace GameProject.GameObjects.Non_Playable_Character
 
             Pathway = path;
             IsFacingLeft = false;
-
-            // Managers
-
+            #endregion
+            
+            #region Managers
             MovementManager = new MovementManager();
             AnimationManager = new AnimationManager();
+            #endregion
         }
         public void Draw(SpriteBatch spriteBatch)
         {
