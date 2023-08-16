@@ -9,7 +9,6 @@ namespace GameProject.Interface
 {
     internal interface ICollidable
     {
-        public bool Passable { get; set; }
         public Rectangle Hitbox { get; set; }
         public Rectangle BoundingBox { get; set; }
     }

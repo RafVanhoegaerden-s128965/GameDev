@@ -17,7 +17,6 @@ namespace GameProject.GameObjects
         public Vector2 Position { get; set; }
 
         // ICollidable
-        public bool Passable { get; set; }
         public Rectangle Hitbox { get; set; }
         public Rectangle BoundingBox { get; set; }
 

@@ -49,8 +49,9 @@ namespace GameProject.Level
 
             GetCollisionOfMap();
 
-            //MainCharacter.Position = new Vector2(RespawnZone[0].X, RespawnZone[0].Y);
-            MainCharacter.Position = new Vector2(1700, 50);
+            MainCharacter.Position = new Vector2(RespawnZone[0].X, RespawnZone[0].Y);
+
+            //MainCharacter.Position = new Vector2(1700, 50);
 
             #endregion
 

@@ -40,8 +40,6 @@ namespace GameProject.Level
                 game.StateOfPlayer = CurrentPlayerState.Lost;
             }
         }
-
-
         public void GetEnemyCollides(MainCharacter mainCharacter, List<Enemy> enemyList)
         {
             DateTime currentTime = DateTime.Now;
@@ -63,10 +61,7 @@ namespace GameProject.Level
                             enemy.HP -= mainCharacter.Damage;
                             enemy.IsDamaged = true;
 
-                            if (enemy.HP <= 0)
-                            {
-                                enemy.IsAlive = false;
-                            }
+                            EntityDead(enemy);
 
                             // Update the last hit time
                             enemy.LastHitTime = currentTime;
@@ -88,10 +83,7 @@ namespace GameProject.Level
                             mainCharacter.HP -= enemy.Damage;
                             mainCharacter.IsDamaged = true;
 
-                            if (mainCharacter.HP <= 0)
-                            {
-                                mainCharacter.IsAlive = false;
-                            }
+                            EntityDead(mainCharacter);
 
                             // Update the last hit time
                             mainCharacter.LastHitTime = currentTime;
@@ -112,6 +104,19 @@ namespace GameProject.Level
                 if (!enemy.IsDamaged && (currentTime - enemy.LastHitTime).TotalSeconds >= 1)
                 {
                     enemy.IsDamaged = false;
+                }
+            }
+        }
+
+        public void GetTrapCollides(MainCharacter mainCharacter, List<Trap> trapList)
+        {
+            foreach (var trap in trapList) 
+            {
+                if (mainCharacter.Hitbox.Intersects(trap.Hitbox))
+                {
+                    mainCharacter.HP = 0;
+
+                    EntityDead(mainCharacter);
                 }
             }
         }
@@ -155,6 +160,15 @@ namespace GameProject.Level
         public void GetEndzone(MainCharacter mainCharacter, Rectangle endZone, Game1 game)
         {
             if (endZone.Intersects(mainCharacter.Hitbox)) { game.StateOfGame = CurrentGameState.Ended; }
+        }
+
+
+        public void EntityDead(Entity entity)
+        {
+            if (entity.HP <= 0)
+            {
+                entity.IsAlive = false;
+            }
         }
     }
 }

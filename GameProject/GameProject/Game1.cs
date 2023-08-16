@@ -45,7 +45,7 @@ namespace GameProject
             Content.RootDirectory = "Content";
 
             #region Screen
-            _graphics.IsFullScreen = true;
+            _graphics.IsFullScreen = false;
 
             // Screen WIDTH
             _graphics.PreferredBackBufferWidth = Settings.Screen.Width;

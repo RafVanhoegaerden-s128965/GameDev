@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TiledSharp;
+using System.Diagnostics;
 
 namespace GameProject.Level
 {
@@ -21,7 +22,7 @@ namespace GameProject.Level
         private new Game1 Game => (Game1)base.Game;
 
         #region Enemies
-
+        private Trap _trap1 { get; set; } 
         #endregion
 
         #region PowerUps
@@ -31,8 +32,8 @@ namespace GameProject.Level
         public Level2(Game game, ContentManager content, MainCharacter mainCharacter, HPBar hpBar, bool jumpPowerUpActive) : base(game)
         {
             this.MainCharacter = mainCharacter;
-            //this.MainCharacter.JumpPowerUpActive = jumpPowerUpActive;
-            this.MainCharacter.JumpPowerUpActive = true;
+            this.MainCharacter.JumpPowerUpActive = jumpPowerUpActive;
+            //this.MainCharacter.JumpPowerUpActive = true;
 
 
             this.HpBar = hpBar;
@@ -57,6 +58,14 @@ namespace GameProject.Level
             MainCharacter.Position = new Vector2(RespawnZone[0].X, RespawnZone[0].Y);
             #endregion
 
+            #region Trap
+            // Load Trap
+            _trap1 = new Trap(Content, TrapPosition[0]);
+
+            // Add to List
+            TrapList.Add(_trap1);
+            #endregion
+
             #region Enemies
             // Load Enemies
 
@@ -79,7 +88,6 @@ namespace GameProject.Level
 
             #region Enemies
             // Draw Enemies
-
             #endregion
 
             #region PowerUps
