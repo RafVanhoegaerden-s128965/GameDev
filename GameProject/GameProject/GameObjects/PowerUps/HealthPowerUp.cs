@@ -4,14 +4,17 @@ using GameProject.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System.Diagnostics;
-using System.IO;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace GameProject.GameObjects.PowerUps
 {
-    internal class JumpPowerUp : PowerUp
+    internal class HealthPowerUp : PowerUp
     {
-        public JumpPowerUp(ContentManager content, Rectangle position, MainCharacter mainCharacter)
+        public HealthPowerUp(ContentManager content, Rectangle position, MainCharacter mainCharacter)
         {
             #region Textures
             IdleTexture = content.Load<Texture2D>("Sprites\\PowerUps\\JumpPowerUp");
@@ -29,13 +32,14 @@ namespace GameProject.GameObjects.PowerUps
 
             // Effect
 
-            Effect = 5; // Enhance jump effect --> Jumps higher
-            mainCharacter.JumpEffect = Effect;
+            Effect = 2; // Give 2 extra Lives + Refill HP
+            mainCharacter.HealthEffect = Effect;
 
             // Manager
 
             AnimationManager = new AnimationManager();
         }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             // DrawUpdate Animations

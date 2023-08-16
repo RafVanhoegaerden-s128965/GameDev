@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Level1.tmx",
+    "activeFile": "Level2.tmx",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -59,8 +59,8 @@
             "scale": 0.5,
             "selectedLayer": 10,
             "viewCenter": {
-                "x": 957,
-                "y": 528
+                "x": 955,
+                "y": 526
             }
         },
         "Level1.tmx#Level1 TileSheet": {
@@ -82,16 +82,16 @@
         },
         "Level2.tmx": {
             "expandedObjectLayers": [
-                11,
                 10,
                 9,
+                11,
                 8
             ],
             "scale": 0.75,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 688.6666666666665,
-                "y": 738.6666666666667
+                "x": 866,
+                "y": 445.33333333333326
             }
         },
         "Level2.tmx#Level2 TileSheet": {
@@ -136,8 +136,7 @@
     "map.tileWidth": 32,
     "map.width": 60,
     "openFiles": [
-        "Level2.tmx",
-        "Level1.tmx"
+        "Level2.tmx"
     ],
     "project": "Level1.tiled-project",
     "recentFiles": [

@@ -57,7 +57,7 @@ namespace GameProject.Managers
 
                     if (entity.JumpPowerUpActive) 
                     {
-                        entity.JumpSpeed = -25;
+                        entity.JumpSpeed -= entity.JumpEffect;
                     }
                     //Debug.WriteLine($"JUMP START Jumping: {entity.IsJumping} // Falling: {entity.IsFalling}");
                 }

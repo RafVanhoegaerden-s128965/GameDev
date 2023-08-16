@@ -94,7 +94,7 @@ namespace GameProject.Level
             #region GetCollisions
             LevelInteractions.GetEnemyCollides(MainCharacter, EnemyList); // Enemies
             LevelInteractions.GetTrapCollides(MainCharacter, TrapList); // Traps
-            LevelInteractions.GetPowerUpCollides(MainCharacter, PowerUpList); // PowerUps
+            LevelInteractions.GetPowerUpCollides(MainCharacter, PowerUpList); // PowerUp
             #endregion
 
             LevelInteractions.GetMainCharacterGameState(MainCharacter, game); // MainCharacter State

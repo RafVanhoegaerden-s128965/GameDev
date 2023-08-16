@@ -57,9 +57,16 @@ namespace GameProject.Level
         {
             foreach (var powerUp in powerUpList)
             {
-                if (mainCharacter.Hitbox.Intersects(powerUp.Hitbox))
+                // Jump PowerUp
+                if (mainCharacter.Hitbox.Intersects(powerUp.Hitbox) && powerUp.GetType() == typeof(JumpPowerUp))
                 {
                     mainCharacter.JumpPowerUpActive = true;
+                }
+
+                // Health PowerUp
+                if (mainCharacter.Hitbox.Intersects(powerUp.Hitbox) && powerUp.GetType() == typeof(HealthPowerUp))
+                {
+                    mainCharacter.HealthPowerUpActive = true;
                 }
             }
         }

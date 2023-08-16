@@ -31,14 +31,16 @@ namespace GameProject.Level
         #endregion
 
         #region PowerUps
+        private HealthPowerUp _powerUp1 { get; set; }
+        private JumpPowerUp _powerUp2 { get; set; }
 
         #endregion
 
         public Level2(Game game, ContentManager content, MainCharacter mainCharacter, HPBar hpBar, bool jumpPowerUpActive) : base(game)
         {
             this.MainCharacter = mainCharacter;
-            //this.MainCharacter.JumpPowerUpActive = jumpPowerUpActive;
-            this.MainCharacter.JumpPowerUpActive = true;
+            this.MainCharacter.JumpPowerUpActive = jumpPowerUpActive;
+            //this.MainCharacter.JumpPowerUpActive = true;
 
             this.HpBar = hpBar;
 
@@ -80,7 +82,11 @@ namespace GameProject.Level
             #endregion
 
             #region PowerUps
+            _powerUp1 = new HealthPowerUp(Content, PowerUpPosition[0], MainCharacter);
+            PowerUpList.Add(_powerUp1);
 
+            _powerUp2 = new JumpPowerUp(Content, PowerUpPosition[1], MainCharacter);
+            PowerUpList.Add(_powerUp2);
             #endregion
 
             base.LoadContent();
@@ -100,9 +106,10 @@ namespace GameProject.Level
 
             #region PowerUps
             // Draw PowerUps
-
+            if (!MainCharacter.HealthPowerUpActive) { _powerUp1.Draw(SpriteBatch); }
+            if (!MainCharacter.JumpPowerUpActive) { _powerUp2.Draw(SpriteBatch); }
             #region PowerUpText
-            // Text Label
+            // Text Label JumpPowerUp
             if (MainCharacter.JumpPowerUpActive)
             {
                 string labelText = $"JumpBoost Activated";
@@ -128,7 +135,8 @@ namespace GameProject.Level
 
             #region PowerUps
             // Update PowerUps
-
+            if (!MainCharacter.HealthPowerUpActive) { _powerUp1.Update(gameTime); }
+            if (!MainCharacter.JumpPowerUpActive) { _powerUp2.Update(gameTime); }
             #endregion
         }
     }

@@ -68,7 +68,7 @@ namespace GameProject.Level
             #endregion
 
             #region PowerUps
-            _powerUp1 = new JumpPowerUp(Content, PowerUpPosition[0]);
+            _powerUp1 = new JumpPowerUp(Content, PowerUpPosition[0], MainCharacter);
             PowerUpList.Add(_powerUp1);
             #endregion
 

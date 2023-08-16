@@ -1,4 +1,5 @@
 ﻿using GameProject.Animations;
+using GameProject.GameObjects.PowerUps;
 using GameProject.InputReader;
 using GameProject.Interface;
 using GameProject.Managers;
@@ -9,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
@@ -82,6 +84,14 @@ namespace GameProject.GameObjects.Playable
 
             // Read Input
             InputReader.ReadInput(this);
+
+            // Combat
+            if (HealthPowerUpActive && !HealthEffectApplied)
+            {
+                MaxHP += HealthEffect;
+                HP = MaxHP;
+                HealthEffectApplied = true;
+            }
 
             // Movement
             MovementManager.Move(this);

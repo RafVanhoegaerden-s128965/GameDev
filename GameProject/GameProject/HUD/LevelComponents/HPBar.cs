@@ -58,6 +58,11 @@ namespace GameProject.HUD.Menu.LevelComponents
                 _hp = _mainCharacter.HP;
             }
 
+            if (_maxHP != _mainCharacter.MaxHP)
+            {
+                _maxHP = _mainCharacter.MaxHP;
+            }
+
             if (_hp < 0)
             {
                 _hp = 0;
