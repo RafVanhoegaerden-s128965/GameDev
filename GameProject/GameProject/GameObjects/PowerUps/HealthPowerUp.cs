@@ -17,7 +17,7 @@ namespace GameProject.GameObjects.PowerUps
         public HealthPowerUp(ContentManager content, Rectangle position, MainCharacter mainCharacter)
         {
             #region Textures
-            IdleTexture = content.Load<Texture2D>("Sprites\\PowerUps\\JumpPowerUp");
+            IdleTexture = content.Load<Texture2D>("Sprites\\PowerUps\\PowerUp");
             #endregion
 
             #region Animations
@@ -27,17 +27,18 @@ namespace GameProject.GameObjects.PowerUps
 
             Position = new Vector2(position.X, position.Y);
 
-            // Hitbox
+            #region Hitbox
             Hitbox = new Rectangle((int)Position.X, (int)Position.Y, IdleAnimation.CurrentFrame.SourceRectangle.Width, IdleAnimation.CurrentFrame.SourceRectangle.Height);
+            #endregion
 
-            // Effect
-
+            #region Effect
             Effect = 2; // Give 2 extra Lives + Refill HP
             mainCharacter.HealthEffect = Effect;
+            #endregion
 
-            // Manager
-
+            #region Managers
             AnimationManager = new AnimationManager();
+            #endregion
         }
 
         public void Draw(SpriteBatch spriteBatch)

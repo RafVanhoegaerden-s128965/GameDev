@@ -68,6 +68,12 @@ namespace GameProject.Level
                 {
                     mainCharacter.HealthPowerUpActive = true;
                 }
+
+                // Attack PowerUp
+                if (mainCharacter.Hitbox.Intersects(powerUp.Hitbox) && powerUp.GetType() == typeof(AttackPowerUp))
+                {
+                    mainCharacter.AttackPowerUpActive = true;
+                }
             }
         }
         #endregion

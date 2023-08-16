@@ -64,7 +64,7 @@ namespace GameProject
 
         protected override void Initialize()
         {
-            StateOfGame = CurrentGameState.Level2;
+            StateOfGame = CurrentGameState.Level1;
             PreviousStateOfGame = CurrentGameState.Menu;
 
             base.Initialize();

@@ -93,6 +93,11 @@ namespace GameProject.GameObjects.Playable
                 HealthEffectApplied = true;
             }
 
+            if (AttackPowerUpActive)
+            {
+                Damage += AttackEffect;
+            }
+
             // Movement
             MovementManager.Move(this);
             MovementManager.Jump(this);

@@ -45,9 +45,10 @@ namespace GameProject.HUD.Menu.LevelComponents
             spriteBatch.Draw(_backgroundTexture, filledRect, _hpBarColor);
 
             // Text Label
-            string labelText = $"HP Bar:";
+            string labelText = $"HP Bar: {_mainCharacter.HP} / {_mainCharacter.MaxHP}";
             Vector2 labelPosition = new Vector2(780, 960);
             Color labelColor = Color.Black;
+            if (_mainCharacter.HealthPowerUpActive) { labelColor = Color.LightGoldenrodYellow; } // Change if HealthPowerUp is Active
             spriteBatch.DrawString(_font, labelText, labelPosition, labelColor);
         }
 

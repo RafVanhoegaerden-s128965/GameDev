@@ -32,7 +32,7 @@ namespace GameProject.Level
 
         #region PowerUps
         private HealthPowerUp _powerUp1 { get; set; }
-        private JumpPowerUp _powerUp2 { get; set; }
+        private AttackPowerUp _powerUp2 { get; set; }
 
         #endregion
 
@@ -40,7 +40,7 @@ namespace GameProject.Level
         {
             this.MainCharacter = mainCharacter;
             this.MainCharacter.JumpPowerUpActive = jumpPowerUpActive;
-            //this.MainCharacter.JumpPowerUpActive = true;
+
 
             this.HpBar = hpBar;
 
@@ -85,7 +85,7 @@ namespace GameProject.Level
             _powerUp1 = new HealthPowerUp(Content, PowerUpPosition[0], MainCharacter);
             PowerUpList.Add(_powerUp1);
 
-            _powerUp2 = new JumpPowerUp(Content, PowerUpPosition[1], MainCharacter);
+            _powerUp2 = new AttackPowerUp(Content, PowerUpPosition[1], MainCharacter);
             PowerUpList.Add(_powerUp2);
             #endregion
 
@@ -107,14 +107,26 @@ namespace GameProject.Level
             #region PowerUps
             // Draw PowerUps
             if (!MainCharacter.HealthPowerUpActive) { _powerUp1.Draw(SpriteBatch); }
-            if (!MainCharacter.JumpPowerUpActive) { _powerUp2.Draw(SpriteBatch); }
-            #region PowerUpText
-            // Text Label JumpPowerUp
+            if (!MainCharacter.AttackPowerUpActive) { _powerUp2.Draw(SpriteBatch); }
+
+            #region PowerUpTextJumpPowerUp
+            // Text Label 
             if (MainCharacter.JumpPowerUpActive)
             {
                 string labelText = $"JumpBoost Activated";
                 Vector2 labelPosition = new Vector2(85, 995);
                 Color labelColor = Color.Yellow;
+                SpriteBatch.DrawString(Font, labelText, labelPosition, labelColor);
+            }
+            #endregion
+
+            #region PowerUpTextAttackPowerUp
+            // Text Label 
+            if (MainCharacter.AttackPowerUpActive)
+            {
+                string labelText = $"AttackBoost Activated";
+                Vector2 labelPosition = new Vector2(1535, 995);
+                Color labelColor = Color.Green;
                 SpriteBatch.DrawString(Font, labelText, labelPosition, labelColor);
             }
             #endregion
@@ -136,7 +148,7 @@ namespace GameProject.Level
             #region PowerUps
             // Update PowerUps
             if (!MainCharacter.HealthPowerUpActive) { _powerUp1.Update(gameTime); }
-            if (!MainCharacter.JumpPowerUpActive) { _powerUp2.Update(gameTime); }
+            if (!MainCharacter.AttackPowerUpActive) { _powerUp2.Update(gameTime); }
             #endregion
         }
     }

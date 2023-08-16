@@ -4,14 +4,18 @@ using GameProject.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System.Diagnostics;
-using System.IO;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Metadata;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace GameProject.GameObjects.PowerUps
 {
-    internal class JumpPowerUp : PowerUp
+    internal class AttackPowerUp : PowerUp
     {
-        public JumpPowerUp(ContentManager content, Rectangle position, MainCharacter mainCharacter)
+        public AttackPowerUp(ContentManager content, Rectangle position, MainCharacter mainCharacter)
         {
             #region Textures
             IdleTexture = content.Load<Texture2D>("Sprites\\PowerUps\\PowerUp");
@@ -29,14 +33,15 @@ namespace GameProject.GameObjects.PowerUps
             #endregion
 
             #region Effect
-            Effect = 5; // Enhance jump effect --> Jumps higher
-            mainCharacter.JumpEffect = Effect;
+            Effect = 2; // Enhance jump effect --> Jumps higher
+            mainCharacter.AttackEffect = Effect;
             #endregion
 
             #region Managers
             AnimationManager = new AnimationManager();
             #endregion
         }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             // DrawUpdate Animations

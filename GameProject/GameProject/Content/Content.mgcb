@@ -110,7 +110,7 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/MainCharacter/Run-Sheet.png
 
-#begin Sprites/PowerUps/JumpPowerUp.png
+#begin Sprites/PowerUps/PowerUp.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -120,7 +120,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/PowerUps/JumpPowerUp.png
+/build:Sprites/PowerUps/PowerUp.png
 
 #begin TileSheets/Level1 TileSheet.png
 /importer:TextureImporter
