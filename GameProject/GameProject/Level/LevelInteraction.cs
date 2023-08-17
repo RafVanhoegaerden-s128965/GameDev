@@ -117,6 +117,7 @@ namespace GameProject.Level
         public void GetEndzone(MainCharacter mainCharacter, Rectangle endZone, Game1 game)
         {
             if (endZone.Intersects(mainCharacter.Hitbox)) { game.StateOfGame = CurrentGameState.Ended; }
+
         }
         #endregion
 

@@ -56,10 +56,10 @@ namespace GameProject.HUD.Ending
 
             SpriteBatch.Draw(_background, new Vector2(-50, -200), null, Color.White, 0f, Vector2.Zero, 1.2f, SpriteEffects.None, 0f); // Draw Background
 
-            #region GameOverText
+            #region VictoryText
             Color TextColor = new Color(255, 206, 99);
-            string labelExitText = "Game Over";
-            var LabelPosition = new Vector2(375, 300);
+            string labelExitText = "Victory";
+            var LabelPosition = new Vector2(540, 300);
             SpriteBatch.DrawString(TitleFont, labelExitText, LabelPosition, TextColor);
             #endregion
 

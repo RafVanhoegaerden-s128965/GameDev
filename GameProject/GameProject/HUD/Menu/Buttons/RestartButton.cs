@@ -62,6 +62,7 @@ namespace GameProject.HUD.Menu.Buttons
                 if (IsClicked())
                 {
                     Game.StateOfGame = CurrentGameState.Level1;
+                    Game.PreviousStateOfGame = CurrentGameState.Ended;
                 }
             }
 

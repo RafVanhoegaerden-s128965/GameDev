@@ -119,6 +119,8 @@ namespace GameProject
                 switch (StateOfGame)
                 {
                     case CurrentGameState.Level1:
+                        _mainCharacter = new MainCharacter(this, Content);
+                        _hpBar = new HPBar(_mainCharacter, _hpBarTexture, Content);
                         _screenManager.LoadScreen(new Level1(this, Content, _mainCharacter, _hpBar), new FadeTransition(GraphicsDevice, Color.Black));
                         break;
                     case CurrentGameState.Level2:
