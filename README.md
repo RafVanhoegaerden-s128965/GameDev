@@ -6,32 +6,32 @@
 - [ ] Werken met github: stuur naar jouw begeleider een invite link
 - [ ] Startscherm waar je ten minste op start kan drukken
 - [x] Geanimeerde held
-- [ ] Minstens 2 levels waar je vanuit startscherm en/of opeenvolgend naartoe kan
-- [ ] Minstens 3 verschillende vijanden (waarvan maximaal 1 valstrik)
+- [x] Minstens 2 levels waar je vanuit startscherm en/of opeenvolgend naartoe kan
+- [x] Minstens 3 verschillende vijanden (waarvan maximaal 1 valstrik)
 - [x] Minstens keyboard (up,down,left,right) moet ondersteund zijn
-- [ ] Game Over scherm als de held verslagen/gewonnen is
+- [x] Game Over scherm als de held verslagen/gewonnen is
 - [x] Basic physics:
   - [x] Springen: gaat eerst omhoog, komt dan terug naar beneden (vallen)
   - [x] Stopt met vallen op bepaald moment (zichtbaar in scherm)
-- [ ] Basic AI:
-  - [ ] Geen vijanden die gewoon blijven staan (tenzij een valstrik)
+- [x] Basic AI:
+  - [x] Geen vijanden die gewoon blijven staan (tenzij een valstrik)
 - [x] Sprites en Tileset/background moet aanwezig zijn
   - [x] Geen blokjes oid die over de background color bewegen
-- [ ] Minstens 2 Design Patterns
+- [x] Minstens 2 Design Patterns
 - [x] Toepassen van SOLID
   - [x] Extra folders om klassen in te plaatsen
-  - [ ] Minstens 3 bewijzen van SOLID gebruik
-- [ ] Minstens 2 uitgewerkte Extra’s 
-- [ ] Meer dan 2x “dezelfde code” ➔ oplossen
+  - [x] Minstens 3 bewijzen van SOLID gebruik
+- [x] Minstens 2 uitgewerkte Extra’s 
+- [x] Meer dan 2x “dezelfde code” ➔ oplossen
 
 # Extra's
 
-- [ ] Held kan schieten/aanvallen en vijanden doden
-- [ ] Held kan powerups oprapen en gebruiken (onschendbaarheid, vliegen,…)
+- [x] Held kan schieten/aanvallen en vijanden doden
+- [x] Held kan powerups oprapen en gebruiken (onschendbaarheid, vliegen,…)
 - [ ] Held kan geld verzamelen als score: bepaalde score: victory
 - [ ] Held kan monsters enkel doden door er langs boven op te springen
 - [ ] Bossfight met een HP balk
-- [ ] Je hebt 3(of meer) levens (visueel voorgesteld), wanneer je geraakt wordt ben je even onschendbaar en flikkert je figuurtje
+- [x] Je hebt 3(of meer) levens (visueel voorgesteld), wanneer je geraakt wordt ben je even onschendbaar en flikkert je figuurtje
 
 # Meer punten
 
