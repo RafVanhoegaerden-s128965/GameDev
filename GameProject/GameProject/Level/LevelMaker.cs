@@ -70,7 +70,7 @@ namespace GameProject.Level
 
         public void DrawLevel(GameTime gameTime)
         {
-            SpriteBatch.Draw(Background, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, 4, SpriteEffects.None, 0f); // Draw Background
+            SpriteBatch.Draw(Background, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, 4f, SpriteEffects.None, 0f); // Draw Background
 
             CollisionController.DrawLevel(SpriteBatch, Map); // Draw Level
 

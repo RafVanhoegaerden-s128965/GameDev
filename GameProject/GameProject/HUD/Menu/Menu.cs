@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using GameProject.HUD.Menu.Buttons;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Screens;
@@ -17,29 +18,35 @@ namespace GameProject.HUD.Menu
 
         public SpriteBatch SpriteBatch;
 
-        private List<MenuButton> _components = new List<MenuButton>();
+        private List<Button> _components = new List<Button>();
+
+        private Texture2D _background;
 
         private Texture2D _texture;
         public SpriteFont Font;
 
 
-        public Menu(Game game) : base(game)
+        public Menu(Game1 game) : base(game)
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
+
+            _background = Content.Load<Texture2D>("Backgrounds\\MenuBackground");
 
             #region ButtonTexture
             _texture = new Texture2D(GraphicsDevice, 1, 1);
             _texture.SetData(new[] { Color.White });
             #endregion
 
-            Font = game.Content.Load<SpriteFont>("Fonts\\Font");
+            Font = game.Content.Load<SpriteFont>("Fonts\\MenuFont");
 
             #region Buttons
             // Load Buttons
-            var Level1Button = new MenuButton(_texture,new Vector2(100,100), Font);
+            var PlayButton = new PlayButton(game, _texture,new Vector2(650,800), Font); // Only Playbutton because Level1 & Level2 can't be completed without the JumpBoost from Level1
+            var ExitButton = new ExitButton(game, _texture, new Vector2(1000, 800), Font);
 
             // Add Buttons to List
-            _components.Add(Level1Button);
+            _components.Add(PlayButton);
+            _components.Add(ExitButton);
             #endregion
         }
 
@@ -47,13 +54,10 @@ namespace GameProject.HUD.Menu
         {
             SpriteBatch.Begin();
 
-            Vector2 position = new Vector2(800, 400);
-            Color textColor = Color.Black;
-            string text = "Welcome!";
-            SpriteBatch.DrawString(Font, text, position + new Vector2(1, 1), textColor);
-            SpriteBatch.DrawString(Font, text, position + new Vector2(-1, 1), textColor);
-            SpriteBatch.DrawString(Font, text, position + new Vector2(1, -1), textColor);
-            SpriteBatch.DrawString(Font, text, position + new Vector2(-1, -1), textColor);
+            SpriteBatch.Draw(_background, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f); // Draw Background
+
+
+            // Draw Buttons
             foreach (var component in _components)
             {
                 component.Draw(SpriteBatch);
