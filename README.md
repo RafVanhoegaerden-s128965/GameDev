@@ -3,8 +3,8 @@
 + https://lioncatdevstudio.blogspot.com
 # Minimale vereisten
 
-- [ ] Werken met github: stuur naar jouw begeleider een invite link
-- [ ] Startscherm waar je ten minste op start kan drukken
+- [x] Werken met github: stuur naar jouw begeleider een invite link
+- [x] Startscherm waar je ten minste op start kan drukken
 - [x] Geanimeerde held
 - [x] Minstens 2 levels waar je vanuit startscherm en/of opeenvolgend naartoe kan
 - [x] Minstens 3 verschillende vijanden (waarvan maximaal 1 valstrik)
