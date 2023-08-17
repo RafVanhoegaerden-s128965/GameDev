@@ -20,8 +20,11 @@ namespace GameProject.GameObjects.Playable
 {
     internal class MainCharacter : Player
     {
-        public MainCharacter(ContentManager content)
+        private Game1 _game;
+        public MainCharacter(Game1 game, ContentManager content)
         {
+            _game = game;
+
             InputReader = new KeyBoardReader();
             GravityFactor = 5;
 
@@ -83,7 +86,7 @@ namespace GameProject.GameObjects.Playable
             Gravity();
 
             // Read Input
-            InputReader.ReadInput(this);
+            InputReader.ReadInput(_game, this);
 
             // Combat
             if (HealthPowerUpActive && !HealthEffectApplied)

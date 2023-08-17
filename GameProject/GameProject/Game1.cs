@@ -41,8 +41,8 @@ namespace GameProject
         #endregion
 
         #region Levels
-        private Level1 _level1;
-        private Level2 _level2;
+        internal Level1 Level1;
+        internal Level2 Level2;
         #endregion
 
 
@@ -81,7 +81,7 @@ namespace GameProject
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _mainCharacter = new MainCharacter(Content);
+            _mainCharacter = new MainCharacter(this, Content);
 
             #region HpBar
             _hpBarTexture = new Texture2D(GraphicsDevice, 1, 1);
@@ -94,11 +94,6 @@ namespace GameProject
             _menu = new Menu(this);
             _victory = new Victory(this);
             _gameOver = new GameOver(this);
-            #endregion
-
-            #region levels
-            _level1 = new Level1(this, Content, _mainCharacter, _hpBar);
-            _level2 = new Level2(this, Content, _mainCharacter, _hpBar, _mainCharacter.JumpPowerUpActive);
             #endregion
         }
         protected override void Draw(GameTime gameTime)
@@ -116,23 +111,20 @@ namespace GameProject
 
         protected override void Update(GameTime gameTime)
         {
-            // Exit Control
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
             Debug.WriteLine($"StateOfGame: {StateOfGame}");
             Debug.WriteLine(PreviousStateOfGame);
-
 
             if (PreviousStateOfGame != StateOfGame)
             {
                 switch (StateOfGame)
                 {
                     case CurrentGameState.Level1:
-                        _screenManager.LoadScreen(_level1, new FadeTransition(GraphicsDevice, Color.Black));
+                        _mainCharacter = new MainCharacter(this, Content);
+                        _hpBar = new HPBar(_mainCharacter, _hpBarTexture, Content);
+                        _screenManager.LoadScreen(new Level1(this, Content, _mainCharacter, _hpBar), new FadeTransition(GraphicsDevice, Color.Black));
                         break;
                     case CurrentGameState.Level2:
-                        _screenManager.LoadScreen(_level2, new FadeTransition(GraphicsDevice, Color.Black));
+                        _screenManager.LoadScreen(new Level2(this, Content, _mainCharacter, _hpBar, _mainCharacter.JumpPowerUpActive), new FadeTransition(GraphicsDevice, Color.Black));
                         break;
                     case CurrentGameState.Menu:
                         _screenManager.LoadScreen(_menu, new FadeTransition(GraphicsDevice, Color.Black));
@@ -140,7 +132,7 @@ namespace GameProject
                     case CurrentGameState.Ended:
                         if (StateOfGame == CurrentGameState.Ended) 
                         {
-                            if (StateOfPlayer == CurrentPlayerState.Won) 
+                            if (StateOfPlayer == CurrentPlayerState.Won)
                             {
                                 _screenManager.LoadScreen(_victory, new FadeTransition(GraphicsDevice, Color.Black));
                             }

@@ -13,7 +13,7 @@ namespace GameProject.HUD.Menu.LevelComponents
         private int _hp;
         private int _maxHP;
 
-        private Texture2D _backgroundTexture;
+        private Texture2D _texture;
 
         private Color _hpBarColor = Color.Red;
         private int _hpBarWidth = 400;
@@ -26,7 +26,7 @@ namespace GameProject.HUD.Menu.LevelComponents
 
             _hp = mainCharacter.HP;
             _maxHP = mainCharacter.MaxHP;
-            _backgroundTexture = backgroundTexture;
+            _texture = backgroundTexture;
 
             _font = content.Load<SpriteFont>("Fonts\\Font");
         }
@@ -35,14 +35,14 @@ namespace GameProject.HUD.Menu.LevelComponents
         {
             // Background Bar
             Rectangle backgroundRect = new Rectangle(780, 995, _hpBarWidth + 10, _hpBarHeight + 10);
-            spriteBatch.Draw(_backgroundTexture, backgroundRect, Color.Black);
+            spriteBatch.Draw(_texture, backgroundRect, Color.Black);
 
             // Foreground Bar
             float healthRatio = (float)_hp / _maxHP;
             Debug.WriteLine($"{_hp}/ {_maxHP}");
             int filledWidth = (int)(_hpBarWidth * healthRatio);
             Rectangle filledRect = new Rectangle(785, 1000, filledWidth, _hpBarHeight);
-            spriteBatch.Draw(_backgroundTexture, filledRect, _hpBarColor);
+            spriteBatch.Draw(_texture, filledRect, _hpBarColor);
 
             // Text Label
             string labelText = $"HP Bar: {_mainCharacter.HP} / {_mainCharacter.MaxHP}";

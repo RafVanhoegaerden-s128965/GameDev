@@ -10,6 +10,6 @@ namespace GameProject.Interface
 {
     internal interface IInputReader
     {
-        void ReadInput(Player entity);
+        void ReadInput(Game1 game, Player entity);
     }
 }

@@ -13,9 +13,11 @@ namespace GameProject.InputReader
 {
     internal class KeyBoardReader : IInputReader
     {
-        public void ReadInput(Player entity)
+        public void ReadInput(Game1 game, Player entity)
         {
             KeyboardState state = Keyboard.GetState();
+
+            Game1 Game = game;
 
             // Controls
 
@@ -40,6 +42,10 @@ namespace GameProject.InputReader
                 entity.CurrentMovementState = CurrentMovementState.Attacking;
 
                 entity.Direction = new Vector2(0, 0);
+            }
+            else if (state.IsKeyDown(Keys.Escape))
+            {
+                Game.Exit();
             }
             else // Default state
             {

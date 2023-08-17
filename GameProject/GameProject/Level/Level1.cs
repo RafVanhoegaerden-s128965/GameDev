@@ -40,7 +40,7 @@ namespace GameProject.Level
 
             #region Map
             // Load Background
-            Background = Content.Load<Texture2D>("Background");
+            Background = Content.Load<Texture2D>("Backgrounds\\Background");
 
             // Load Level
             Level = new  TmxMap("Content\\Levels\\Level1.tmx");
