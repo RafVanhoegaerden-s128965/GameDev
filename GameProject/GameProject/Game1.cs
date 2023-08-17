@@ -52,7 +52,7 @@ namespace GameProject
             Content.RootDirectory = "Content";
 
             #region Screen
-            _graphics.IsFullScreen = true;
+            _graphics.IsFullScreen = false;
 
             // Screen WIDTH
             _graphics.PreferredBackBufferWidth = Settings.Screen.Width;
@@ -81,7 +81,7 @@ namespace GameProject
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _mainCharacter = new MainCharacter(Content);
+            _mainCharacter = new MainCharacter(this, Content);
 
             #region HpBar
             _hpBarTexture = new Texture2D(GraphicsDevice, 1, 1);
