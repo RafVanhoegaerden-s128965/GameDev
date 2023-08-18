@@ -46,10 +46,10 @@
 
 # Oplevering
 
-- [ ] Video / link youtube 
-- [ ] Zip met laatste versie code
-- [ ] Dus niet face-to-face
-- [ ] Link naar github (Niet in notes in digitap!)
+- [x] Video / link youtube 
+- [x] Zip met laatste versie code
+- [x] Dus niet face-to-face
+- [x] Link naar github (Niet in notes in digitap!)
 
 # Deadline
 
