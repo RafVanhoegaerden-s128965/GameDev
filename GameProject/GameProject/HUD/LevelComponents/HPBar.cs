@@ -8,17 +8,22 @@ namespace GameProject.HUD.Menu.LevelComponents
 {
     internal class HPBar : HudComponent
     {
-        private MainCharacter _mainCharacter;
-
-        private int _hp;
-        private int _maxHP;
-
         private Texture2D _texture;
 
+        private SpriteFont _font;
+
+        private MainCharacter _mainCharacter;
+
+        #region HpValues
+        private int _hp;
+        private int _maxHP;
+        #endregion
+
+        #region HpDraw
         private Color _hpBarColor = Color.Red;
         private int _hpBarWidth = 400;
         private int _hpBarHeight = 35;
-        private SpriteFont _font;
+        #endregion
 
         public HPBar(MainCharacter mainCharacter, Texture2D backgroundTexture, ContentManager content)
         {

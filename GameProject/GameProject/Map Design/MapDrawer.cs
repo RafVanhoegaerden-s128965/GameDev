@@ -7,7 +7,7 @@ namespace GameProject.Map
 {
     internal class MapDrawer : Map
     {
-        // DRAW Level
+        // DRAW Map
         public MapDrawer(TmxMap map, Texture2D tileset)
         {
             this.TileMap = map;

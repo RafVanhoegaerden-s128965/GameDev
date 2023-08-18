@@ -20,47 +20,56 @@ namespace GameProject.Managers
             entity.Position += entity.Direction;
             Debug.WriteLine($"Position: {entity.Position} // Direction: {entity.Direction}");
         }
-        public void Jump(Player entity)
+        public void Jump(Player player)
         {
             // credits => https://flatformer.blogspot.com/
-            if (entity.IsJumping)
+            if (player.IsJumping)
             {
-                entity.StartY = entity.Position.Y;
-                entity.Position += new Vector2(0, entity.JumpSpeed);
-                entity.JumpSpeed += 1;
-                Debug.WriteLine($"Jump: {entity.Position}");
+                player.StartY = player.Position.Y;
+                player.Position += new Vector2(0, player.JumpSpeed);
+                player.JumpSpeed += 1;
+                Debug.WriteLine($"Jump: {player.Position}");
 
 
-                if (entity.JumpSpeed > 0)
+                if (player.JumpSpeed > 0)
                 {
-                    entity.IsFalling = true;
-                    entity.IsJumping = false;
+                    player.IsFalling = true;
+                    player.IsJumping = false;
                 }
 
-                //Debug.WriteLine($"JUMP END Jumping: {entity.IsJumping} // Falling: {entity.IsFalling}");
+                //Debug.WriteLine($"JUMP END Jumping: {player.IsJumping} // Falling: {player.IsFalling}");
 
-                if (entity.Position.Y >= entity.StartY)
+                if (player.Position.Y >= player.StartY)
                 //If it's farther than ground
                 {
-                    entity.Speed = new Vector2(entity.Speed.X, entity.StartY); // Then set it on
-                    entity.IsJumping = false;
-                    //Debug.WriteLine($"ON GROUND Jumping: {entity.IsJumping} // Falling: {entity.IsFalling}");
+                    player.Speed = new Vector2(player.Speed.X, player.StartY); // Then set it on
+                    player.IsJumping = false;
+                    //Debug.WriteLine($"ON GROUND Jumping: {player.IsJumping} // Falling: {player.IsFalling}");
                 }
             }
             else
             {
-                if (Keyboard.GetState().IsKeyDown(Keys.W) && !entity.IsFalling)
+                if (Keyboard.GetState().IsKeyDown(Keys.W) && !player.IsFalling)
                 {
-                    entity.IsJumping = true;
-                    entity.IsFalling = false;
-                    entity.JumpSpeed = -20; // Give it upward thrust
+                    player.IsJumping = true;
+                    player.IsFalling = false;
+                    player.JumpSpeed = -20; // Give it upward thrust
 
-                    if (entity.JumpPowerUpActive) 
+                    if (player.JumpPowerUpActive) 
                     {
-                        entity.JumpSpeed -= entity.JumpEffect;
+                        player.JumpSpeed -= player.JumpEffect;
                     }
-                    //Debug.WriteLine($"JUMP START Jumping: {entity.IsJumping} // Falling: {entity.IsFalling}");
+                    //Debug.WriteLine($"JUMP START Jumping: {player.IsJumping} // Falling: {player.IsFalling}");
                 }
+            }
+        }
+        public void Gravity(Player player)
+        {
+            player.Position += new Vector2(0, player.GravityFactor);
+            player.GravityFactor += 1f;
+            if (player.GravityFactor > 8f)
+            {
+                player.GravityFactor = 8f;
             }
         }
         #endregion

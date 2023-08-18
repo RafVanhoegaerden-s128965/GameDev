@@ -35,15 +35,9 @@ namespace GameProject.GameObjects.Non_Playable_Character
 
             Position = new Vector2(path.X, path.Y);
             Speed = new Vector2(2, 0);
-            Acceleration = new Vector2(0f, 0f);
 
             Pathway = path;
             IsFacingLeft = false;
-            #endregion
-            
-            #region Managers
-            MovementManager = new MovementManager();
-            AnimationManager = new AnimationManager();
             #endregion
         }
         public void Draw(SpriteBatch spriteBatch)

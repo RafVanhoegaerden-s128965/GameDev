@@ -36,10 +36,6 @@ namespace GameProject.GameObjects.PowerUps
             Effect = 2; // Enhance jump effect --> Jumps higher
             mainCharacter.AttackEffect = Effect;
             #endregion
-
-            #region Managers
-            AnimationManager = new AnimationManager();
-            #endregion
         }
 
         public void Draw(SpriteBatch spriteBatch)

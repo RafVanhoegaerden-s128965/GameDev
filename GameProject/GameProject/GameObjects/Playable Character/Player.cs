@@ -1,4 +1,5 @@
 ﻿using GameProject.Animations;
+using GameProject.InputReader;
 using GameProject.Interface;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -9,9 +10,14 @@ using System.Threading.Tasks;
 
 namespace GameProject.GameObjects.Playable
 {
-    internal class Player : Entity, IControllable, IJumpable, IActivatePowerUp
+    internal abstract class Player : Entity, IControllable, IJumpable, IActivatePowerUp
     {
+        // IJumpable
         public float GravityFactor { get; set; }
+        public float StartY { get; set; }
+        public float JumpSpeed { get; set; }
+        public bool IsJumping { get; set; }
+        public bool IsFalling { get; set; }
 
         // IActivatePowerUp
         public bool JumpPowerUpActive { get; set; } = false;
@@ -23,7 +29,7 @@ namespace GameProject.GameObjects.Playable
         public int AttackEffect { get; set; }
 
         // IControllable
-        public IInputReader InputReader { get; set; }
+        public IInputReader InputReader { get; set; } = new KeyBoardReader();
 
         // Hitbox Texture
         public Texture2D TestHitboxTexture { get; set; }

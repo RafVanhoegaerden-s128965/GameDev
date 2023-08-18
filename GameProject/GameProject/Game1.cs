@@ -21,39 +21,32 @@ namespace GameProject
         private SpriteBatch _spriteBatch;
         private ScreenManager _screenManager;
 
-        #region GameState
-        public CurrentGameState StateOfGame { get; set; }
-        public CurrentPlayerState StateOfPlayer { get; set; }
-        public CurrentGameState PreviousStateOfGame { get; set; }
-        #endregion
-
-        private MainCharacter _mainCharacter;
-
-        #region HPBar
-        private HPBar _hpBar;
-        private Texture2D _hpBarTexture;
-        #endregion
-
         #region GameScreens
         private Menu _menu;
         private Victory _victory;
         private GameOver _gameOver;
         #endregion
 
-        #region Levels
-        internal Level1 Level1;
-        internal Level2 Level2;
+        #region GameState
+        public CurrentGameState StateOfGame { get; set; }
+        public CurrentPlayerState StateOfPlayer { get; set; }
+        public CurrentGameState PreviousStateOfGame { get; set; }
         #endregion
 
+        #region MainCharacter
+        private MainCharacter _mainCharacter;
+        private HPBar _hpBar;
+        private Texture2D _hpBarTexture;
+        #endregion
 
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
+            _graphics.IsFullScreen = true;
+
             Content.RootDirectory = "Content";
 
             #region Screen
-            _graphics.IsFullScreen = false;
-
             // Screen WIDTH
             _graphics.PreferredBackBufferWidth = Settings.Screen.Width;
 
@@ -71,12 +64,10 @@ namespace GameProject
 
         protected override void Initialize()
         {
-            StateOfGame = CurrentGameState.Menu;
-            PreviousStateOfGame = CurrentGameState.Ended;
+            StateOfGame = CurrentGameState.Menu; // Initialize Start Screen
 
             base.Initialize();
         }
-
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -108,19 +99,18 @@ namespace GameProject
 
             base.Draw(gameTime);
         }
-
         protected override void Update(GameTime gameTime)
         {
-            Debug.WriteLine($"StateOfGame: {StateOfGame}");
-            Debug.WriteLine(PreviousStateOfGame);
+            //Debug.WriteLine($"StateOfGame: {StateOfGame}");
+            //Debug.WriteLine(PreviousStateOfGame);
 
             if (PreviousStateOfGame != StateOfGame)
             {
                 switch (StateOfGame)
                 {
                     case CurrentGameState.Level1:
-                        _mainCharacter = new MainCharacter(this, Content);
-                        _hpBar = new HPBar(_mainCharacter, _hpBarTexture, Content);
+                        _mainCharacter = new MainCharacter(this, Content); // Not most optimal way, because this uses more memory then setting all the variables back to standard value
+                        _hpBar = new HPBar(_mainCharacter, _hpBarTexture, Content); // Not most optimal way, because this uses more memory then setting all the variables back to standard value
                         _screenManager.LoadScreen(new Level1(this, Content, _mainCharacter, _hpBar), new FadeTransition(GraphicsDevice, Color.Black));
                         break;
                     case CurrentGameState.Level2:

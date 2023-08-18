@@ -12,17 +12,17 @@ namespace GameProject.HUD.Ending
 {
     internal class Victory : GameScreen
     {
-        private new Game1 game => (Game1)base.Game;
-
         public SpriteBatch SpriteBatch;
-
-        private List<Button> _components = new List<Button>();
 
         private Texture2D _background;
 
+        private SpriteFont TitleFont;
+
+        #region Button
+        private List<Button> _components = new List<Button>();
         private Texture2D _texture;
         public SpriteFont Font;
-        private SpriteFont TitleFont;
+        #endregion
 
         public Victory(Game1 game) : base(game)
         {
@@ -35,9 +35,10 @@ namespace GameProject.HUD.Ending
             _texture.SetData(new[] { Color.White });
             #endregion
 
+            #region Fonts
             Font = game.Content.Load<SpriteFont>("Fonts\\MenuFont");
             TitleFont = game.Content.Load<SpriteFont>("Fonts\\EndFont");
-
+            #endregion
 
             #region Buttons
             // Load Buttons

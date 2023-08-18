@@ -10,6 +10,7 @@ namespace GameProject.Interface
 {
     internal interface IGameObject : ICollidable
     {
+        public Vector2 Position { get; set; }
         public virtual void Update(GameTime gameTime) { }
         public virtual void Draw(SpriteBatch spriteBatch) { }
     }

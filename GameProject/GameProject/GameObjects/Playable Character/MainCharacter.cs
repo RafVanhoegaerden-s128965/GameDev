@@ -25,7 +25,6 @@ namespace GameProject.GameObjects.Playable
         {
             _game = game;
 
-            InputReader = new KeyBoardReader();
             GravityFactor = 5;
 
             #region Textures
@@ -68,11 +67,6 @@ namespace GameProject.GameObjects.Playable
             IsFalling = true;
             IsJumping = false;
             #endregion
-
-            #region Managers
-            MovementManager = new MovementManager();
-            AnimationManager = new AnimationManager();
-            #endregion
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -83,7 +77,7 @@ namespace GameProject.GameObjects.Playable
         public void Update(GameTime gameTime)
         {
             // Apply gravity
-            Gravity();
+            MovementManager.Gravity(this);
 
             // Read Input
             InputReader.ReadInput(_game, this);
@@ -107,16 +101,6 @@ namespace GameProject.GameObjects.Playable
 
             // UpdateLevel Animations + Hitbox
             AnimationManager.UpdateAnimation(gameTime, this);
-        }
-
-        public void Gravity()
-        {
-            Position += new Vector2(0, GravityFactor);
-            GravityFactor += 1f;
-            if (GravityFactor > 8f)
-            {
-                GravityFactor = 8f;
-            }
         }
     }
 }

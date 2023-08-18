@@ -35,10 +35,6 @@ namespace GameProject.GameObjects.PowerUps
             Effect = 2; // Give 2 extra Lives + Refill HP
             mainCharacter.HealthEffect = Effect;
             #endregion
-
-            #region Managers
-            AnimationManager = new AnimationManager();
-            #endregion
         }
 
         public void Draw(SpriteBatch spriteBatch)

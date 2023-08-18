@@ -14,16 +14,16 @@ namespace GameProject.HUD.Menu
 {
     internal class Menu : GameScreen
     {
-        private new Game1 game => (Game1)base.Game;
 
         public SpriteBatch SpriteBatch;
 
-        private List<Button> _components = new List<Button>();
+        private Texture2D _texture;
+
+        public SpriteFont Font;
 
         private Texture2D _background;
 
-        private Texture2D _texture;
-        public SpriteFont Font;
+        private List<Button> _components = new List<Button>();
 
 
         public Menu(Game1 game) : base(game)

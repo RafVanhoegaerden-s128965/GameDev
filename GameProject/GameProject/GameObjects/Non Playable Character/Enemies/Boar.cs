@@ -38,16 +38,9 @@ namespace GameProject.GameObjects.Non_Playable_Character.Enemies
             CurrentMovementState = Interface.CurrentMovementState.Running;
 
             Position = new Vector2(path.X, path.Y);
-            Speed = new Vector2(1, 0);
-            Acceleration = new Vector2(0f, 0f);
 
             Pathway = path;
             IsFacingLeft = true;
-            #endregion
-
-            #region Managers
-            MovementManager = new MovementManager();
-            AnimationManager = new AnimationManager();
             #endregion
         }
         public void Draw(SpriteBatch spriteBatch)

@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GameProject.GameObjects.Entity" Collapsed="true">
+    <Position X="0.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAQACAAAABAAAAECAgEAABQAAAAAAACAAEAAAAAAA=</HashCode>
+      <FileName>GameObjects\Entity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GameProject.GameObjects.Non_Playable_Character.Bat" Collapsed="true">
+    <Position X="5.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Non Playable Character\Enemies\Bat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.GameObjects.Non_Playable_Character.Trap" Collapsed="true">
+    <Position X="14.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Non Playable Character\Enemies\Trap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.GameObjects.Non_Playable_Character.Enemy" Collapsed="true">
+    <Position X="6.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Non Playable Character\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.GameObjects.Non_Playable_Character.Enemies.Boar" Collapsed="true">
+    <Position X="9.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Non Playable Character\Enemies\Boar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.GameObjects.Non_Playable_Character.Enemies.Reaper" Collapsed="true">
+    <Position X="3" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Non Playable Character\Enemies\Reaper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.GameObjects.Non_Playable_Character.Enemies.Snail" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Non Playable Character\Enemies\Snail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.GameObjects.Playable.MainCharacter" Collapsed="true">
+    <Position X="12" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAIAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>GameObjects\Playable Character\MainCharacter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.GameObjects.Playable.Player" Collapsed="true">
+    <Position X="12" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABACIABAAAQAABAQAAAAAACBAAAAAEAQABADA=</HashCode>
+      <FileName>GameObjects\Playable Character\Player.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GameProject.GameObjects.PowerUps.AttackPowerUp" Collapsed="true">
+    <Position X="0.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\PowerUps\AttackPowerUp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.GameObjects.PowerUps.HealthPowerUp" Collapsed="true">
+    <Position X="3" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\PowerUps\HealthPowerUp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.GameObjects.PowerUps.JumpPowerUp" Collapsed="true">
+    <Position X="5.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\PowerUps\JumpPowerUp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.GameObjects.PowerUps.PowerUp" Collapsed="true">
+    <Position X="3" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\PowerUps\PowerUp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Game1" Collapsed="true">
+    <Position X="22.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAIAEAAAA6AAAAAAAAAgBAAAAAACAIAAACABAAQ=</HashCode>
+      <FileName>Game1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Animations.Animation" Collapsed="true">
+    <Position X="17" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASEAAAAACAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAMAA=</HashCode>
+      <FileName>Animations\Animation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Animations.AnimationFrame" Collapsed="true">
+    <Position X="18.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Animations\AnimationFrame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.HUD.Ending.GameOver" Collapsed="true">
+    <Position X="17" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAQAAIgAAAAAAAAAAAAAAAAAAQAAgAQACAAA=</HashCode>
+      <FileName>HUD\Ending\GameOver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.HUD.Ending.Victory" Collapsed="true">
+    <Position X="22.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAQAAIgAAAAAAAAAAAAAAAAAAQAAgAQACAAA=</HashCode>
+      <FileName>HUD\Ending\Victory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.HUD.Menu.LevelComponents.HPBar" Collapsed="true">
+    <Position X="7.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAQAAAgAAAAAAAAAgABCAAIAABAAACAAAABA=</HashCode>
+      <FileName>HUD\LevelComponents\HPBar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.HUD.Menu.Buttons.Button" Collapsed="true">
+    <Position X="12.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAABAASABAAABoAABAAAAIAAgAARAEAAIAAAICCAI=</HashCode>
+      <FileName>HUD\Menu\Buttons\Button.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.HUD.Menu.Buttons.ExitButton" Collapsed="true">
+    <Position X="10" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HUD\Menu\Buttons\ExitButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.HUD.Menu.Buttons.PlayButton" Collapsed="true">
+    <Position X="12.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HUD\Menu\Buttons\PlayButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.HUD.Menu.Buttons.RestartButton" Collapsed="true">
+    <Position X="14.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HUD\Menu\Buttons\RestartButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.HUD.Menu.Menu" Collapsed="true">
+    <Position X="17" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAQAAIgAAAAAAAAAAAAAAAAAAQAAAAQACAAA=</HashCode>
+      <FileName>HUD\Menu\Menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.HUD.HudComponent" Collapsed="true">
+    <Position X="11" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HUD\HudComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.InputReader.KeyBoardReader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InputReader\KeyBoardReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GameProject.Level.Level1" Collapsed="true">
+    <Position X="0.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAEAAAEAAAAAkAAAAAAAAAAAACAAQ=</HashCode>
+      <FileName>Level\Level1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Level.Level2" Collapsed="true">
+    <Position X="2.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAACAAAAAAAgAAEAAAEAAAAAkAAAAAAQAAAAAAAAQ=</HashCode>
+      <FileName>Level\Level2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Level.LevelInteractions" Collapsed="true">
+    <Position X="20.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAIAAAAAAAAAAAAIAAAIAAGAgAAAAAAAEgAAAQ=</HashCode>
+      <FileName>Level\LevelInteraction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Level.LevelMaker" Collapsed="true">
+    <Position X="1.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABgBAAIIgAAAACgAAAAgAUghQQAgCAACwAA=</HashCode>
+      <FileName>Level\LevelMaker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Managers.AnimationManager" Collapsed="true">
+    <Position X="20.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAACAAAAAAIAAAACAAAAAAIAABA=</HashCode>
+      <FileName>Managers\AnimationManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Managers.MovementManager" Collapsed="true">
+    <Position X="18.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAoAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Managers\MovementManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Map_Design.MapCollision" Collapsed="true">
+    <Position X="22.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAgAAEAAAAAEAAAICAACAAAAA=</HashCode>
+      <FileName>Map Design\Map Collision.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Map.Map" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAACAAAAAgAAAAAAAAAQACAAA=</HashCode>
+      <FileName>Map Design\Map.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Map.MapDrawer" Collapsed="true">
+    <Position X="3.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Map Design\MapDrawer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.Settings.Screen" Collapsed="true">
+    <Position X="20.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Settings\Screen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="GameProject.HUD.Menu.IGameState" Collapsed="true">
+    <Position X="17" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>HUD\Menu\IGameState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GameProject.Interface.IActivatePowerUp" Collapsed="true">
+    <Position X="17" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAQAABAAAAAAAAABAAAAAAAQAAADA=</HashCode>
+      <FileName>Interface\IActivatePowerUp.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GameProject.Interface.IAnimatable" Collapsed="true">
+    <Position X="18.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAQIAAAAAAAA=</HashCode>
+      <FileName>Interface\IAnimatable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GameProject.Interface.ICollidable" Collapsed="true">
+    <Position X="5.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interface\ICollidable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GameProject.Interface.ICombat" Collapsed="true">
+    <Position X="20.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAACAAAABAAAAAAAgEAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interface\ICombat.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GameProject.Interface.IControllable" Collapsed="true">
+    <Position X="22.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interface\IControllable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GameProject.Interface.IGameObject" Collapsed="true">
+    <Position X="5.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interface\IGameObject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GameProject.Interface.IInputReader" Collapsed="true">
+    <Position X="18.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interface\IInputReader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GameProject.Interface.IJumpable" Collapsed="true">
+    <Position X="20.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABACIAAAAAAAAAAQAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Interface\IJumpable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GameProject.Interface.IMovable" Collapsed="true">
+    <Position X="22.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAQAAAAAAAAAAAECAAAAABAAAAAAAACQAEAAAAAAA=</HashCode>
+      <FileName>Interface\IMovable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="GameProject.HUD.Menu.CurrentGameState" Collapsed="true">
+    <Position X="17" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAIAAABAAAAAAAAAAA=</HashCode>
+      <FileName>HUD\Menu\IGameState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GameProject.HUD.Menu.CurrentPlayerState" Collapsed="true">
+    <Position X="20.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HUD\Menu\IGameState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GameProject.Interface.CurrentMovementState" Collapsed="true">
+    <Position X="18.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAABAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAIAA=</HashCode>
+      <FileName>Interface\IMovable.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

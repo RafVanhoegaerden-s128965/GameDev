@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GameProject.GameObjects.Entity" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAQACAAAABAAAAECAgEAABQAAAAAAACAAEAAAAAAA=</HashCode>
+      <FileName>GameObjects\Entity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GameProject.GameObjects.Object" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAEAAAgAGBAAAAAACAAAAAAAQIABAAAAAA=</HashCode>
+      <FileName>GameObjects\Object.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GameProject.GameObjects.Non_Playable_Character.Bat" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Non Playable Character\Enemies\Bat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.GameObjects.Non_Playable_Character.Trap" Collapsed="true">
+    <Position X="18.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Non Playable Character\Enemies\Trap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.GameObjects.Non_Playable_Character.Enemy" Collapsed="true">
+    <Position X="4" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Non Playable Character\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.GameObjects.Non_Playable_Character.Enemies.Boar" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Non Playable Character\Enemies\Boar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.GameObjects.Non_Playable_Character.Enemies.Reaper" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Non Playable Character\Enemies\Reaper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.GameObjects.Non_Playable_Character.Enemies.Snail" Collapsed="true">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Non Playable Character\Enemies\Snail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.GameObjects.Playable.MainCharacter" Collapsed="true">
+    <Position X="9.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAIAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>GameObjects\Playable Character\MainCharacter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.GameObjects.Playable.Player" Collapsed="true">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABACIABAAAQAABAQAAAAAACBAAAAAEAQABADA=</HashCode>
+      <FileName>GameObjects\Playable Character\Player.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GameProject.GameObjects.PowerUps.AttackPowerUp" Collapsed="true">
+    <Position X="14" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\PowerUps\AttackPowerUp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.GameObjects.PowerUps.HealthPowerUp" Collapsed="true">
+    <Position X="16.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\PowerUps\HealthPowerUp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.GameObjects.PowerUps.JumpPowerUp" Collapsed="true">
+    <Position X="11.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\PowerUps\JumpPowerUp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameProject.GameObjects.PowerUps.PowerUp" Collapsed="true">
+    <Position X="14" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\PowerUps\PowerUp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

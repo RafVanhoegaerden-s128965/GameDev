@@ -10,6 +10,7 @@ namespace GameProject.GameObjects.Non_Playable_Character
 {
     internal class Trap : Object
     {
+        // No effects because I generated the Sprite + reaction with CollisionRectangle in the Map already 
         public Trap(ContentManager content, Rectangle position)
         {
             Position = new Vector2(position.X, position.Y);

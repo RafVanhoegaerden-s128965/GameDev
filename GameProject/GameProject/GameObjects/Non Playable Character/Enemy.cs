@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GameProject.GameObjects.Non_Playable_Character
 {
-    internal class Enemy : Entity
+    internal abstract class Enemy : Entity
     {
         public bool IsFacingLeft = true;
         public Rectangle Pathway;

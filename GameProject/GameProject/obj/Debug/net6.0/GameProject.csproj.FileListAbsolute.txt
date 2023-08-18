@@ -39,7 +39,6 @@ C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\
 C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\MonoGame.Extended.Graphics.dll
 C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\MonoGame.Extended.Tiled.dll
 C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Level1.tmx
-C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Background.xnb
 C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\TileSheets\TX Tileset Ground.png
 C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\TileSheets\TX Tileset Ground.tsx
 C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\TileSheets\TX_Tileset_Ground.tsx
@@ -121,3 +120,13 @@ C:\Users\rafva\Documents\AP Hogeschool\HerExamenVoorbereiding - Semester 2\GameD
 C:\Users\rafva\Documents\AP Hogeschool\HerExamenVoorbereiding - Semester 2\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Fonts\FFFFORWA.TTF
 C:\Users\rafva\Documents\AP Hogeschool\HerExamenVoorbereiding - Semester 2\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Fonts\LOTSOFDOTZ.TTF
 C:\Users\rafva\Documents\AP Hogeschool\HerExamenVoorbereiding - Semester 2\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Fonts\SPACEBOY.TTF
+C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Fonts\BACKTO1982.TTF
+C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Fonts\FFFFORWA.TTF
+C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Fonts\LOTSOFDOTZ.TTF
+C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Fonts\prstart.ttf
+C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Fonts\SPACEBOY.TTF
+C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Backgrounds\Background.xnb
+C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Backgrounds\Endbackground.xnb
+C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Backgrounds\MenuBackground.xnb
+C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Fonts\EndFont.xnb
+C:\Users\Raf\Documents\AP Hoge School\Herexamen\GameDev\GameProject\GameProject\bin\Debug\net6.0\Content\Fonts\MenuFont.xnb

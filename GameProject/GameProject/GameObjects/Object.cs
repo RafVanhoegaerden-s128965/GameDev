@@ -13,6 +13,7 @@ namespace GameProject.GameObjects
 {
     internal abstract class Object : IGameObject, IAnimatable
     {
+        // IGameObject
         public Vector2 Position { get; set; }
 
         // ICollidable
@@ -20,7 +21,7 @@ namespace GameProject.GameObjects
         public Rectangle BoundingBox { get; set; }
 
         // IAnimatable
-        public AnimationManager AnimationManager { get; set; }
+        public AnimationManager AnimationManager { get; set; } = new AnimationManager();
         public Texture2D IdleTexture { get; set; }
         public Animation IdleAnimation { get; set; }
         public Texture2D RunningTexture { get; set; }
