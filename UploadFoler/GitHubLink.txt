@@ -1,0 +1,2 @@
+Https: https://github.com/RafVanhoegaerden-s128965/GameDev
+SSH: git@github.com:RafVanhoegaerden-s128965/GameDev.git
